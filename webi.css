@@ -1,0 +1,77 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif; /* Use a clean font */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center text in the body */
+}
+
+/* Header styles */
+header {
+    background-color: white; /* Light background for header */
+    padding:100px;
+    float: center
+}
+
+/* Navigation styles */
+nav {
+    background-color: #333; /* Dark background for nav */
+    color: white;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+nav ul li {
+    display: inline; /* Display items in a line */
+    margin: 0 15px; /* Space between items */
+}
+
+nav ul li a {
+    color: white; /* White text for links */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Hero section styles */
+.hero img {
+    max-width: 100%; /* Responsive image */
+    padding: 0px;
+}
+
+/* Section styles */
+section {
+    margin: 20px auto; /* Center sections with margin */
+    padding: 20px;
+    max-width: 800px; /* Limit width for better readability */
+    border: 1px solid white; /* Optional border */
+    border-radius: 50px; /* Rounded corners */
+    background-color: white; /* Light background for sections */
+}
+
+/* Button styles */
+.btn, .appointment-button {
+    background-color: #007BFF; /* Bootstrap primary color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+}
+
+.btn:hover, .appointment-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Footer styles */
+footer {
+    background-color: #333; /* Dark background for footer */
+    color: white;
+    padding: 10px 0;
+    position: relative; /* Position footer */
+    bottom: 0; /* Stick to bottom */
+    width: 100%; /* Full width */
+}
