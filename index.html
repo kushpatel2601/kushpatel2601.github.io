@@ -3,101 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umiya Physiotherapy Centre</title>
-    <link rel="stylesheet" href="webi.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Quiz Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars from showing */
+            background-color: #000; /* Set black background */
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: white; /* Set text color to white for visibility */
+        }
+        .button-container {
+            padding: 20px;
+            border-radius: 10px;
+            background: black;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* For positioning the circular waves */
+        }
+        .button {
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 200px;
+        }
+        .start-quiz {
+            background-color: #0ef016;
+            color: white;
+        }
+        .start-quiz:hover {
+            background-color: #a06945;
+        }
+        .register-quiz {
+            background-color: #0698f3;
+            color: white;
+        }
+        .register-quiz:hover {
+            background-color: #007bb5;
+        }
+        /* Circular wave styles */
+        .waves {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Disable pointer events on waves */
+            overflow: hidden;
+        }
+        .wave {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: wave 5s infinite;
+        }
+        /* Animate the waves */
+        @keyframes wave {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        /* Different colored waves */
+        .wave:nth-child(1) {
+            background: rgba(255, 127, 255, 0.5);
+            top: 20%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            animation-duration: 4s;
+        }
+        .wave:nth-child(2) {
+            background: rgba(255, 255, 127, 0.5);
+            top: 40%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            animation-duration: 5s;
+        }
+        .wave:nth-child(3) {
+            background: rgba(127, 255, 255, 0.5);
+            top: 60%;
+            left: 50%;
+            width: 500px;
+            height: 500px;
+            animation-duration: 6s;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="clinic_logo.jpeg" alt="Clinic Logo">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#packages">Packages</a></li>
-                    <li><a href="#doctors">Doctors</a></li>
-                    <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <section class="hero">
-        
-            <h1>Welcome to Umiya Physiotherapy Centre</h1>
-            <p>Your journey to better health starts here.</p>
-      
-    </section>
+    <h1>Welcome to the Quiz</h1>
+    <div class="button-container">
+        <button class="button start-quiz" onclick="openGoogleForm('https://docs.google.com/forms/d/e/1FAIpQLSc2OBFQ7PUtUHBbFosOIMLQ6rnVYvwc_hKws0hnRQM_dafLBA/viewform?usp=header')">Start Quiz</button>
+        <button class="button register-quiz" onclick="openGoogleForm('https://docs.google.com/forms/d/e/1FAIpQLSdjNRCUosOoVhMcEF0SY5PBKf2-P7w_IYs3eGhjy9oI8UnrKw/viewform?usp=header')">Register for Quiz</button>
+    </div>
 
-    <section id="services">
-        <h1>Our Services</h1>
-        <p>Let’s make something <strong>Great Health</strong> together.</p>
-        <a href="/for-patients/services/" class="btn">Get it Now</a>
-    </section>
-
-    <section id="packages">
-        <h2>Recommended Packages</h2>
-        <p>Explore our tailored packages for your needs.</p>
-        <!-- Add package details here -->
-    </section>
-
-    <section id="doctors">
-        <h1>Our Doctors</h1>
-        <div class="doctor-list">
-            <img src="mukesh_photo.jpeg" alt="doctor_photo">
-            <h3>Dr. Mukeshkumar M. Patel</h3>
-            <p>Specialization: Physiotherapist</p>
-            <p>Experience: 20 years</p>
-        </div>
-        <a href="/for-patients/find-a-doctor" class="btn">View All Doctors</a>
-    </section>
-
-    <section id="reviews">
-        <h2>Patients Speak</h2>
-        <div class="video">
-            <iframe width="300" height="200" src="https://www.youtube.com/embed/JKikBx1lg0M?si=M2qFou_5RYeqS8Ab" frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="video">
-            <iframe width="300" height="200" src="https://www.youtube.com/embed/LbWBWDn4KWg?si=5WOrygnbnbbUXwCC" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </section>
-
-    <section id="blog">
-        <h2>Our Blog</h2>
-        <p>Latest health articles and tips.</p>
-        <!-- Add blog posts here -->
-    </section>
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Contact Us:</strong> <a href="tel:9998994974">9998994974</a></p>
-    </section>
-
-    <section id="address">
-        <h2>Address</h2>
-        <p>Umiya Physiotherapy Centre</p>
-        <p>Gayatri Shakti Pith Road</p>
-        <p>Mehsana Highway</p>
-        <p>384002</p>
-    </section>
-
-    <section id="appointment">
-        <h2>Appointment</h2>
-        <button class="appointment-button" onclick="openForm()">Schedule an Appointment</button>
-    </section>
-
-    <footer>
-        <p>&copy; 2023 Umiya Physiotherapy Centre. All rights reserved.</p>
-    </footer>
+    <div class="waves">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
 
     <script>
-        function openForm() {
-            window.open('https://docs.google.com/forms/d/e/1FAIpQLSeX-CudZl-jtFqJ2Dx3NRdWgj1tk5rJhe_xBrSIRQ_d7W6zBA/viewform?usp=header', '_blank');
+        function openGoogleForm(url) {
+            window.open(url, '_blank');
         }
     </script>
+
 </body>
 </html>
