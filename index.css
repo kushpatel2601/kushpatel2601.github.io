@@ -1,0 +1,101 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Light background - e.g., Off-white */
+    --foreground: 240 10% 3.9%; /* Dark text - e.g., Dark Slate Gray */
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 330 85% 60%; /* Vibrant Pink/Magenta for accents */
+    --primary-foreground: 0 0% 98%; /* White or very light for text on primary */
+
+    --secondary: 210 30% 95%; /* Soft Blue/Gray for secondary elements */
+    --secondary-foreground: 240 5% 25%; /* Darker gray for text on secondary */
+
+    --muted: 210 30% 95%; 
+    --muted-foreground: 240 5% 45%; /* Softer gray for muted text */
+
+    --accent: 30 90% 65%; /* Warm Peach/Gold for highlights */
+    --accent-foreground: 240 10% 3.9%;
+
+    --destructive: 0 75% 55%; /* Soft Red for warnings/errors */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 90%; /* Light gray for borders */
+    --input: 240 5% 93%; /* Slightly darker gray for input backgrounds */
+    --ring: 330 85% 65%; /* Brighter pink for focus rings */
+
+    --radius: 0.75rem; /* Slightly larger radius for a softer look */
+  }
+
+  .dark {
+    --background: 240 10% 10%; /* Dark background - e.g., Charcoal */
+    --foreground: 0 0% 95%; /* Light text - e.g., Off-white */
+
+    --card: 240 8% 15%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 8% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 330 80% 65%; /* Slightly lighter/brighter Pink for dark mode */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 10% 20%; /* Darker gray for secondary elements */
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 240 10% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 30 85% 70%; /* Brighter Peach/Gold for dark mode */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 25%; /* Darker border for dark mode */
+    --input: 240 5% 22%; /* Darker input background */
+    --ring: 330 80% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Poppins', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold font-['Playfair_Display',_serif];
+  }
+  p, span, div, li, a, label, input, textarea, button, select {
+     @apply font-['Poppins',_sans-serif];
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.9) 0%, hsl(var(--accent) / 0.8) 100%);
+}
+
+.service-card-hover {
+  @apply transition-all duration-300;
+}
+.service-card-hover:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 24px hsl(var(--primary) / 0.15), 0 4px 8px hsl(var(--primary) / 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
