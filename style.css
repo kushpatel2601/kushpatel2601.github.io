@@ -1,0 +1,189 @@
+/* General Body Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #f9f4f4; /* A darker blue for headings */
+}
+
+/* Customizing Bootstrap variables (optional, but good practice) */
+:root {
+    --bs-primary: #007bff; /* Bootstrap's default blue */
+    --bs-secondary: #6c757d; /* Bootstrap's default gray */
+    --bs-light: #f8f9fa;
+    --bs-dark: #343a40;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+/* Navigation Bar */
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #1e3a8a !important; /* Darker blue for clinic name */
+}
+
+.navbar-nav .nav-link {
+    font-weight: 600;
+    color: #333 !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--bs-primary) !important;
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--bs-primary) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1500x800?text=Physiotherapy+Clinic') no-repeat center center/cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .display-3 {
+    font-size: 3.5rem;
+}
+
+.hero-section .lead {
+    font-size: 1.5rem;
+}
+
+/* Section Spacing */
+section {
+    padding: 80px 0;
+}
+
+/* About Us Image */
+#about img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* Services Section Cards */
+#services .card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#services .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+#services .card-body {
+    padding: 30px;
+}
+
+#services .card i {
+    color: var(--bs-primary); /* Primary color for icons */
+}
+
+/* Team Section */
+#team .card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#team .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+#team .card-img-top {
+    border: 3px solid var(--bs-primary);
+    margin-top: 15px;
+}
+
+#team .social-icons a {
+    color: #6c757d;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+#team .social-icons a:hover {
+    color: var(--bs-primary);
+}
+
+/* Testimonials Carousel */
+#testimonials .carousel-item {
+    padding: 40px 0;
+}
+
+#testimonials .card {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+#testimonials .carousel-control-prev-icon,
+#testimonials .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+/* Contact Section Map */
+.map-responsive {
+    overflow:hidden;
+    padding-bottom:56.25%; /* 16:9 aspect ratio */
+    position:relative;
+    height:0;
+}
+.map-responsive iframe {
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    border-radius: 8px; /* Slightly rounded corners for the map */
+}
+
+/* Footer */
+footer {
+    background-color: #212529 !important; /* Darker than default dark */
+}
+
+footer a {
+    color: #adb5bd !important; /* Lighter grey for links */
+}
+
+footer a:hover {
+    color: white !important;
+}
+
+/* Responsive Adjustments (using Bootstrap's breakpoints implicitly) */
+@media (max-width: 768px) {
+    .hero-section .display-3 {
+        font-size: 2.5rem;
+    }
+    .hero-section .lead {
+        font-size: 1.2rem;
+    }
+    section {
+        padding: 50px 0;
+    }
+}
