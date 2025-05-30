@@ -12,3 +12,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
+// Optional: Ensure the testimonial carousel auto-advances
+// document.addEventListener('DOMContentLoaded', function () {
+//     var testimonialCarousel = document.getElementById('testimonialCarousel');
+//     if (testimonialCarousel) {
+//         var carousel = new bootstrap.Carousel(testimonialCarousel, {
+//             interval: 5000, // Change slide every 5 seconds
+//             wrap: true // Allow carousel to loop
+//         });
+//     }
+// });
