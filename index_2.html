@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RNG PATEL INSTITUTE OF TECHNOLOGY - Question Papers Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #7f00ff 0%, #e100ff 100%);
+      color: #1e293b;
+      min-height: 100vh;
+      /* Changed body display from flex column to block for better content flow below new header */
+      display: block;
+      padding: 0 1rem 4rem; /* Maintain horizontal padding and bottom padding */
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: #7c3aed;
+      text-decoration: none;
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #5b21b6;
+      text-decoration: underline;
+      outline: none;
+    }
+    h1, h2 {
+      font-weight: 700;
+      margin: 0;
+      color: white; /* Default color for general headings, overridden in specific sections */
+      -webkit-text-stroke: 0.3px #6d28d9;
+    }
+    h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      text-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    }
+    h2 {
+      font-size: 1.875rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+    label {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #ddd6fe;
+      margin-bottom: 0.75rem;
+      display: block;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+      /* Center label for better alignment with select/input */
+      text-align: center;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    select, input[type="search"] {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 16px;
+      border: none;
+      background: #ede9fe;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+      font-weight: 600;
+      color: #4c1d95;
+      cursor: pointer;
+      transition: box-shadow 0.35s ease, background 0.35s ease;
+      /* Center select/input */
+      margin-left: auto;
+      margin-right: auto;
+      display: block; /* Ensures margin auto works horizontally */
+    }
+    select:hover,
+    input[type="search"]:hover,
+    select:focus,
+    input[type="search"]:focus {
+      outline: none;
+      background: white;
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+      color: #5b21b6;
+    }
+
+    /* NEW: College Header Styles */
+    .college-header {
+      width: 100%;
+      padding: 2.5rem; /* Adjusted padding for a grander look */
+      display: flex;
+      justify-content: space-between; /* Puts content and logo on opposite ends */
+      align-items: center;
+      position: relative;
+      overflow: hidden; /* Hide overflow from background image */
+      min-height: 280px; /* Make header taller for impactful photo */
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Text shadow for readability over image */
+      /* College photo as background - replace with your actual college photo */
+      background: url('RNGPITPHOTO.png') no-repeat center center / cover;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      animation: fadeIn 1.5s ease-out; /* Add a fade-in animation */
+      border-bottom-left-radius: 30px; /* Rounded corners for a modern look */
+      border-bottom-right-radius: 30px;
+      margin-bottom: 3rem; /* Space below header before first content section */
+    }
+
+    /* Overlay gradient for better text readability on the header photo */
+    .college-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(74, 20, 140, 0.7) 0%, rgba(127, 0, 255, 0.4) 100%);
+      z-index: 1;
+    }
+
+    /* Ensure content within header is above the overlay */
+    .college-header > * {
+      z-index: 2;
+      position: relative; /* Needed for z-index to work */
+    }
+
+    .header-content {
+      flex-grow: 1; /* Allow content to take up available space */
+      max-width: 70%; /* Limit width for text on larger screens */
+    }
+
+    .college-name {
+      font-size: 3.8rem; /* Larger font size for main title */
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      line-height: 1.1;
+      -webkit-text-stroke: 1px #4A148C; /* Darker stroke for contrast */
+      color: white; /* Ensure text color is white over dark background */
+    }
+
+    .college-slogan {
+      font-size: 1.6rem;
+      font-weight: 500;
+      max-width: 600px;
+      line-height: 1.4;
+      color: #e0e0e0;
+    }
+
+    .college-logo-container {
+      display: flex;
+      justify-content: flex-end; /* Align logo to the right */
+      align-items: center;
+      flex-shrink: 0; /* Prevent logo from shrinking */
+    }
+
+    .college-logo {
+      width: 180px; /* Larger logo */
+      height: 180px;
+      border-radius: 50%; /* Circular logo */
+      border: 6px solid white; /* Thicker white border */
+      box-shadow: 0 0 25px rgba(0,0,0,0.5), 0 0 0 8px rgba(255,255,255,0.2); /* Multiple shadows for depth */
+      object-fit: cover; /* Ensure logo fits well */
+      transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
+    }
+
+    .college-logo:hover {
+      transform: scale(1.08) rotate(5deg);
+      box-shadow: 0 0 35px rgba(0,0,0,0.7), 0 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* Hero section - adjusted margin */
+    .hero {
+      width: 100%;
+      max-width: 900px;
+      margin-top: 3rem; /* Adjusted margin to push it down from the new header */
+      margin-bottom: 3rem;
+      background: linear-gradient(160deg, #7f00ff, #e100ff);
+      border-radius: 24px;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2.5rem 2rem 2.5rem 2.5rem;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.6);
+      overflow: hidden;
+      margin-left: auto; /* Center the hero section */
+      margin-right: auto;
+    }
+    .hero-text {
+      flex: 1 1 480px;
+      color: white;
+      z-index: 2;
+    }
+    .hero-text h1 {
+      font-size: 3.6rem;
+      max-width: 14ch;
+      margin-bottom: 1rem;
+      animation: slideInFromLeft 1.2s ease forwards;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      max-width: 420px;
+      line-height: 1.5;
+      color: #dcd6fecc;
+      margin-bottom: 2rem;
+      animation: slideInFromLeft 1.4s ease forwards;
+    }
+    .hero-image-container {
+      flex: 1 1 360px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      animation: slideInFromRight 1.5s ease forwards;
+    }
+    .hero-image-container img {
+      max-width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.8);
+      filter: drop-shadow(0 0 8px #9d7effaa);
+      transition: transform 0.3s ease;
+    }
+    .hero-image-container img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    /* Animated background blobs behind hero */
+    .blob-1, .blob-2 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      animation: blobMove 15s infinite alternate ease-in-out;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+    .blob-1 {
+      width: 380px;
+      height: 380px;
+      background: #a78bfa;
+      top: -120px;
+      left: -110px;
+      animation-delay: 0s;
+    }
+    .blob-2 {
+      width: 300px;
+      height: 300px;
+      background: #c084fc;
+      bottom: -110px;
+      right: -90px;
+      animation-delay: 6s;
+    }
+
+    /* Semester button container */
+    #semesterButtonsContainer {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 900px; /* Increased max-width to match other content */
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .semester-btn {
+      background: #ede9fe;
+      color: #7c3aed;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      border-radius: 16px;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+    .semester-btn:hover,
+    .semester-btn:focus {
+      background-color: #7c3aed;
+      color: white;
+      outline: none;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.7);
+    }
+    .semester-btn.active {
+      background-color: #5b21b6;
+      color: white;
+      box-shadow: 0 10px 30px rgba(91, 33, 182, 0.8);
+      cursor: default;
+    }
+
+    /* Subject container */
+    #subjectsContainer {
+      width: 100%;
+      max-width: 900px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem 2rem;
+      margin-top: 2rem;
+      margin-left: auto; /* Center the subject container */
+      margin-right: auto;
+    }
+    .subject-card {
+      background: #ede9fe;
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      user-select: none;
+      transition: box-shadow 0.35s ease, transform 0.3s ease;
+    }
+    .subject-card:hover,
+    .subject-card:focus-within {
+      box-shadow: 0 14px 32px rgba(124, 58, 237, 0.7);
+      transform: translateY(-4px);
+      outline: none;
+    }
+    .subject-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #5b21b6;
+      margin: 0;
+      cursor: default;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      user-select: text;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    }
+    .material-icons.subject-icon {
+      color: #7c3aed;
+      font-size: 26px;
+    }
+    ul.papers-list {
+      list-style: none;
+      padding-left: 1.25rem;
+      margin: 0;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+    ul.papers-list li {
+      margin-bottom: 0.45rem;
+    }
+    ul.papers-list li a {
+      color: #6d28d9;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: 10px;
+      padding: 0.25rem 0.7rem;
+      user-select: text;
+      transition: background-color 0.3s ease;
+    }
+    ul.papers-list li a:hover,
+    ul.papers-list li a:focus {
+      background-color: #d8b4fe;
+      color: #4c1d95;
+      outline: none;
+      text-decoration: underline;
+    }
+    ul.papers-list li a .material-icons.link-icon {
+      font-size: 18px;
+    }
+
+    /* Empty message */
+    #emptyMessage {
+      color: #ddd6fecc;
+      font-style: italic;
+      text-align: center;
+      font-size: 1.125rem;
+      margin-top: 3rem;
+      user-select: none;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      max-width: 900px; /* Center with other content */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Accessibility focus ring */
+    a:focus-visible,
+    button:focus-visible,
+    select:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #a78bfa;
+      outline-offset: 3px;
+      border-color: #a78bfa;
+      box-shadow: 0 0 10px #c4b5fd;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .college-header {
+        flex-direction: column; /* Stack header content vertically */
+        text-align: center;
+        padding: 1.5rem 1rem;
+        min-height: 200px; /* Smaller min-height for tablets */
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+      }
+      .header-content {
+        max-width: 100%;
+        margin-bottom: 1rem;
+      }
+      .college-name {
+        font-size: 2.8rem;
+      }
+      .college-slogan {
+        font-size: 1.3rem;
+      }
+      .college-logo-container {
+        margin-top: 1rem; /* Space between text and logo */
+      }
+      .college-logo {
+        width: 140px;
+        height: 140px;
+        border-width: 5px;
+      }
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0 0.75rem 3rem;
+      }
+      .college-header {
+        padding: 1rem 0.5rem;
+        min-height: 180px; /* Even smaller min-height for phones */
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+      .college-name {
+        font-size: 2.2rem;
+        -webkit-text-stroke: 0.5px #4A148C;
+      }
+      .college-slogan {
+        font-size: 1.1rem;
+      }
+      .college-logo {
+        width: 100px;
+        height: 100px;
+        border-width: 4px;
+      }
+      .hero {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 1.5rem;
+        margin-top: 2rem;
+      }
+      .hero-text, .hero-image-container {
+        flex: none;
+        width: 100%;
+        margin-bottom: 1.75rem;
+        text-align: center;
+      }
+      h1 {
+        font-size: 2.4rem;
+      }
+      #subjectsContainer {
+        grid-template-columns: 1fr;
+        margin-top: 1rem;
+      }
+      #semesterButtonsContainer {
+        flex-direction: column;
+        max-width: 280px;
+        margin: 1rem auto 0;
+      }
+      .semester-btn {
+        font-size: 1.1rem;
+        padding: 0.75rem 1.5rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-30px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes slideInFromRight {
+      0% {
+        transform: translateX(40px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    @keyframes blobMove {
+      0%, 100% {
+        transform: translate3d(0,0,0) scale(1);
+      }
+      50% {
+        transform: translate3d(20px,-20px,0) scale(1.1);
+      }
+    }
+    /* New animation for header fade-in */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* screen reader only for accessibility */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0,0,0,0) !important;
+      border: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- NEW: College Header Section -->
+  <header class="college-header" role="banner">
+    <div class="header-content">
+      <h1 class="college-name">RNG PATEL INSTITUTE OF TECHNOLOGY</h1>
+      <p class="college-slogan">Innovating Futures, Empowering Minds</p>
+    </div>
+    <div class="college-logo-container">
+      <img src="E:\Kush Patel\KP_website\IT_college_start\RNGPIT_logo.png" alt="Tech Academy College Logo" class="college-logo">
+      
+    </div>
+  </header>
+
+  <!-- Existing Hero section (now below the main header) -->
+  <section class="hero" aria-label="Welcome section with hero image and title">
+    <div class="hero-text">
+      <h1>Explore All Previous Years' Question Papers</h1>
+      <p>Your gateway to comprehensive question papers for every subject across departments in your college. Find, download, and excel.</p>
+    </div>
+    <div class="hero-image-container">
+      <img 
+        src="RNGPITPHOTO.png"
+        alt="Modern illustration showing students studying with books and laptop, colorful gradient style"
+        width="400"
+        height="300"
+        loading="lazy"
+        />
+    </div>
+    <div class="blob-1" aria-hidden="true"></div>
+    <div class="blob-2" aria-hidden="true"></div>
+  </section>
+
+  <!-- All other content is centered using max-width and auto margins -->
+  <label for="departmentSelect">Select Department</label>
+  <select id="departmentSelect" aria-describedby="departmentSelectDesc" aria-label="Select Department">
+    <option value="" disabled selected>Choose a department</option>
+  </select>
+  <div id="departmentSelectDesc" class="sr-only">
+    After selecting a department, select semester below.
+  </div>
+
+  <div id="semesterButtonsContainer" aria-label="Semester selection" style="display:none;"></div>
+
+  <label for="subjectSearch" id="subjectSearchLabel" style="display:none;">Filter Subjects</label>
+  <input type="search" id="subjectSearch" placeholder="Search subjects..." aria-labelledby="subjectSearchLabel" style="display:none;" autocomplete="off" spellcheck="false" />
+
+  <section id="subjectsContainer" aria-live="polite" aria-atomic="true" tabindex="0">
+    <!-- Subject cards will appear here -->
+  </section>
+
+  <p id="emptyMessage" style="display:none;">No subjects or question papers found.</p>
+
+  <script>
+    const data = [
+      {
+        department: 'Information Technology',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'ENVIRONMENTAL AND POLLUTION MANAGEMENT',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://drive.google.com/file/d/1NHWCF4N2vIQuYI8-8IZg-byb75meIoI8/view?usp=sharing'},
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF ELECTRICAL AND ELECTRONICS ENGINEERING',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF COMPUTER PROGRAMMING',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'CALCULUS',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'ENGLISH AND PROFESSIONAL COMMUNICATION',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'ICT ESSENTIALS',
+              papers: [
+                
+              ],
+            },
+            {
+              name: 'WEB DESIGNING',
+              papers: [
+                
+              ],
+            },
+          ],
+          'Semester-2': [
+            {
+              name: 'DIGITAL LOGIC DESIGN',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF OBJECT ORIENTED PROGRAMMING',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'PYTHON FOE ENGINEERS',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'STATISTICS AND LINEAR ALGEBRA',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF SEMICONDUCTOR TECHNOLOGY',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+      {
+        department: 'Computer Science Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'ENVIRONMENTAL AND POLLUTION MANAGEMENT',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://drive.google.com/file/d/1NHWCF4N2vIQuYI8-8IZg-byb75meIoI8/view?usp=sharing'},
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF ELECTRICAL AND ELECTRONICS ENGINEERING',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF COMPUTER PROGRAMMING',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'CALCULUS',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'ENGLISH AND PROFESSIONAL COMMUNICATION',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'ICT ESSENTIALS',
+              papers: [
+                
+              ],
+            },
+            {
+              name: 'WEB DESIGNING',
+              papers: [
+                
+              ],
+            },
+          ],
+          'Semester-2': [
+            {
+              name: 'DIGITAL LOGIC DESIGN',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF OBJECT ORIENTED PROGRAMMING',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'PYTHON FOE ENGINEERS',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'STATISTICS AND LINEAR ALGEBRA',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF SEMICONDUCTOR TECHNOLOGY',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              papers: [
+                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+      {
+        department: 'Mechanical Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'Thermodynamics',
+              papers: [
+                { year: '2025', url: 'https://example.com/Mechanical/Thermodynamics/2023.pdf' },
+              ],
+            }
+          ],
+          'Semester-2': [
+            {
+              name: 'APPLIED ELECTRICAL AND ELECTRONICS ENGINEERING',
+              papers: [
+                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+              ],
+            },
+            {
+              name: 'NUMERICAL METHODS AND COMPLEX VARIABLES',
+              papers: [
+                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
+              papers: [
+                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING GRAPHICS AND DESIGN',
+              papers: [
+                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+              ],
+            },
+            {
+              name: 'BASICS OF THERMODYNAMICS',
+              papers: [
+                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              papers: [
+                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+      {
+        department: 'Electrical Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'Circuit Theory',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/CircuitTheory/2023.pdf' },
+                { year: '2025', url: 'https://example.com/Electrical/CircuitTheory/2019.pdf' },
+              ],
+            }
+          ],
+          'Semester-2': [
+            {
+              name: 'PHYSICS',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'APPLIED MATHEMATICS',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING GRAPHICS AND DESIGN',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'BASIC ELECTRONICS',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+      {
+        department: 'Chemical Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'Process Control',
+              papers: [
+                { year: '2025', url: 'https://example.com/Chemical/ProcessControl/2023.pdf' },
+              ],
+            }
+          ],
+          'Semester-2': [
+            {
+              name: 'UNIT PROCESSES',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'NUMERICAL METHODS IN CHEMICAL ENGINEERING',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING GRAPHICS AND DESIGN',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING CHEMISTRY',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              papers: [
+                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+    ];
+
+    const departmentSelect = document.getElementById('departmentSelect');
+    const subjectsContainer = document.getElementById('subjectsContainer');
+    const subjectSearch = document.getElementById('subjectSearch');
+    const emptyMessage = document.getElementById('emptyMessage');
+    const semesterButtonsContainer = document.getElementById('semesterButtonsContainer');
+
+    let selectedDepartmentIndex = null;
+    let selectedSemester = null;
+
+    function populateDepartments() {
+      data.forEach((dept, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = dept.department;
+        departmentSelect.appendChild(option);
+      });
+    }
+
+    function renderSemesterButtons(deptIndex) {
+      semesterButtonsContainer.innerHTML = '';
+      semesterButtonsContainer.style.display = 'flex';
+      subjectSearch.style.display = 'none';
+      subjectsContainer.innerHTML = '';
+      emptyMessage.style.display = 'none';
+      selectedSemester = null;
+
+      const semesters = Object.keys(data[deptIndex].semesters);
+
+      semesters.forEach(semester => {
+        const btn = document.createElement('button');
+        btn.className = 'semester-btn';
+        btn.textContent = semester;
+        btn.type = 'button';
+        btn.setAttribute('aria-pressed', 'false');
+        btn.addEventListener('click', () => {
+          // Deselect all buttons
+          Array.from(semesterButtonsContainer.children).forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          selectedSemester = semester;
+          subjectSearch.value = '';
+          subjectSearch.style.display = semesters.length > 0 ? 'block' : 'none';
+          subjectSearch.focus();
+          renderSubjects(deptIndex, semester);
+        });
+        semesterButtonsContainer.appendChild(btn);
+      });
+    }
+
+    function renderSubjects(deptIndex, semester, filter = '') {
+      subjectsContainer.innerHTML = '';
+      emptyMessage.style.display = 'none';
+
+      if (!deptIndex && deptIndex !== 0 || !semester) {
+        emptyMessage.style.display = 'block';
+        emptyMessage.textContent = 'Please select semester first.';
+        subjectSearch.style.display = 'none';
+        return;
+      }
+
+      const subjects = data[deptIndex].semesters[semester] || [];
+
+      if (!subjects.length) {
+        emptyMessage.style.display = 'block';
+        emptyMessage.textContent = `No subjects found for ${semester}.`;
+        return;
+      }
+
+      const filteredSubjects = subjects.filter(subj =>
+        subj.name.toLowerCase().includes(filter.toLowerCase())
+      );
+
+      if (filteredSubjects.length === 0) {
+        emptyMessage.style.display = 'block';
+        emptyMessage.textContent = 'No subjects match your search.';
+        return;
+      } else {
+        emptyMessage.style.display = 'none';
+      }
+
+      filteredSubjects.forEach(subj => {
+        const card = document.createElement('article');
+        card.className = 'subject-card';
+        card.tabIndex = 0;
+        card.setAttribute('aria-label', `Subject: ${subj.name} with ${subj.papers.length} question papers`);
+
+        const subjTitle = document.createElement('h2');
+        subjTitle.className = 'subject-title';
+        subjTitle.innerHTML = '<span class="material-icons subject-icon" aria-hidden="true">book</span>' + subj.name;
+        card.appendChild(subjTitle);
+
+        if (subj.papers.length > 0) {
+          const papersList = document.createElement('ul');
+          papersList.className = 'papers-list';
+          subj.papers.forEach(paper => {
+            const li = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = paper.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = `Year: ${paper.year}`;
+            link.setAttribute('aria-label', `${subj.name} question paper, year ${paper.year}`);
+            link.className = 'paper-link';
+
+            const iconSpan = document.createElement('span');
+            iconSpan.className = 'material-icons link-icon';
+            iconSpan.textContent = 'picture_as_pdf';
+            iconSpan.setAttribute('aria-hidden', 'true');
+            link.prepend(iconSpan);
+
+            li.appendChild(link);
+            papersList.appendChild(li);
+          });
+          card.appendChild(papersList);
+        } else {
+          const noPapers = document.createElement('p');
+          noPapers.textContent = 'No question papers available.';
+          noPapers.style.color = '#9ca3af';
+          noPapers.style.fontStyle = 'italic';
+          card.appendChild(noPapers);
+        }
+
+        subjectsContainer.appendChild(card);
+      });
+    }
+
+    departmentSelect.addEventListener('change', (e) => {
+      const deptIndex = e.target.value;
+      selectedDepartmentIndex = deptIndex !== '' ? Number(deptIndex) : null;
+      subjectSearch.value = '';
+      subjectSearch.style.display = 'none';
+      subjectsContainer.innerHTML = '';
+      emptyMessage.style.display = 'none';
+
+      if (selectedDepartmentIndex !== null) {
+        renderSemesterButtons(selectedDepartmentIndex);
+      } else {
+        semesterButtonsContainer.style.display = 'none';
+      }
+    });
+
+    subjectSearch.addEventListener('input', (e) => {
+      if (selectedDepartmentIndex !== null && selectedSemester !== null) {
+        renderSubjects(selectedDepartmentIndex, selectedSemester, e.target.value);
+      }
+    });
+
+    // Initialization
+    function init() {
+      populateDepartments();
+      subjectSearch.style.display = 'none';
+      semesterButtonsContainer.style.display = 'none';
+      emptyMessage.style.display = 'none';
+    }
+
+    init();
+  </script>
+</body>
+</html>
