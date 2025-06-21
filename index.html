@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RNG PATEL INSTITUTE OF TECHNOLOGY - Question Papers Portal</title>
+  <title>RNG PATEL INSTITUTE OF TECHNOLOGY - Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
@@ -17,9 +17,8 @@
       background: linear-gradient(135deg, #7f00ff 0%, #e100ff 100%);
       color: #1e293b;
       min-height: 100vh;
-      /* Changed body display from flex column to block for better content flow below new header */
       display: block;
-      padding: 0 1rem 4rem; /* Maintain horizontal padding and bottom padding */
+      padding: 0 1rem 4rem;
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -38,7 +37,7 @@
     h1, h2 {
       font-weight: 700;
       margin: 0;
-      color: white; /* Default color for general headings, overridden in specific sections */
+      color: white;
       -webkit-text-stroke: 0.3px #6d28d9;
     }
     h1 {
@@ -58,8 +57,6 @@
       color: #ddd6fe;
       margin-bottom: 0.75rem;
       display: block;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-      /* Center label for better alignment with select/input */
       text-align: center;
       max-width: 400px;
       margin-left: auto;
@@ -78,14 +75,12 @@
       color: #4c1d95;
       cursor: pointer;
       transition: box-shadow 0.35s ease, background 0.35s ease;
-      /* Center select/input */
       margin-left: auto;
       margin-right: auto;
-      display: block; /* Ensures margin auto works horizontally */
+      display: block;
     }
     select:hover,
     input[type="search"]:hover,
-    select:focus,
     input[type="search"]:focus {
       outline: none;
       background: white;
@@ -93,28 +88,25 @@
       color: #5b21b6;
     }
 
-    /* NEW: College Header Styles */
+    /* College Header Styles */
     .college-header {
       width: 100%;
-      padding: 2.5rem; /* Adjusted padding for a grander look */
+      padding: 2.5rem;
       display: flex;
-      justify-content: space-between; /* Puts content and logo on opposite ends */
+      justify-content: space-between;
       align-items: center;
       position: relative;
-      overflow: hidden; /* Hide overflow from background image */
-      min-height: 280px; /* Make header taller for impactful photo */
+      overflow: hidden;
+      min-height: 280px;
       color: white;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Text shadow for readability over image */
-      /* College photo as background - replace with your actual college photo */
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
       background: url('RNGPITPHOTO.png') no-repeat center center / cover;
       box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-      animation: fadeIn 1.5s ease-out; /* Add a fade-in animation */
-      border-bottom-left-radius: 30px; /* Rounded corners for a modern look */
+      animation: fadeIn 1.5s ease-out;
+      border-bottom-left-radius: 30px;
       border-bottom-right-radius: 30px;
-      margin-bottom: 3rem; /* Space below header before first content section */
+      margin-bottom: 3rem;
     }
-
-    /* Overlay gradient for better text readability on the header photo */
     .college-header::before {
       content: '';
       position: absolute;
@@ -125,27 +117,22 @@
       background: linear-gradient(90deg, rgba(74, 20, 140, 0.7) 0%, rgba(127, 0, 255, 0.4) 100%);
       z-index: 1;
     }
-
-    /* Ensure content within header is above the overlay */
     .college-header > * {
       z-index: 2;
-      position: relative; /* Needed for z-index to work */
+      position: relative;
     }
-
     .header-content {
-      flex-grow: 1; /* Allow content to take up available space */
-      max-width: 70%; /* Limit width for text on larger screens */
+      flex-grow: 1;
+      max-width: 70%;
     }
-
     .college-name {
-      font-size: 3.8rem; /* Larger font size for main title */
+      font-size: 3.8rem;
       font-weight: 800;
       margin-bottom: 0.8rem;
       line-height: 1.1;
-      -webkit-text-stroke: 1px #4A148C; /* Darker stroke for contrast */
-      color: white; /* Ensure text color is white over dark background */
+      -webkit-text-stroke: 1px #4A148C;
+      color: white;
     }
-
     .college-slogan {
       font-size: 1.6rem;
       font-weight: 500;
@@ -153,34 +140,31 @@
       line-height: 1.4;
       color: #e0e0e0;
     }
-
     .college-logo-container {
       display: flex;
-      justify-content: flex-end; /* Align logo to the right */
+      justify-content: flex-end;
       align-items: center;
-      flex-shrink: 0; /* Prevent logo from shrinking */
+      flex-shrink: 0;
     }
-
     .college-logo {
-      width: 180px; /* Larger logo */
+      width: 180px;
       height: 180px;
-      border-radius: 50%; /* Circular logo */
-      border: 6px solid white; /* Thicker white border */
-      box-shadow: 0 0 25px rgba(0,0,0,0.5), 0 0 0 8px rgba(255,255,255,0.2); /* Multiple shadows for depth */
-      object-fit: cover; /* Ensure logo fits well */
+      border-radius: 50%;
+      border: 6px solid white;
+      box-shadow: 0 0 25px rgba(0,0,0,0.5), 0 0 0 8px rgba(255,255,255,0.2);
+      object-fit: cover;
       transition: transform 0.4s ease-in-out, box-shadow 0.4s ease;
     }
-
     .college-logo:hover {
       transform: scale(1.08) rotate(5deg);
       box-shadow: 0 0 35px rgba(0,0,0,0.7), 0 0 0 10px rgba(255,255,255,0.3);
     }
 
-    /* Hero section - adjusted margin */
+    /* Hero section */
     .hero {
       width: 100%;
       max-width: 900px;
-      margin-top: 3rem; /* Adjusted margin to push it down from the new header */
+      margin-top: 3rem;
       margin-bottom: 3rem;
       background: linear-gradient(160deg, #7f00ff, #e100ff);
       border-radius: 24px;
@@ -192,7 +176,7 @@
       padding: 2.5rem 2rem 2.5rem 2.5rem;
       box-shadow: 0 8px 24px rgba(124, 58, 237, 0.6);
       overflow: hidden;
-      margin-left: auto; /* Center the hero section */
+      margin-left: auto;
       margin-right: auto;
     }
     .hero-text {
@@ -263,6 +247,43 @@
       animation-delay: 6s;
     }
 
+    /* Toggle buttons for sections */
+    #sectionToggleContainer {
+      display: flex; /* Use flexbox for button layout */
+      justify-content: center;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      gap: 1rem; /* Space between buttons */
+      margin-bottom: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .toggle-section-btn {
+      background: #7c3aed;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      border-radius: 16px;
+      padding: 0.75rem 1.5rem; /* Adjusted padding for better fit */
+      font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+      flex-shrink: 0; /* Prevent buttons from shrinking too much */
+    }
+    .toggle-section-btn:hover {
+      background-color: #5b21b6;
+      box-shadow: 0 8px 24px rgba(124, 58, 237, 0.7);
+      transform: translateY(-2px);
+    }
+    .toggle-section-btn.active {
+      background-color: #5b21b6;
+      box-shadow: 0 10px 30px rgba(91, 33, 182, 0.8);
+      cursor: default;
+      transform: translateY(0); /* Reset transform for active state */
+    }
+
     /* Semester button container */
     #semesterButtonsContainer {
       margin-top: 1rem;
@@ -270,7 +291,7 @@
       gap: 1.5rem;
       justify-content: center;
       flex-wrap: wrap;
-      max-width: 900px; /* Increased max-width to match other content */
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -309,7 +330,7 @@
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.5rem 2rem;
       margin-top: 2rem;
-      margin-left: auto; /* Center the subject container */
+      margin-left: auto;
       margin-right: auto;
     }
     .subject-card {
@@ -345,7 +366,7 @@
       color: #7c3aed;
       font-size: 26px;
     }
-    ul.papers-list {
+    ul.papers-list { /* This class is now used for both papers and materials */
       list-style: none;
       padding-left: 1.25rem;
       margin: 0;
@@ -388,7 +409,7 @@
       margin-top: 3rem;
       user-select: none;
       text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-      max-width: 900px; /* Center with other content */
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -407,10 +428,10 @@
     /* Responsive */
     @media (max-width: 768px) {
       .college-header {
-        flex-direction: column; /* Stack header content vertically */
+        flex-direction: column;
         text-align: center;
         padding: 1.5rem 1rem;
-        min-height: 200px; /* Smaller min-height for tablets */
+        min-height: 200px;
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
       }
@@ -425,7 +446,7 @@
         font-size: 1.3rem;
       }
       .college-logo-container {
-        margin-top: 1rem; /* Space between text and logo */
+        margin-top: 1rem;
       }
       .college-logo {
         width: 140px;
@@ -446,7 +467,7 @@
       }
       .college-header {
         padding: 1rem 0.5rem;
-        min-height: 180px; /* Even smaller min-height for phones */
+        min-height: 180px;
         border-bottom-left-radius: 15px;
         border-bottom-right-radius: 15px;
       }
@@ -490,6 +511,11 @@
         font-size: 1.1rem;
         padding: 0.75rem 1.5rem;
       }
+      .toggle-section-btn {
+        margin: 0.5rem 0.25rem; /* Adjust margin for smaller screens */
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+      }
     }
 
     /* Animations */
@@ -527,40 +553,125 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* screen reader only for accessibility */
-    .sr-only {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0,0,0,0) !important;
-      border: 0 !important;
+    /* Modal Styles for Assignments */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      background: #ede9fe;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      width: 90%;
+      max-width: 600px;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+    .modal-overlay.visible .modal-content {
+      transform: translateY(0);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #c4b5fd;
+      padding-bottom: 1rem;
+    }
+    .modal-header h3 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #5b21b6;
+    }
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      color: #7c3aed;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .modal-close-btn:hover {
+      color: #4c1d95;
+      transform: rotate(90deg);
+    }
+    .modal-assignments-list {
+      list-style: none;
+      padding: 0;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 0;
+    }
+    .modal-assignments-list li {
+      margin-bottom: 0.75rem;
+      background: #d8b4fe;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .modal-assignments-list li a {
+      color: #4c1d95;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-grow: 1;
+    }
+    .modal-assignments-list li a:hover {
+      color: #2e1065;
+    }
+    .modal-assignments-list li .material-icons {
+      font-size: 20px;
+      color: #6d28d9;
+    }
+    .modal-empty-message {
+        text-align: center;
+        color: #78716c;
+        font-style: italic;
+        padding: 20px;
     }
   </style>
 </head>
 <body>
-  <!-- NEW: College Header Section -->
   <header class="college-header" role="banner">
     <div class="header-content">
       <h1 class="college-name">RNG PATEL INSTITUTE OF TECHNOLOGY</h1>
       <p class="college-slogan">Innovating Futures, Empowering Minds</p>
     </div>
     <div class="college-logo-container">
-      <img src="RNGPIT_logo.png" alt="Tech Academy College Logo" class="college-logo">
-      
+      <img src="E:\Kush Patel\KP_website\IT_college_start\RNGPIT_logo.png" alt="Tech Academy College Logo" class="college-logo">
     </div>
   </header>
 
-  <!-- Existing Hero section (now below the main header) -->
   <section class="hero" aria-label="Welcome section with hero image and title">
     <div class="hero-text">
-      <h1>Explore All Previous Years' Question Papers</h1>
-      <p>Your gateway to comprehensive question papers for every subject across departments in your college. Find, download, and excel.</p>
+      <h1>Explore Our Resources</h1>
+      <p>Your gateway to comprehensive question papers and essential study materials for every subject across departments in your college. Find, download, and excel.</p>
     </div>
     <div class="hero-image-container">
-      <img 
+      <img
         src="RNGPITPHOTO.png"
         alt="Modern illustration showing students studying with books and laptop, colorful gradient style"
         width="400"
@@ -572,13 +683,19 @@
     <div class="blob-2" aria-hidden="true"></div>
   </section>
 
-  <!-- All other content is centered using max-width and auto margins -->
-  <label for="departmentSelect">Select Department</label>
+  <div id="sectionToggleContainer" style="text-align: center; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+    <button id="syllabusBtn" class="toggle-section-btn">Syllabus</button>
+    <button id="questionPapersBtn" class="toggle-section-btn">Question Papers</button>
+    <button id="studyMaterialBtn" class="toggle-section-btn">Study Material</button>
+    <button id="assignmentsBtn" class="toggle-section-btn">Assignments</button>
+  </div>
+
+  <label for="departmentSelect" id="departmentSelectLabel">Select Department</label>
   <select id="departmentSelect" aria-describedby="departmentSelectDesc" aria-label="Select Department">
     <option value="" disabled selected>Choose a department</option>
   </select>
   <div id="departmentSelectDesc" class="sr-only">
-    After selecting a department, select semester below.
+  <h4><center>After selecting a department, select semester below.</center></h4>
   </div>
 
   <div id="semesterButtonsContainer" aria-label="Semester selection" style="display:none;"></div>
@@ -587,13 +704,69 @@
   <input type="search" id="subjectSearch" placeholder="Search subjects..." aria-labelledby="subjectSearchLabel" style="display:none;" autocomplete="off" spellcheck="false" />
 
   <section id="subjectsContainer" aria-live="polite" aria-atomic="true" tabindex="0">
-    <!-- Subject cards will appear here -->
-  </section>
+    </section>
 
   <p id="emptyMessage" style="display:none;">No subjects or question papers found.</p>
 
+  <!-- Assignment Modal Structure -->
+  <div id="assignmentModalOverlay" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="assignmentModalTitle">Subject Assignments</h3>
+        <button id="assignmentModalCloseBtn" class="modal-close-btn">&times;</button>
+      </div>
+      <ul id="assignmentModalList" class="modal-assignments-list">
+        <!-- Assignments will be dynamically loaded here -->
+      </ul>
+      <p id="assignmentModalEmptyMessage" class="modal-empty-message" style="display:none;">No assignments available for this subject.</p>
+    </div>
+  </div>
+
   <script>
-    const data = [
+    // Helper function to create 'No data added.' entry for a subject
+    function createNoDataSubject(sectionType = 'papers') {
+      const defaultContent = { title: 'No data added.', url: '#' };
+      if (sectionType === 'papers') {
+        return { name: 'No Data Available', papers: [defaultContent] };
+      } else if (sectionType === 'materials') {
+        return { name: 'No Data Available', materials: [defaultContent] };
+      } else if (sectionType === 'assignments') {
+        return { name: 'No Data Available', isDynamicAssignmentSubject: false }; // Assignments default
+      } else if (sectionType === 'syllabus') {
+        return { name: 'No Data Available', syllabus: [defaultContent] };
+      }
+      return { name: 'No Data Available', data: [defaultContent] }; // Fallback
+    }
+
+    // Function to ensure all 8 semesters exist for a department in a given data structure
+    function standardizeSemesters(dataArray, sectionType) {
+      return dataArray.map(dept => {
+        const newSemesters = {};
+        for (let i = 1; i <= 8; i++) {
+          const semesterKey = `Semester-${i}`;
+          // Check if the semester already exists and has subjects
+          if (dept.semesters[semesterKey] && dept.semesters[semesterKey].length > 0) {
+            newSemesters[semesterKey] = dept.semesters[semesterKey];
+            // If it's not 'questionPapers' section, and subjects have multiple URLs, take only the first one
+            if (sectionType !== 'papers') {
+              newSemesters[semesterKey] = newSemesters[semesterKey].map(subject => {
+                const items = subject[sectionType];
+                if (items && items.length > 1) {
+                  return { ...subject, [sectionType]: [items[0]] }; // Keep only the first item
+                }
+                return subject;
+              });
+            }
+          } else {
+            // Default to 'No Data Available' subject if semester or its data is missing
+            newSemesters[semesterKey] = [createNoDataSubject(sectionType)];
+          }
+        }
+        return { ...dept, semesters: newSemesters };
+      });
+    }
+
+    const rawQuestionPaperData = [
       {
         department: 'Information Technology',
         semesters: {
@@ -601,103 +774,93 @@
             {
               name: 'ENVIRONMENTAL AND POLLUTION MANAGEMENT',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://drive.google.com/file/d/1NHWCF4N2vIQuYI8-8IZg-byb75meIoI8/view?usp=sharing'},
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1NHWCF4N2vIQuYI8-8IZg-byb75meIoI8/view?usp=sharing'},
+                { year: '2024(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2024.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/IT/ComputerNetworks/2024.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTAL OF ELECTRICAL AND ELECTRONICS ENGINEERING',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1OVRBrIJLZeW_NGdszfl5ePNs0XkbAl8T/view?usp=sharing' },
+                { year: '2024(Mid-2)', url: 'https://drive.google.com/file/d/1OUxSYltuA4q3YOTDv3uKvlo2a6vNUHC9/view?usp=sharing' },
+                { year: '2024(Final)', url: 'https://drive.google.com/file/d/1OUMAv-SwJ6NViPaYWVUHM8e7RFj8hY4O/view?usp=sharing' },
               ],
             },
             {
               name: 'FUNDAMENTALS OF COMPUTER PROGRAMMING',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1OSj2jYWrX4Q3FdZoUgpXOh4BVOpVW7AE/view?usp=sharing' },
+                { year: '2024(Mid-2)', url: 'https://drive.google.com/file/d/1OYKjzJwZDYJRI8A67I-9S9Kq0jHiTEjg/view?usp=sharing' },
+                { year: '2024(Final)', url: 'https://drive.google.com/file/d/1OWMyp9fiCD4u3AuC9K9Y238x7z5ue5dJ/view?usp=sharing' },
               ],
             },
             {
               name: 'CALCULUS',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/IT/Calculus/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/IT/Calculus/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/IT/Calculus/2024_final.pdf' },
               ],
             },
             {
               name: 'ENGLISH AND PROFESSIONAL COMMUNICATION',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/IT/EPC/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/IT/EPC/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/IT/EPC/2024_final.pdf' },
               ],
             },
-            {
-              name: 'ICT ESSENTIALS',
-              papers: [
-                
-              ],
-            },
-            {
-              name: 'WEB DESIGNING',
-              papers: [
-                
-              ],
-            },
+            { name: 'ICT ESSENTIALS', papers: [] },
+            { name: 'WEB DESIGNING', papers: [] },
           ],
           'Semester-2': [
             {
               name: 'DIGITAL LOGIC DESIGN',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/IT/DLD/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/IT/DLD/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/IT/DLD/2024_final.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTALS OF OBJECT ORIENTED PROGRAMMING',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1QDklhoxSuhQC6VanA8Uc_h62XN-Su_Nj/view?usp=sharing' },
+                { year: '2024(Mid-2)', url: 'https://drive.google.com/file/d/1Q8Mq4pJvfc6x8S03bDOmXzT2JyoM1iMn/view?usp=sharing' },
+                { year: '2024(Final)', url: 'https://drive.google.com/file/d/1Q5A9fur2J11gj6zVtA7gwFPYKdi0YIAa/view?usp=sharing' },
               ],
             },
             {
               name: 'PYTHON FOE ENGINEERS',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1QDcfeRUvTf9nP0VKx5_6oZTPxBbdXAK8/view?usp=sharing' },
+                { year: '2024(Mid-2)', url:'https://drive.google.com/file/d/1QIhgI0XH4vKTM00VIfbWRWKWRjQoNOuh/view?usp=sharing' },
+                { year: '2024(Final)', url:'https://drive.google.com/file/d/1Q66EeDc6MgEGSAN7Pr4-lP_lgyHOSTEA/view?usp=sharing' },
               ],
             },
             {
               name: 'STATISTICS AND LINEAR ALGEBRA',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/IT/SLA/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/IT/SLA/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/IT/SLA/2024_final.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTAL OF SEMICONDUCTOR TECHNOLOGY',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/IT/FST/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/IT/FST/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/IT/FST/2024_final.pdf' },
               ],
             },
             {
               name: 'UNIVERSAL HUMAN VALUES',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/IT/UHV/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/IT/UHV/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/IT/UHV/2024_final.pdf' },
               ],
             },
           ]
@@ -710,103 +873,93 @@
             {
               name: 'ENVIRONMENTAL AND POLLUTION MANAGEMENT',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://drive.google.com/file/d/1NHWCF4N2vIQuYI8-8IZg-byb75meIoI8/view?usp=sharing'},
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1NHWCF4N2vIQuYI8-8IZg-byb75meIoI8/view?usp=sharing'},
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/EPM/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/EPM/2024_final.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTAL OF ELECTRICAL AND ELECTRONICS ENGINEERING',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/FEEE/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/FEEE/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/FEEE/2024_final.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTALS OF COMPUTER PROGRAMMING',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/FCP/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/FCP/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/FCP/2024_final.pdf' },
               ],
             },
             {
               name: 'CALCULUS',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/Calculus/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/Calculus/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/Calculus/2024_final.pdf' },
               ],
             },
             {
               name: 'ENGLISH AND PROFESSIONAL COMMUNICATION',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/EPC/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/EPC/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/EPC/2024_final.pdf' },
               ],
             },
-            {
-              name: 'ICT ESSENTIALS',
-              papers: [
-                
-              ],
-            },
-            {
-              name: 'WEB DESIGNING',
-              papers: [
-                
-              ],
-            },
+            { name: 'ICT ESSENTIALS', papers: [] },
+            { name: 'WEB DESIGNING', papers: [] },
           ],
           'Semester-2': [
             {
               name: 'DIGITAL LOGIC DESIGN',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/DLD/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/DLD/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/DLD/2024_final.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTALS OF OBJECT ORIENTED PROGRAMMING',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://drive.google.com/file/d/1QDklhoxSuhQC6VanA8Uc_h62XN-Su_Nj/view?usp=sharing' },
-                { year: '2025(Mid-2)', url: 'https://drive.google.com/file/d/1Q8Mq4pJvfc6x8S03bDOmXzT2JyoM1iMn/view?usp=sharing' },
-                { year: '2025(Final)', url: 'https://drive.google.com/file/d/1Q5A9fur2J11gj6zVtA7gwFPYKdi0YIAa/view?usp=sharing' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1QDklhoxSuhQC6VanA8Uc_h62XN-Su_Nj/view?usp=sharing' },
+                { year: '2024(Mid-2)', url: 'https://drive.google.com/file/d/1Q8Mq4pJvfc6x8S03bDOmXzT2JyoM1iMn/view?usp=sharing' },
+                { year: '2024(Final)', url: 'https://drive.google.com/file/d/1Q5A9fur2J11gj6zVtA7gwFPYKdi0YIAa/view?usp=sharing' },
               ],
             },
             {
               name: 'PYTHON FOE ENGINEERS',
               papers: [
-                { year: 'https://drive.google.com/file/d/1QDcfeRUvTf9nP0VKx5_6oZTPxBbdXAK8/view?usp=sharing' },
-                { year: 'https://drive.google.com/file/d/1QIhgI0XH4vKTM00VIfbWRWKWRjQoNOuh/view?usp=sharing' },
-                { year: 'https://drive.google.com/file/d/1Q66EeDc6MgEGSAN7Pr4-lP_lgyHOSTEA/view?usp=sharing' },
+                { year: '2024(Mid-1)', url: 'https://drive.google.com/file/d/1QDcfeRUvTf9nP0VKx5_6oZTPxBbdXAK8/view?usp=sharing' },
+                { year: '2024(Mid-2)', url:'https://drive.google.com/file/d/1QIhgI0XH4vKTM00VIfbWRWKWRjQoNOuh/view?usp=sharing' },
+                { year: '2024(Final)', url:'https://drive.google.com/file/d/1Q66EeDc6MgEGSAN7Pr4-lP_lgyHOSTEA/view?usp=sharing' },
               ],
             },
             {
               name: 'STATISTICS AND LINEAR ALGEBRA',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/SLA/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/SLA/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/SLA/2024_final.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTAL OF SEMICONDUCTOR TECHNOLOGY',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/FST/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/FST/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/FST/2024_final.pdf' },
               ],
             },
             {
               name: 'UNIVERSAL HUMAN VALUES',
               papers: [
-                { year: '2025(Mid-1)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Mid-2)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
-                { year: '2025(Final)', url: 'https://example.com/IT/ComputerNetworks/2023.pdf' },
+                { year: '2024(Mid-1)', url: 'https://example.com/CSE/UHV/2024_mid1.pdf' },
+                { year: '2024(Mid-2)', url: 'https://example.com/CSE/UHV/2024_mid2.pdf' },
+                { year: '2024(Final)', url: 'https://example.com/CSE/UHV/2024_final.pdf' },
               ],
             },
           ]
@@ -819,7 +972,7 @@
             {
               name: 'Thermodynamics',
               papers: [
-                { year: '2025', url: 'https://example.com/Mechanical/Thermodynamics/2023.pdf' },
+                { year: '2024', url: 'https://example.com/Mechanical/Thermodynamics/2024.pdf' },
               ],
             }
           ],
@@ -827,37 +980,37 @@
             {
               name: 'APPLIED ELECTRICAL AND ELECTRONICS ENGINEERING',
               papers: [
-                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+                { year: '2024', url: 'https://example.com/Mechanical/FluidMechanics/2024.pdf' },
               ],
             },
             {
               name: 'NUMERICAL METHODS AND COMPLEX VARIABLES',
               papers: [
-                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+                { year: '2024', url: 'https://example.com/Mechanical/MachineDesign/2024.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
               papers: [
-                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+                { year: '2024', url: 'https://example.com/Mechanical/HeatTransfer/2024.pdf' },
               ],
             },
             {
               name: 'ENGINEERING GRAPHICS AND DESIGN',
               papers: [
-                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+                { year: '2024', url: 'https://example.com/Mechanical/ManufacturingProcesses/2024.pdf' },
               ],
             },
             {
               name: 'BASICS OF THERMODYNAMICS',
               papers: [
-                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+                { year: '2024', url: 'https://example.com/Mechanical/EngineeringMechanics/2024.pdf' },
               ],
             },
             {
               name: 'UNIVERSAL HUMAN VALUES',
               papers: [
-                { year: '2025', url: 'https://example.com/Mechanical/FluidMechanics/2021.pdf' },
+                { year: '2024', url: 'https://example.com/Mechanical/OperationsResearch/2024.pdf' },
               ],
             },
           ]
@@ -870,8 +1023,7 @@
             {
               name: 'Circuit Theory',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/CircuitTheory/2023.pdf' },
-                { year: '2025', url: 'https://example.com/Electrical/CircuitTheory/2019.pdf' },
+                { year: '2024', url: 'https://example.com/Electrical/CircuitTheory/2024.pdf' },
               ],
             }
           ],
@@ -879,37 +1031,37 @@
             {
               name: 'PHYSICS',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Electrical/PowerSystems/2024.pdf' },
               ],
             },
             {
               name: 'APPLIED MATHEMATICS',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Electrical/ControlSystems/2024.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Electrical/ElectricalMachines/2024.pdf' },
               ],
             },
             {
               name: 'ENGINEERING GRAPHICS AND DESIGN',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Electrical/PowerElectronics/2024.pdf' },
               ],
             },
             {
               name: 'BASIC ELECTRONICS',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Electrical/MeasurementsAndInstrumentation/2024.pdf' },
               ],
             },
             {
               name: 'UNIVERSAL HUMAN VALUES',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Electrical/DigitalSignalProcessing/2024.pdf' },
               ],
             },
           ]
@@ -922,7 +1074,7 @@
             {
               name: 'Process Control',
               papers: [
-                { year: '2025', url: 'https://example.com/Chemical/ProcessControl/2023.pdf' },
+                { year: '2024', url: 'https://example.com/Chemical/ProcessControl/2024.pdf' },
               ],
             }
           ],
@@ -930,37 +1082,37 @@
             {
               name: 'UNIT PROCESSES',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Chemical/Thermodynamics/2024.pdf' },
               ],
             },
             {
               name: 'NUMERICAL METHODS IN CHEMICAL ENGINEERING',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Chemical/MassTransfer/2024.pdf' },
               ],
             },
             {
               name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Chemical/ReactionEngineering/2024.pdf' },
               ],
             },
             {
               name: 'ENGINEERING GRAPHICS AND DESIGN',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Chemical/FluidMechanics/2024.pdf' },
               ],
             },
             {
               name: 'ENGINEERING CHEMISTRY',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Chemical/HeatTransfer/2024.pdf' },
               ],
             },
             {
               name: 'UNIVERSAL HUMAN VALUES',
               papers: [
-                { year: '2025', url: 'https://example.com/Electrical/Electromagnetics/2022.pdf' },
+                { year: '2024', url: 'https://example.com/Chemical/ProcessInstrumentation/2024.pdf' },
               ],
             },
           ]
@@ -968,162 +1120,858 @@
       },
     ];
 
-    const departmentSelect = document.getElementById('departmentSelect');
-    const subjectsContainer = document.getElementById('subjectsContainer');
-    const subjectSearch = document.getElementById('subjectSearch');
-    const emptyMessage = document.getElementById('emptyMessage');
-    const semesterButtonsContainer = document.getElementById('semesterButtonsContainer');
+    // Process question paper data to ensure all 8 semesters are present
+    const questionPaperData = standardizeSemesters(rawQuestionPaperData, 'papers');
 
-    let selectedDepartmentIndex = null;
-    let selectedSemester = null;
-
-    function populateDepartments() {
-      data.forEach((dept, index) => {
-        const option = document.createElement('option');
-        option.value = index;
-        option.textContent = dept.department;
-        departmentSelect.appendChild(option);
-      });
-    }
-
-    function renderSemesterButtons(deptIndex) {
-      semesterButtonsContainer.innerHTML = '';
-      semesterButtonsContainer.style.display = 'flex';
-      subjectSearch.style.display = 'none';
-      subjectsContainer.innerHTML = '';
-      emptyMessage.style.display = 'none';
-      selectedSemester = null;
-
-      const semesters = Object.keys(data[deptIndex].semesters);
-
-      semesters.forEach(semester => {
-        const btn = document.createElement('button');
-        btn.className = 'semester-btn';
-        btn.textContent = semester;
-        btn.type = 'button';
-        btn.setAttribute('aria-pressed', 'false');
-        btn.addEventListener('click', () => {
-          // Deselect all buttons
-          Array.from(semesterButtonsContainer.children).forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-pressed', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-pressed', 'true');
-          selectedSemester = semester;
-          subjectSearch.value = '';
-          subjectSearch.style.display = semesters.length > 0 ? 'block' : 'none';
-          subjectSearch.focus();
-          renderSubjects(deptIndex, semester);
-        });
-        semesterButtonsContainer.appendChild(btn);
-      });
-    }
-
-    function renderSubjects(deptIndex, semester, filter = '') {
-      subjectsContainer.innerHTML = '';
-      emptyMessage.style.display = 'none';
-
-      if (!deptIndex && deptIndex !== 0 || !semester) {
-        emptyMessage.style.display = 'block';
-        emptyMessage.textContent = 'Please select semester first.';
-        subjectSearch.style.display = 'none';
-        return;
-      }
-
-      const subjects = data[deptIndex].semesters[semester] || [];
-
-      if (!subjects.length) {
-        emptyMessage.style.display = 'block';
-        emptyMessage.textContent = `No subjects found for ${semester}.`;
-        return;
-      }
-
-      const filteredSubjects = subjects.filter(subj =>
-        subj.name.toLowerCase().includes(filter.toLowerCase())
-      );
-
-      if (filteredSubjects.length === 0) {
-        emptyMessage.style.display = 'block';
-        emptyMessage.textContent = 'No subjects match your search.';
-        return;
-      } else {
-        emptyMessage.style.display = 'none';
-      }
-
-      filteredSubjects.forEach(subj => {
-        const card = document.createElement('article');
-        card.className = 'subject-card';
-        card.tabIndex = 0;
-        card.setAttribute('aria-label', `Subject: ${subj.name} with ${subj.papers.length} question papers`);
-
-        const subjTitle = document.createElement('h2');
-        subjTitle.className = 'subject-title';
-        subjTitle.innerHTML = '<span class="material-icons subject-icon" aria-hidden="true">book</span>' + subj.name;
-        card.appendChild(subjTitle);
-
-        if (subj.papers.length > 0) {
-          const papersList = document.createElement('ul');
-          papersList.className = 'papers-list';
-          subj.papers.forEach(paper => {
-            const li = document.createElement('li');
-            const link = document.createElement('a');
-            link.href = paper.url;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            link.textContent = `Year: ${paper.year}`;
-            link.setAttribute('aria-label', `${subj.name} question paper, year ${paper.year}`);
-            link.className = 'paper-link';
-
-            const iconSpan = document.createElement('span');
-            iconSpan.className = 'material-icons link-icon';
-            iconSpan.textContent = 'picture_as_pdf';
-            iconSpan.setAttribute('aria-hidden', 'true');
-            link.prepend(iconSpan);
-
-            li.appendChild(link);
-            papersList.appendChild(li);
-          });
-          card.appendChild(papersList);
-        } else {
-          const noPapers = document.createElement('p');
-          noPapers.textContent = 'No question papers available.';
-          noPapers.style.color = '#9ca3af';
-          noPapers.style.fontStyle = 'italic';
-          card.appendChild(noPapers);
+    const rawStudyMaterialData = [
+      {
+        department: 'Information Technology',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'ENVIRONMENTAL AND POLLUTION MANAGEMENT',
+              materials: [
+                { title: 'Module 1 Notes: Ecosystems', url: 'https://example.com/IT/EPM/notes1.pdf' },
+                { title: 'Module 2 Notes: Pollution Types', url: 'https://example.com/IT/EPM/notes2.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF ELECTRICAL AND ELECTRONICS ENGINEERING',
+              materials: [
+                { title: 'Chapter 1: Basic Circuits', url: 'https://example.com/IT/FEEE/chap1.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF COMPUTER PROGRAMMING',
+              materials: [
+                { title: 'Lecture 1: Introduction to C', url: 'https://example.com/IT/FCP/lec1.pdf' },
+              ],
+            },
+            {
+              name: 'CALCULUS',
+              materials: [
+                { title: 'Unit 1: Differential Calculus', url: 'https://example.com/IT/CALCULUS/unit1.pdf' },
+              ],
+            },
+            {
+              name: 'ENGLISH AND PROFESSIONAL COMMUNICATION',
+              materials: [
+                { title: 'Reading Material: Business Communication', url: 'https://example.com/IT/EPC/reading1.pdf' },
+              ],
+            },
+            {
+              name: 'ICT ESSENTIALS',
+              materials: [
+                { title: 'ICT Basics Handbook', url: 'https://example.com/IT/ICT/handbook.pdf' },
+              ],
+            },
+            {
+              name: 'WEB DESIGNING',
+              materials: [
+                { title: 'HTML & CSS Guide', url: 'https://example.com/IT/WD/guide.pdf' },
+              ],
+            },
+          ],
+          'Semester-2': [
+            {
+              name: 'DIGITAL LOGIC DESIGN',
+              materials: [
+                { title: 'Notes: Boolean Algebra', url: 'https://example.com/IT/DLD/notes_boolean.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF OBJECT ORIENTED PROGRAMMING',
+              materials: [
+                { title: 'OOP Concepts', url: 'https://example.com/IT/OOP/concepts.pdf' },
+              ],
+            },
+            {
+              name: 'PYTHON FOE ENGINEERS',
+              materials: [
+                { title: 'Python for Engineers Textbook', url: 'https://example.com/IT/PFE/textbook.pdf' },
+              ],
+            },
+            {
+              name: 'STATISTICS AND LINEAR ALGEBRA',
+              materials: [
+                { title: 'Statistics Handbook', url: 'https://example.com/IT/SLA/stats_handbook.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF SEMICONDUCTOR TECHNOLOGY',
+              materials: [
+                { title: 'Semiconductor Devices Theory', url: 'https://example.com/IT/FST/theory.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              materials: [
+                { title: 'UHV Course Material', url: 'https://example.com/IT/UHV/course_material.pdf' },
+              ],
+            },
+          ],
+          'Semester-8': [ // Example for custom Semester-8 data
+            {
+              name: 'ADVANCED DATABASE MANAGEMENT SYSTEMS',
+              materials: [
+                { title: 'ADMS Study Guide', url: 'https://example.com/IT/ADMS/study_guide.pdf' },
+              ],
+            },
+            {
+              name: 'MACHINE LEARNING',
+              materials: [
+                { title: 'ML Algorithms Overview', url: 'https://example.com/IT/ML/algorithms.pdf' },
+              ],
+            },
+          ]
         }
+      },
+      {
+        department: 'Computer Science Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'ENVIRONMENTAL AND POLLUTION MANAGEMENT',
+              materials: [
+                { title: 'Module 1 Notes: Ecosystems', url: 'https://example.com/CSE/EPM/notes1.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF ELECTRICAL AND ELECTRONICS ENGINEERING',
+              materials: [
+                { title: 'Chapter 1: Basic Circuits', url: 'https://example.com/CSE/FEEE/chap1.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF COMPUTER PROGRAMMING',
+              materials: [
+                { title: 'Lecture 1: Introduction to C', url: 'https://example.com/CSE/FCP/lec1.pdf' },
+              ],
+            },
+            {
+              name: 'CALCULUS',
+              materials: [
+                { title: 'Unit 1: Differential Calculus', url: 'https://example.com/CSE/CALCULUS/unit1.pdf' },
+              ],
+            },
+            {
+              name: 'ENGLISH AND PROFESSIONAL COMMUNICATION',
+              materials: [
+                { title: 'Reading Material: Business Communication', url: 'https://example.com/CSE/EPC/reading1.pdf' },
+              ],
+            },
+            {
+              name: 'ICT ESSENTIALS',
+              materials: [
+                { title: 'ICT Basics Handbook', url: 'https://example.com/CSE/ICT/handbook.pdf' },
+              ],
+            },
+            {
+              name: 'WEB DESIGNING',
+              materials: [
+                { title: 'HTML & CSS Guide', url: 'https://example.com/CSE/WD/guide.pdf' },
+              ],
+            },
+          ],
+          'Semester-2': [
+            {
+              name: 'DIGITAL LOGIC DESIGN',
+              materials: [
+                { title: 'Notes: Boolean Algebra', url: 'https://example.com/CSE/DLD/notes_boolean.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTALS OF OBJECT ORIENTED PROGRAMMING',
+              materials: [
+                { title: 'OOP Concepts', url: 'https://example.com/CSE/OOP/concepts.pdf' },
+              ],
+            },
+            {
+              name: 'PYTHON FOE ENGINEERS',
+              materials: [
+                { title: 'Python for Engineers Textbook', url: 'https://example.com/CSE/PFE/textbook.pdf' },
+              ],
+            },
+            {
+              name: 'STATISTICS AND LINEAR ALGEBRA',
+              materials: [
+                { title: 'Statistics Handbook', url: 'https://example.com/CSE/SLA/stats_handbook.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF SEMICONDUCTOR TECHNOLOGY',
+              materials: [
+                { title: 'Semiconductor Devices Theory', url: 'https://example.com/CSE/FST/theory.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              materials: [
+                { title: 'UHV Course Material', url: 'https://example.com/CSE/UHV/course_material.pdf' },
+              ],
+            },
+          ],
+          'Semester-8': [
+            {
+              name: 'CLOUD COMPUTING',
+              materials: [
+                { title: 'Cloud Computing Essentials', url: 'https://example.com/CSE/CC/essentials.pdf' },
+              ],
+            },
+            {
+              name: 'BIG DATA ANALYTICS',
+              materials: [
+                { title: 'Big Data Techniques', url: 'https://example.com/CSE/BDA/techniques.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+      {
+        department: 'Mechanical Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'Thermodynamics',
+              materials: [
+                { title: 'Thermodynamics Lecture Notes', url: 'https://example.com/Mechanical/Thermodynamics/notes.pdf' },
+              ],
+            }
+          ],
+          'Semester-2': [
+            {
+              name: 'APPLIED ELECTRICAL AND ELECTRONICS ENGINEERING',
+              materials: [
+                { title: 'AECE Handout', url: 'https://example.com/Mechanical/AECE/handout.pdf' },
+              ],
+            },
+            {
+              name: 'NUMERICAL METHODS AND COMPLEX VARIABLES',
+              materials: [
+                { title: 'NMCV Workbook', url: 'https://example.com/Mechanical/NMCV/workbook.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
+              materials: [
+                { title: 'FCP Guide', url: 'https://example.com/Mechanical/FCP/guide.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING GRAPHICS AND DESIGN',
+              materials: [
+                { title: 'EGD Manual', url: 'https://example.com/Mechanical/EGD/manual.pdf' },
+              ],
+            },
+            {
+              name: 'BASICS OF THERMODYNAMICS',
+              materials: [
+                { title: 'BoT Overview', url: 'https://example.com/Mechanical/BoT/overview.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              materials: [
+                { title: 'UHV Workbook', url: 'https://example.com/Mechanical/UHV/workbook.pdf' },
+              ],
+            },
+          ],
+          'Semester-8': [
+            {
+              name: 'INDUSTRIAL AUTOMATION',
+              materials: [
+                { title: 'IA Systems', url: 'https://example.com/Mechanical/IA/systems.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+      {
+        department: 'Electrical Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'Circuit Theory',
+              materials: [
+                { title: 'Circuit Theory Notes', url: 'https://example.com/Electrical/CircuitTheory/notes.pdf' },
+              ],
+            }
+          ],
+          'Semester-2': [
+            {
+              name: 'PHYSICS',
+              materials: [
+                { title: 'Physics for EE', url: 'https://example.com/Electrical/Physics/ee_physics.pdf' },
+              ],
+            },
+            {
+              name: 'APPLIED MATHEMATICS',
+              materials: [
+                { title: 'Applied Math Formulas', url: 'https://example.com/Electrical/AppliedMath/formulas.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
+              materials: [
+                { title: 'FCP for EE', url: 'https://example.com/Electrical/FCP/ee_fcp.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING GRAPHICS AND DESIGN',
+              materials: [
+                { title: 'EGD Concepts', url: 'https://example.com/Electrical/EGD/concepts.pdf' },
+              ],
+            },
+            {
+              name: 'BASIC ELECTRONICS',
+              materials: [
+                { title: 'Basic Electronics Intro', url: 'https://example.com/Electrical/BasicElectronics/intro.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              materials: [
+                { title: 'UHV Ethical Values', url: 'https://example.com/Electrical/UHV/ethical_values.pdf' },
+              ],
+            },
+          ],
+          'Semester-8': [
+            {
+              name: 'RENEWABLE ENERGY SYSTEMS',
+              materials: [
+                { title: 'RES Technologies', url: 'https://example.com/Electrical/RES/technologies.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+      {
+        department: 'Chemical Engineering',
+        semesters: {
+          'Semester-1': [
+            {
+              name: 'Process Control',
+              materials: [
+                { title: 'Process Control Fundamentals', url: 'https://example.com/Chemical/ProcessControl/fundamentals.pdf' },
+              ],
+            }
+          ],
+          'Semester-2': [
+            {
+              name: 'UNIT PROCESSES',
+              materials: [
+                { title: 'Unit Processes Overview', url: 'https://example.com/Chemical/UnitProcesses/overview.pdf' },
+              ],
+            },
+            {
+              name: 'NUMERICAL METHODS IN CHEMICAL ENGINEERING',
+              materials: [
+                { title: 'NMCE Textbook', url: 'https://example.com/Chemical/NMCE/textbook.pdf' },
+              ],
+            },
+            {
+              name: 'FUNDAMENTAL OF COMPUTER PROGRAMMING',
+              materials: [
+                { title: 'FCP for Chemical Engineers', url: 'https://example.com/Chemical/FCP/chem_fcp.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING GRAPHICS AND DESIGN',
+              materials: [
+                { title: 'EGD for Chemical Engineering', url: 'https://example.com/Chemical/EGD/chem_egd.pdf' },
+              ],
+            },
+            {
+              name: 'ENGINEERING CHEMISTRY',
+              materials: [
+                { title: 'Engineering Chemistry Notes', url: 'https://example.com/Chemical/EngChemistry/notes.pdf' },
+              ],
+            },
+            {
+              name: 'UNIVERSAL HUMAN VALUES',
+              materials: [
+                { title: 'UHV Principles', url: 'https://example.com/Chemical/UHV/principles.pdf' },
+              ],
+            },
+          ],
+          'Semester-8': [
+            {
+              name: 'BIOCHEMICAL ENGINEERING',
+              materials: [
+                { title: 'BCE Basics', url: 'https://example.com/Chemical/BCE/basics.pdf' },
+              ],
+            },
+          ]
+        }
+      },
+    ];
+    const studyMaterialData = standardizeSemesters(rawStudyMaterialData, 'materials');
 
-        subjectsContainer.appendChild(card);
-      });
+
+    // Function to generate 10 generic assignments
+    function generateTenAssignments() {
+      const assignments = [];
+      for (let i = 1; i <= 10; i++) {
+        assignments.push({ title: `Assignment ${i}`, url: `https://example.com/assignments/generic/assignment${i}.pdf` });
+      }
+      return assignments;
     }
 
-    departmentSelect.addEventListener('change', (e) => {
-      const deptIndex = e.target.value;
-      selectedDepartmentIndex = deptIndex !== '' ? Number(deptIndex) : null;
-      subjectSearch.value = '';
-      subjectSearch.style.display = 'none';
-      subjectsContainer.innerHTML = '';
-      emptyMessage.style.display = 'none';
+    // Create assignmentsData based on rawQuestionPaperData structure (for subject names)
+    const assignmentsDataTemplate = JSON.parse(JSON.stringify(rawQuestionPaperData));
 
-      if (selectedDepartmentIndex !== null) {
-        renderSemesterButtons(selectedDepartmentIndex);
+    assignmentsDataTemplate.forEach(dept => {
+      const newSemesters = {};
+      for (let i = 1; i <= 8; i++) {
+        const semesterKey = `Semester-${i}`;
+        if (dept.semesters[semesterKey]) {
+          newSemesters[semesterKey] = dept.semesters[semesterKey].map(subject => ({
+            name: subject.name,
+            // For Semester 1 and 2, always set isDynamicAssignmentSubject to true
+            isDynamicAssignmentSubject: (i === 1 || i === 2) ? true : false,
+            assignments: [] // Placeholder, dynamically generated if isDynamicAssignmentSubject is true
+          }));
+        } else {
+          newSemesters[semesterKey] = [{
+            name: 'No Data Available',
+            isDynamicAssignmentSubject: false, // No dynamic assignments for empty semesters
+            assignments: [{ title: 'No data added.', url: '#' }]
+          }];
+        }
+      }
+      dept.semesters = newSemesters;
+    });
+
+    const assignmentsData = assignmentsDataTemplate;
+
+    // Populate syllabusData from rawQuestionPaperData (first URL only) and custom Semester-8
+    const rawSyllabusData = JSON.parse(JSON.stringify(rawQuestionPaperData)); // Deep copy rawQuestionPaperData structure
+
+    rawSyllabusData.forEach((dept, deptIndex) => {
+      // For Semester-1 and Semester-2, take subjects from questionPaperData but only the first paper
+      if (rawQuestionPaperData[deptIndex].semesters['Semester-1']) {
+        dept.semesters['Semester-1'] = rawQuestionPaperData[deptIndex].semesters['Semester-1'].map(subject => ({
+          name: subject.name,
+          syllabus: subject.papers.length > 0
+            ? [{ title: 'Syllabus', url: subject.papers[0].url }] // Changed title to 'Syllabus'
+            : [{ title: 'No data added.', url: '#' }]
+        }));
       } else {
-        semesterButtonsContainer.style.display = 'none';
+         dept.semesters['Semester-1'] = [createNoDataSubject('syllabus')];
+      }
+
+      if (rawQuestionPaperData[deptIndex].semesters['Semester-2']) {
+        dept.semesters['Semester-2'] = rawQuestionPaperData[deptIndex].semesters['Semester-2'].map(subject => ({
+          name: subject.name,
+          syllabus: subject.papers.length > 0
+            ? [{ title: 'Syllabus', url: subject.papers[0].url }] // Changed title to 'Syllabus'
+            : [{ title: 'No data added.', url: '#' }]
+        }));
+      } else {
+        dept.semesters['Semester-2'] = [createNoDataSubject('syllabus')];
+      }
+
+      // Fill in default for Semesters 3-7 if they don't exist
+      for (let i = 3; i <= 7; i++) {
+        const semesterKey = `Semester-${i}`;
+        if (!dept.semesters[semesterKey]) {
+          dept.semesters[semesterKey] = [createNoDataSubject('syllabus')];
+        }
+      }
+
+      // Custom data for Semester-8 (keeping previous custom data)
+      // These titles are already descriptive and not year-based, so they remain as is.
+      if (dept.department === 'Information Technology') {
+          dept.semesters['Semester-8'] = [
+            {
+              name: 'ADVANCED DATABASE MANAGEMENT SYSTEMS',
+              syllabus: [
+                { title: 'Full Syllabus Document ADMS', url: 'https://example.com/IT/ADMS/syllabus.pdf' },
+                { title: 'Module 1: Distributed Databases', url: 'https://example.com/IT/ADMS/module1.pdf' },
+              ],
+            },
+            {
+              name: 'MACHINE LEARNING',
+              syllabus: [
+                { title: 'Full Syllabus Document ML', url: 'https://example.com/IT/ML/syllabus.pdf' },
+                { title: 'Module 1: Introduction to ML', url: 'https://example.com/IT/ML/module1.pdf' },
+              ],
+            },
+          ];
+      } else if (dept.department === 'Computer Science Engineering') {
+          dept.semesters['Semester-8'] = [
+            {
+              name: 'CLOUD COMPUTING',
+              syllabus: [
+                { title: 'Full Syllabus Document CC', url: 'https://example.com/CSE/CC/syllabus.pdf' },
+                { title: 'Module 1: Cloud Paradigms', url: 'https://example.com/CSE/CC/module1.pdf' },
+              ],
+            },
+            {
+              name: 'BIG DATA ANALYTICS',
+              syllabus: [
+                { title: 'Full Syllabus Document BDA', url: 'https://example.com/CSE/BDA/syllabus.pdf' },
+                { title: 'Module 1: Hadoop Ecosystem', url: 'https://example.com/CSE/BDA/module1.pdf' },
+              ],
+            },
+          ];
+      } else if (dept.department === 'Mechanical Engineering') {
+          dept.semesters['Semester-8'] = [
+            {
+              name: 'INDUSTRIAL AUTOMATION',
+              syllabus: [
+                { title: 'Full Syllabus Document IA', url: 'https://example.com/Mechanical/IA/syllabus.pdf' },
+              ],
+            },
+          ];
+      } else if (dept.department === 'Electrical Engineering') {
+          dept.semesters['Semester-8'] = [
+            {
+              name: 'RENEWABLE ENERGY SYSTEMS',
+              syllabus: [
+                { title: 'Full Syllabus Document RES', url: 'https://example.com/Electrical/RES/syllabus.pdf' },
+              ],
+            },
+          ];
+      } else if (dept.department === 'Chemical Engineering') {
+          dept.semesters['Semester-8'] = [
+            {
+              name: 'BIOCHEMICAL ENGINEERING',
+              syllabus: [
+                { title: 'Full Syllabus Document BCE', url: 'https://example.com/Chemical/BCE/syllabus.pdf' },
+              ],
+            },
+          ];
       }
     });
 
+    const syllabusData = standardizeSemesters(rawSyllabusData, 'syllabus');
+
+
+    const departmentSelect = document.getElementById('departmentSelect');
+    const semesterButtonsContainer = document.getElementById('semesterButtonsContainer');
+    const subjectsContainer = document.getElementById('subjectsContainer');
+    const emptyMessage = document.getElementById('emptyMessage');
+    const subjectSearch = document.getElementById('subjectSearch');
+
+    const questionPapersBtn = document.getElementById('questionPapersBtn');
+    const studyMaterialBtn = document.getElementById('studyMaterialBtn');
+    const assignmentsBtn = document.getElementById('assignmentsBtn');
+    const syllabusBtn = document.getElementById('syllabusBtn'); // New button
+
+    // Modal elements
+    const assignmentModalOverlay = document.getElementById('assignmentModalOverlay');
+    const assignmentModalTitle = document.getElementById('assignmentModalTitle');
+    const assignmentModalList = document.getElementById('assignmentModalList');
+    const assignmentModalCloseBtn = document.getElementById('assignmentModalCloseBtn');
+    const assignmentModalEmptyMessage = document.getElementById('assignmentModalEmptyMessage');
+
+
+    let currentSection = 'syllabus'; // Default to syllabus
+    let selectedDepartmentIndex = -1;
+    let selectedSemester = '';
+    let availableSemesters = []; // This will store semesters available for the current section and department
+
+    function updateUIForSection() {
+      // Deactivate all buttons
+      document.querySelectorAll('.toggle-section-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+
+      // Activate the current section's button
+      if (currentSection === 'questionPapers') {
+        questionPapersBtn.classList.add('active');
+      } else if (currentSection === 'studyMaterial') {
+        studyMaterialBtn.classList.add('active');
+      } else if (currentSection === 'assignments') {
+        assignmentsBtn.classList.add('active');
+      } else if (currentSection === 'syllabus') { // New section
+        syllabusBtn.classList.add('active');
+      }
+
+      // Reset semester and subjects whenever section changes
+      selectedSemester = '';
+      departmentSelect.value = ''; // Reset department selection
+      selectedDepartmentIndex = -1;
+      subjectsContainer.innerHTML = ''; // Clear subjects
+      semesterButtonsContainer.innerHTML = ''; // Clear semester buttons
+      semesterButtonsContainer.style.display = 'none'; // Hide semester buttons
+      emptyMessage.style.display = 'block';
+      emptyMessage.textContent = 'Please select a department.'; // Initial message
+      subjectSearch.style.display = 'none';
+      subjectSearch.value = '';
+
+      populateDepartments();
+    }
+
+    function getActiveData() {
+      if (currentSection === 'questionPapers') {
+        return questionPaperData;
+      } else if (currentSection === 'studyMaterial') {
+        return studyMaterialData;
+      } else if (currentSection === 'assignments') {
+        return assignmentsData;
+      } else if (currentSection === 'syllabus') { // New section
+        return syllabusData;
+      }
+      return [];
+    }
+
+    function populateDepartments() {
+      departmentSelect.innerHTML = '<option value="" disabled selected>Choose a department</option>';
+      const data = getActiveData();
+      const departments = [...new Set(data.map(item => item.department))];
+      departments.forEach(department => {
+        const option = document.createElement('option');
+        option.value = department;
+        option.textContent = department;
+        departmentSelect.appendChild(option);
+      });
+      departmentSelect.style.display = 'block'; // Ensure department select is always visible
+      document.getElementById('departmentSelectLabel').style.display = 'block';
+    }
+
+    function populateSemesters(departmentIndex) {
+      const data = getActiveData();
+      const departmentData = data[departmentIndex];
+      semesterButtonsContainer.innerHTML = '';
+      semesterButtonsContainer.style.display = 'flex'; // Show container
+
+      if (departmentData && departmentData.semesters) {
+        // Sort semesters numerically
+        availableSemesters = Object.keys(departmentData.semesters).sort((a, b) => {
+          const semA = parseInt(a.replace('Semester-', ''));
+          const semB = parseInt(b.replace('Semester-', ''));
+          return semA - semB;
+        });
+
+        if (availableSemesters.length === 0) {
+          semesterButtonsContainer.style.display = 'none';
+          emptyMessage.style.display = 'block';
+          emptyMessage.textContent = 'No semesters available for this department in this section.';
+          subjectSearch.style.display = 'none';
+          return;
+        }
+
+        availableSemesters.forEach(semester => {
+          const button = document.createElement('button');
+          button.classList.add('semester-btn');
+          button.textContent = semester;
+          button.dataset.semester = semester;
+          button.addEventListener('click', () => {
+            document.querySelectorAll('.semester-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedSemester = semester;
+            renderSubjects(departmentIndex, semester, subjectSearch.value);
+            subjectSearch.style.display = 'block';
+            document.getElementById('subjectSearchLabel').style.display = 'block';
+          });
+          semesterButtonsContainer.appendChild(button);
+        });
+
+        // DO NOT automatically select a semester: The user must click a semester button.
+        emptyMessage.textContent = 'Please select a semester.'; // Set message to prompt semester selection
+        emptyMessage.style.display = 'block';
+      } else {
+        semesterButtonsContainer.style.display = 'none';
+        emptyMessage.style.display = 'block';
+        emptyMessage.textContent = 'No data available for this department in this section.';
+        subjectSearch.style.display = 'none';
+      }
+    }
+
+    // Function to display the assignments modal
+    function showAssignmentsModal(subjectName, assignments) {
+      assignmentModalTitle.textContent = `${subjectName} Assignments`;
+      assignmentModalList.innerHTML = ''; // Clear previous assignments
+      assignmentModalEmptyMessage.style.display = 'none';
+
+      if (assignments && assignments.length > 0) {
+        assignments.forEach(assignment => {
+          const listItem = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = assignment.url;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.innerHTML = `<span class="material-icons">description</span>${assignment.title}`;
+          listItem.appendChild(link);
+          assignmentModalList.appendChild(listItem);
+        });
+      } else {
+        assignmentModalEmptyMessage.style.display = 'block';
+      }
+      assignmentModalOverlay.classList.add('visible');
+    }
+
+    // Function to hide the assignments modal
+    function hideAssignmentsModal() {
+      assignmentModalOverlay.classList.remove('visible');
+    }
+
+    assignmentModalCloseBtn.addEventListener('click', hideAssignmentsModal);
+    assignmentModalOverlay.addEventListener('click', (e) => {
+      if (e.target === assignmentModalOverlay) {
+        hideAssignmentsModal();
+      }
+    });
+
+
+    function renderSubjects(departmentIndex, semester, searchTerm = '') {
+      const data = getActiveData();
+      const departmentData = data[departmentIndex];
+      subjectsContainer.innerHTML = '';
+      emptyMessage.style.display = 'none'; // Hide general empty message when rendering subjects
+
+      // Check if there's any data for the selected department and semester
+      if (!departmentData || !departmentData.semesters || !departmentData.semesters[semester]) {
+        emptyMessage.textContent = `No data available for ${semester} in ${currentSection} for this department.`;
+        emptyMessage.style.display = 'block';
+        return;
+      }
+
+      const subjects = departmentData.semesters[semester];
+      searchTerm = searchTerm.toLowerCase();
+
+      // Filter subjects based on search term
+      const filteredSubjects = subjects.filter(subject =>
+        // Check if subject.name exists before calling toLowerCase
+        (subject.name && subject.name.toLowerCase().includes(searchTerm)) ||
+        // Always include the "No Data Available" subject if it's the only one for the semester
+        (subject.name === 'No Data Available' && subjects.length === 1)
+      );
+
+      // If after filtering, no subjects are left or only the "No Data Available" subject remains
+      if (filteredSubjects.length === 0 || (filteredSubjects.length === 1 && filteredSubjects[0].name === 'No Data Available')) {
+        emptyMessage.textContent = `No subjects found matching "${searchTerm}" in ${semester}, or no data has been added for this semester.`;
+        emptyMessage.style.display = 'block';
+        return;
+      }
+
+      filteredSubjects.forEach(subject => {
+        const subjectCard = document.createElement('div');
+        subjectCard.classList.add('subject-card');
+        subjectCard.setAttribute('tabindex', '0'); // Make card focusable
+
+        const subjectTitle = document.createElement('h3');
+        subjectTitle.classList.add('subject-title');
+        subjectTitle.innerHTML = `<span class="material-icons subject-icon">book</span>${subject.name}`;
+        subjectCard.appendChild(subjectTitle);
+
+        const listContainer = document.createElement('div'); // Container for list or button
+
+        if (currentSection === 'assignments') {
+            if (subject.isDynamicAssignmentSubject) {
+                const assignButton = document.createElement('button');
+                assignButton.classList.add('semester-btn'); // Reuse button style
+                assignButton.textContent = 'View Assignments';
+                assignButton.style.marginTop = '10px';
+                assignButton.style.width = 'fit-content';
+                assignButton.style.alignSelf = 'center';
+                assignButton.addEventListener('click', () => {
+                    showAssignmentsModal(subject.name, generateTenAssignments());
+                });
+                listContainer.appendChild(assignButton);
+            } else {
+                const noData = document.createElement('p');
+                noData.textContent = 'No data added.';
+                noData.style.color = '#78716c';
+                noData.style.fontStyle = 'italic';
+                noData.style.textAlign = 'center';
+                listContainer.appendChild(noData);
+            }
+        } else {
+            const list = document.createElement('ul');
+            list.classList.add('papers-list');
+
+            let items;
+            if (currentSection === 'questionPapers') {
+                items = subject.papers;
+            } else if (currentSection === 'studyMaterial') {
+                items = subject.materials;
+            } else if (currentSection === 'syllabus') {
+                items = subject.syllabus;
+            }
+
+            if (items && items.length > 0 && !(items.length === 1 && items[0].title === 'No data added.' && items[0].url === '#')) {
+              items.forEach(item => {
+                const listItem = document.createElement('li');
+                const link = document.createElement('a');
+                link.href = item.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+                link.innerHTML = `<span class="material-icons link-icon">link</span>${item.year || item.title}`;
+                listItem.appendChild(link);
+                list.appendChild(listItem);
+              });
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = 'No data added.';
+                listItem.style.color = '#78716c';
+                listItem.style.fontStyle = 'italic';
+                list.appendChild(listItem);
+            }
+            listContainer.appendChild(list);
+        }
+        subjectCard.appendChild(listContainer);
+        subjectsContainer.appendChild(subjectCard);
+      });
+    }
+
+    // Event Listeners for department and semester selection
+    departmentSelect.addEventListener('change', (e) => {
+      selectedDepartmentIndex = getActiveData().findIndex(dept => dept.department === e.target.value);
+      selectedSemester = ''; // Reset selected semester
+      populateSemesters(selectedDepartmentIndex);
+      // Clear subjects container and display message to select semester
+      subjectsContainer.innerHTML = '';
+      emptyMessage.style.display = 'block';
+      emptyMessage.textContent = 'Please select a semester.';
+      subjectSearch.style.display = 'none'; // Hide search bar until semester is selected
+      subjectSearch.value = ''; // Clear search bar
+    });
+
     subjectSearch.addEventListener('input', (e) => {
-      if (selectedDepartmentIndex !== null && selectedSemester !== null) {
+      if (selectedDepartmentIndex !== -1 && selectedSemester) {
         renderSubjects(selectedDepartmentIndex, selectedSemester, e.target.value);
       }
     });
 
+    // Event Listeners for section toggle buttons
+    syllabusBtn.addEventListener('click', () => {
+      if (currentSection !== 'syllabus') {
+        currentSection = 'syllabus';
+        updateUIForSection();
+      }
+    });
+
+    questionPapersBtn.addEventListener('click', () => {
+      if (currentSection !== 'questionPapers') {
+        currentSection = 'questionPapers';
+        updateUIForSection();
+        // Repopulate departments will be called inside updateUIForSection()
+      }
+    });
+
+    studyMaterialBtn.addEventListener('click', () => {
+      if (currentSection !== 'studyMaterial') {
+        currentSection = 'studyMaterial';
+        updateUIForSection();
+        // Repopulate departments will be called inside updateUIForSection()
+      }
+    });
+
+    assignmentsBtn.addEventListener('click', () => {
+      if (currentSection !== 'assignments') {
+        currentSection = 'assignments';
+        updateUIForSection();
+        // Repopulate departments will be called inside updateUIForSection()
+      }
+    });
+
+
     // Initialization
     function init() {
-      populateDepartments();
-      subjectSearch.style.display = 'none';
-      semesterButtonsContainer.style.display = 'none';
-      emptyMessage.style.display = 'none';
+      updateUIForSection(); // Set initial UI state
     }
 
     init();
