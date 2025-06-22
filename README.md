@@ -20,7 +20,7 @@ Our goal is to provide a centralized and easy-to-navigate platform for students 
 
 ## Getting Started
 
-Simply visit the [RNG PATEL INSTITUTE OF TECHNOLOGY - Portal](https://your-github-pages-url.com) (replace with your actual GitHub Pages URL) to start exploring the resources.
+Simply visit the [RNG PATEL INSTITUTE OF TECHNOLOGY - Portal](hkushpatel2601.github.io) (replace with your actual GitHub Pages URL) to start exploring the resources.
 
 ## Contribution
 
