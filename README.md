@@ -30,4 +30,26 @@ This project is maintained for the students of RNG Patel Institute of Technology
 
 RNG Patel Institute of Technology is dedicated to "Taking you to Tomorrow's Technology" by providing quality education and resources to its students.
 
+Kewords:-
+RNG Patel Institute of Technology
+RNGPIT
+RNGPIT portal
+RNGPIT student resources
+RNGPIT syllabus
+RNGPIT question papers
+RNGPIT study material
+RNGPIT assignments
+RNGPIT IT department
+RNGPIT Computer Science Engineering
+RNGPIT Mechanical Engineering
+RNGPIT Electrical Engineering
+RNGPIT exam papers
+RNGPIT academic resources
+Gujarat technical education
+Engineering college resources
+Diploma college resources
+University exam resources
+Previous year question papers
+Engineering study notes
+
 ---
