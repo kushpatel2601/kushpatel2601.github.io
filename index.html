@@ -20,8 +20,9 @@
       display: block;
       padding: 0 1rem 4rem;
       scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased; /* Ensures smooth rendering on Webkit browsers */
+      -moz-osx-font-smoothing: grayscale; /* Ensures smooth rendering on Firefox (macOS) */
+      text-rendering: optimizeLegibility; /* Prioritizes legibility for all text */
     }
     a {
       color: #7c3aed;
@@ -38,7 +39,7 @@
       font-weight: 700;
       margin: 0;
       color: white;
-      -webkit-text-stroke: 0.3px #6d28d9;
+      /* Removed -webkit-text-stroke to ensure perfect letter smoothness */
     }
     h1 {
       font-size: 3rem;
@@ -130,7 +131,7 @@
       font-weight: 800;
       margin-bottom: 0.8rem;
       line-height: 1.1;
-      -webkit-text-stroke: 1px #4A148C;
+      /* Removed -webkit-text-stroke to ensure perfect letter smoothness */
       color: white;
     }
     .college-slogan {
@@ -472,8 +473,11 @@
         border-bottom-right-radius: 15px;
       }
       .college-name {
-        font-size: 2.2rem;
-        -webkit-text-stroke: 0.5px #4A148C;
+      font-size: 3.8rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+      line-height: 1.1;
+      color: white;
       }
       .college-slogan {
         font-size: 1.1rem;
