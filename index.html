@@ -557,104 +557,38 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Modal Styles for Assignments */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* Department Assignment Buttons Container */
+    #departmentAssignmentButtonsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    .modal-overlay.visible {
-      opacity: 1;
-      visibility: visible;
+
+    /* Styling for "View Assignments" buttons (reusing semester-btn style) */
+    .department-assignment-btn {
+        background: #ede9fe;
+        color: #7c3aed;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 16px;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+        transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        user-select: none;
     }
-    .modal-content {
-      background: #ede9fe;
-      padding: 2.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      width: 90%;
-      max-width: 600px;
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-    .modal-overlay.visible .modal-content {
-      transform: translateY(0);
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid #c4b5fd;
-      padding-bottom: 1rem;
-    }
-    .modal-header h3 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: #5b21b6;
-    }
-    .modal-close-btn {
-      background: none;
-      border: none;
-      font-size: 2.5rem;
-      color: #7c3aed;
-      cursor: pointer;
-      line-height: 1;
-      padding: 0;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-    .modal-close-btn:hover {
-      color: #4c1d95;
-      transform: rotate(90deg);
-    }
-    .modal-assignments-list {
-      list-style: none;
-      padding: 0;
-      max-height: 300px;
-      overflow-y: auto;
-      margin-top: 0;
-    }
-    .modal-assignments-list li {
-      margin-bottom: 0.75rem;
-      background: #d8b4fe;
-      padding: 0.8rem 1rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .modal-assignments-list li a {
-      color: #4c1d95;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      flex-grow: 1;
-    }
-    .modal-assignments-list li a:hover {
-      color: #2e1065;
-    }
-    .modal-assignments-list li .material-icons {
-      font-size: 20px;
-      color: #6d28d9;
-    }
-    .modal-empty-message {
-        text-align: center;
-        color: #78716c;
-        font-style: italic;
-        padding: 20px;
+    .department-assignment-btn:hover,
+    .department-assignment-btn:focus {
+        background-color: #7c3aed;
+        color: white;
+        outline: none;
+        box-shadow: 0 8px 24px rgba(124, 58, 237, 0.7);
     }
   </style>
 </head>
@@ -710,21 +644,10 @@
   <section id="subjectsContainer" aria-live="polite" aria-atomic="true" tabindex="0">
     </section>
 
-  <p id="emptyMessage" style="display:none;">No subjects or question papers found.</p>
+  <!-- New container for department-specific assignment buttons -->
+  <div id="departmentAssignmentButtonsContainer" style="display:none;"></div>
 
-  <!-- Assignment Modal Structure -->
-  <div id="assignmentModalOverlay" class="modal-overlay">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="assignmentModalTitle">Subject Assignments</h3>
-        <button id="assignmentModalCloseBtn" class="modal-close-btn">&times;</button>
-      </div>
-      <ul id="assignmentModalList" class="modal-assignments-list">
-        <!-- Assignments will be dynamically loaded here -->
-      </ul>
-      <p id="assignmentModalEmptyMessage" class="modal-empty-message" style="display:none;">No assignments available for this subject.</p>
-    </div>
-  </div>
+  <p id="emptyMessage" style="display:none;">No subjects or question papers found.</p>
 
   <script>
     // Helper function to create 'No data added.' entry for a subject
@@ -1511,8 +1434,18 @@
     ];
     const studyMaterialData = standardizeSemesters(rawStudyMaterialData, 'materials');
 
+    // Department-specific Google Drive URLs for assignments
+    const departmentAssignmentDriveFolders = {
+        'IT': 'https://drive.google.com/drive/folders/1CLDGMMi_5lSANUfGewxLJIvZ2h7wGwBD?usp=sharing',
+        'CSE': 'https://drive.google.com/drive/folders/1CSE_Assignments_Folder_ID?usp=sharing',
+        'Mechanical': 'https://drive.google.com/drive/folders/1Mech_Assignments_Folder_ID?usp=sharing',
+        'Electrical': 'https://drive.google.com/drive/folders/1Elect_Assignments_Folder_ID?usp=sharing',
+        'Chemical': 'https://drive.google.com/drive/folders/1Chem_Assignments_Folder_ID?usp=sharing',
+        // Add more departments and their respective Drive folder URLs here
+    };
 
-    // Function to generate 10 generic assignments
+
+    // Function to generate 10 generic assignments (no longer used for "Assignments" section directly)
     function generateTenAssignments() {
       const assignments = [];
       for (let i = 1; i <= 10; i++) {
@@ -1522,6 +1455,7 @@
     }
 
     // Create assignmentsData based on rawQuestionPaperData structure (for subject names)
+    // This data is still needed for 'assignmentsDataTemplate' structure consistency, even if not rendered the same way.
     const assignmentsDataTemplate = JSON.parse(JSON.stringify(rawQuestionPaperData));
 
     assignmentsDataTemplate.forEach(dept => {
@@ -1874,18 +1808,12 @@
     const subjectsContainer = document.getElementById('subjectsContainer');
     const emptyMessage = document.getElementById('emptyMessage');
     const subjectSearch = document.getElementById('subjectSearch');
+    const departmentAssignmentButtonsContainer = document.getElementById('departmentAssignmentButtonsContainer'); // New container
 
     const questionPapersBtn = document.getElementById('questionPapersBtn');
     const studyMaterialBtn = document.getElementById('studyMaterialBtn');
     const assignmentsBtn = document.getElementById('assignmentsBtn');
     const syllabusBtn = document.getElementById('syllabusBtn'); // New button
-
-    // Modal elements
-    const assignmentModalOverlay = document.getElementById('assignmentModalOverlay');
-    const assignmentModalTitle = document.getElementById('assignmentModalTitle');
-    const assignmentModalList = document.getElementById('assignmentModalList');
-    const assignmentModalCloseBtn = document.getElementById('assignmentModalCloseBtn');
-    const assignmentModalEmptyMessage = document.getElementById('assignmentModalEmptyMessage');
 
 
     let currentSection = 'syllabus'; // Default to syllabus
@@ -1917,12 +1845,23 @@
       subjectsContainer.innerHTML = ''; // Clear subjects
       semesterButtonsContainer.innerHTML = ''; // Clear semester buttons
       semesterButtonsContainer.style.display = 'none'; // Hide semester buttons
-      emptyMessage.style.display = 'block';
-      emptyMessage.textContent = 'Please select a department.'; // Initial message
       subjectSearch.style.display = 'none';
       subjectSearch.value = '';
+      document.getElementById('subjectSearchLabel').style.display = 'none'; // Hide search label
 
-      populateDepartments();
+      // Handle visibility of department select and assignment buttons container based on section
+      if (currentSection === 'assignments') {
+          departmentSelect.style.display = 'none'; // Hide department dropdown for assignments
+          document.getElementById('departmentSelectLabel').style.display = 'none'; // Hide department label
+          emptyMessage.style.display = 'none'; // Hide empty message initially
+          renderDepartmentAssignmentButtons(); // Render department buttons directly
+      } else {
+          departmentAssignmentButtonsContainer.style.display = 'none'; // Hide assignment buttons container
+          departmentAssignmentButtonsContainer.innerHTML = ''; // Clear assignment buttons
+          populateDepartments(); // Populate department dropdown as usual
+          emptyMessage.style.display = 'block';
+          emptyMessage.textContent = 'Please select a department.'; // Initial message for other sections
+      }
     }
 
     function getActiveData() {
@@ -1931,7 +1870,8 @@
       } else if (currentSection === 'studyMaterial') {
         return studyMaterialData;
       } else if (currentSection === 'assignments') {
-        return assignmentsData;
+        // For assignments, we use a simple list of departments for the buttons
+        return Object.keys(departmentAssignmentDriveFolders).map(dept => ({ department: dept }));
       } else if (currentSection === 'syllabus') { // New section
         return syllabusData;
       }
@@ -1951,6 +1891,31 @@
       departmentSelect.style.display = 'block'; // Ensure department select is always visible
       document.getElementById('departmentSelectLabel').style.display = 'block';
     }
+
+    // New function to render department-specific assignment buttons
+    function renderDepartmentAssignmentButtons() {
+        departmentAssignmentButtonsContainer.innerHTML = ''; // Clear existing buttons
+        departmentAssignmentButtonsContainer.style.display = 'flex'; // Show container
+
+        if (Object.keys(departmentAssignmentDriveFolders).length === 0) {
+            emptyMessage.textContent = 'No assignment folders configured.';
+            emptyMessage.style.display = 'block';
+            return;
+        }
+
+        Object.keys(departmentAssignmentDriveFolders).forEach(departmentName => {
+            const button = document.createElement('button');
+            button.classList.add('department-assignment-btn');
+            button.textContent = `View Assignments for ${departmentName}`;
+            button.addEventListener('click', () => {
+                const driveFolderUrl = departmentAssignmentDriveFolders[departmentName];
+                window.open(driveFolderUrl, '_blank', 'noopener,noreferrer');
+            });
+            departmentAssignmentButtonsContainer.appendChild(button);
+        });
+        emptyMessage.style.display = 'none'; // Hide empty message if buttons are rendered
+    }
+
 
     function populateSemesters(departmentIndex) {
       const data = getActiveData();
@@ -2001,47 +1966,17 @@
       }
     }
 
-    // Function to display the assignments modal
-    function showAssignmentsModal(subjectName, assignments) {
-      assignmentModalTitle.textContent = `${subjectName} Assignments`;
-      assignmentModalList.innerHTML = ''; // Clear previous assignments
-      assignmentModalEmptyMessage.style.display = 'none';
-
-      if (assignments && assignments.length > 0) {
-        assignments.forEach(assignment => {
-          const listItem = document.createElement('li');
-          const link = document.createElement('a');
-          link.href = assignment.url;
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-          link.innerHTML = `<span class="material-icons">description</span>${assignment.title}`;
-          listItem.appendChild(link);
-          assignmentModalList.appendChild(listItem);
-        });
-      } else {
-        assignmentModalEmptyMessage.style.display = 'block';
-      }
-      assignmentModalOverlay.classList.add('visible');
-    }
-
-    // Function to hide the assignments modal
-    function hideAssignmentsModal() {
-      assignmentModalOverlay.classList.remove('visible');
-    }
-
-    assignmentModalCloseBtn.addEventListener('click', hideAssignmentsModal);
-    assignmentModalOverlay.addEventListener('click', (e) => {
-      if (e.target === assignmentModalOverlay) {
-        hideAssignmentsModal();
-      }
-    });
-
 
     function renderSubjects(departmentIndex, semester, searchTerm = '') {
       const data = getActiveData();
       const departmentData = data[departmentIndex];
       subjectsContainer.innerHTML = '';
       emptyMessage.style.display = 'none'; // Hide general empty message when rendering subjects
+
+      // For "Assignments" section, this function is not used to render subjects
+      if (currentSection === 'assignments') {
+          return;
+      }
 
       // Check if there's any data for the selected department and semester
       if (!departmentData || !departmentData.semesters || !departmentData.semesters[semester]) {
@@ -2078,61 +2013,40 @@
         subjectTitle.innerHTML = `<span class="material-icons subject-icon">book</span>${subject.name}`;
         subjectCard.appendChild(subjectTitle);
 
-        const listContainer = document.createElement('div'); // Container for list or button
+        const listContainer = document.createElement('div'); // Container for list
 
-        if (currentSection === 'assignments') {
-            if (subject.isDynamicAssignmentSubject) {
-                const assignButton = document.createElement('button');
-                assignButton.classList.add('semester-btn'); // Reuse button style
-                assignButton.textContent = 'View Assignments';
-                assignButton.style.marginTop = '10px';
-                assignButton.style.width = 'fit-content';
-                assignButton.style.alignSelf = 'center';
-                assignButton.addEventListener('click', () => {
-                    showAssignmentsModal(subject.name, generateTenAssignments());
-                });
-                listContainer.appendChild(assignButton);
-            } else {
-                const noData = document.createElement('p');
-                noData.textContent = 'No data added.';
-                noData.style.color = '#78716c';
-                noData.style.fontStyle = 'italic';
-                noData.style.textAlign = 'center';
-                listContainer.appendChild(noData);
-            }
-        } else {
-            const list = document.createElement('ul');
-            list.classList.add('papers-list');
+        const list = document.createElement('ul');
+        list.classList.add('papers-list');
 
-            let items;
-            if (currentSection === 'questionPapers') {
-                items = subject.papers;
-            } else if (currentSection === 'studyMaterial') {
-                items = subject.materials;
-            } else if (currentSection === 'syllabus') {
-                items = subject.syllabus;
-            }
-
-            if (items && items.length > 0 && !(items.length === 1 && items[0].title === 'No data added.' && items[0].url === '#')) {
-              items.forEach(item => {
-                const listItem = document.createElement('li');
-                const link = document.createElement('a');
-                link.href = item.url;
-                link.target = '_blank';
-                link.rel = 'noopener noreferrer';
-                link.innerHTML = `<span class="material-icons link-icon">link</span>${item.year || item.title}`;
-                listItem.appendChild(link);
-                list.appendChild(listItem);
-              });
-            } else {
-                const listItem = document.createElement('li');
-                listItem.textContent = 'No data added.';
-                listItem.style.color = '#78716c';
-                listItem.style.fontStyle = 'italic';
-                list.appendChild(listItem);
-            }
-            listContainer.appendChild(list);
+        let items;
+        if (currentSection === 'questionPapers') {
+            items = subject.papers;
+        } else if (currentSection === 'studyMaterial') {
+            items = subject.materials;
+        } else if (currentSection === 'syllabus') {
+            items = subject.syllabus;
         }
+
+        if (items && items.length > 0 && !(items.length === 1 && items[0].title === 'No data added.' && items[0].url === '#')) {
+          items.forEach(item => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = item.url;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.innerHTML = `<span class="material-icons link-icon">link</span>${item.year || item.title}`;
+            listItem.appendChild(link);
+            list.appendChild(listItem);
+          });
+        } else {
+            const listItem = document.createElement('li');
+            listItem.textContent = 'No data added.';
+            listItem.style.color = '#78716c';
+            listItem.style.fontStyle = 'italic';
+            list.appendChild(listItem);
+        }
+        listContainer.appendChild(list);
+        
         subjectCard.appendChild(listContainer);
         subjectsContainer.appendChild(subjectCard);
       });
