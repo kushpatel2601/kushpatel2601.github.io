@@ -1,5 +1,6 @@
 # RNG PATEL INSTITUTE OF TECHNOLOGY - Student Resource Portal
-![Uploading image.png…]()
+<img width="1896" height="949" alt="image" src="https://github.com/user-attachments/assets/2fd8b072-cf65-4f49-98d2-bc9b9223fd19" />
+
 
 
 ## Overview
