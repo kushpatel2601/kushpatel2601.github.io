@@ -1,4 +1,6 @@
 # RNG PATEL INSTITUTE OF TECHNOLOGY - Student Resource Portal
+![Uploading image.png…]()
+
 
 ## Overview
 
