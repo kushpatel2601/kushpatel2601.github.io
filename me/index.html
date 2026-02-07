@@ -1,251 +1,330 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kush Patel | Full Stack & AI Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --bg: #ffffff;
-            --text: #1e293b;
-            --secondary-text: #64748b; 
-            --glass: rgba(255, 255, 255, 0.7);
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-        }
+import React, { useState, useEffect } from 'react';
+import { 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Phone, 
+  ExternalLink, 
+  Code2, 
+  Terminal, 
+  Database, 
+  Cpu, 
+  Trophy, 
+  User, 
+  Layers, 
+  Menu, 
+  X,
+  ChevronRight
+} from 'lucide-react';
 
-        [data-theme="dark"] {
-            --bg: #0f172a;
-            --text: #f8fafc;
-            --secondary-text: #94a3b8;
-            --glass: rgba(15, 23, 42, 0.8);
-            --card-bg: #1e293b;
-            --border: #334155;
-        }
+const App = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('all');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+  const userData = {
+    name: "Kush Patel",
+    title: "AI & Full Stack Developer",
+    email: "kushp8484@gmail.com",
+    phone: "9327884099",
+    github: "github.com/kushpatel2601",
+    linkedin: "linkedin.com/in/kush-patel-13417731a/",
+    bio: "Second-year engineering student specializing in Full Stack Web Development and AI-driven systems. Shortlisted for Smart India Hackathon (SIH) 2025. Proven experience in building scalable end-to-end applications and delivering MVPs under strict time constraints.",
+    skills: {
+      languages: ["C", "Java", "Python", "JavaScript", "PHP"],
+      frontend: ["HTML", "CSS", "JavaScript", "React.js"],
+      backend: ["Python (FastAPI)", "PHP"],
+      databases: ["MySQL", "MongoDB Atlas"],
+      tools: ["Git", "GitHub", "VS Code", "REST APIs", "AI Integration"]
+    },
+    projects: [
+      {
+        title: "Cow Breed Recognition",
+        type: "Solo Full Stack Project",
+        description: "AI-powered web application to identify Indian cow breeds using image recognition and ML-based classification.",
+        tags: ["React.js", "FastAPI", "MongoDB", "ML"],
+        category: "AI"
+      },
+      {
+        title: "AI DPR Quality Assessment",
+        type: "SIH 2025 (Group Project)",
+        description: "Shortlisted for SIH 2025. Developed an AI-based DPR quality assessment and risk prediction system for infrastructure monitoring.",
+        tags: ["Python", "Full Stack", "Risk Prediction", "MVP"],
+        category: "AI"
+      },
+      {
+        title: "HR Management System",
+        type: "OdooXGCET Hackathon",
+        description: "Implemented employee management, attendance, and Role-Based Access Control (RBAC) in a 24-hour sprint.",
+        tags: ["Full Stack", "Collaboration", "RBAC"],
+        category: "Web"
+      },
+      {
+        title: "Student LMS Portal",
+        type: "Frontend Project",
+        description: "A comprehensive learning management system with intuitive dashboards and course navigation modules.",
+        tags: ["HTML", "CSS", "JavaScript"],
+        category: "Web"
+      },
+      {
+        title: "Physiotherapy Clinic",
+        type: "Frontend Project",
+        description: "Professional clinic website featuring service sections and automated appointment scheduling UI.",
+        tags: ["HTML", "CSS", "UI/UX"],
+        category: "Web"
+      }
+    ],
+    achievements: [
+      { title: "Smart India Hackathon 2025", detail: "Shortlisted Participant" },
+      { title: "OdooXGCET Hackathon", detail: "Group Project Contributor" },
+      { title: "Hack The Tank 3.0", detail: "Active Participant & MVP Developer" }
+    ]
+  };
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  const NavLink = ({ href, children }) => (
+    <a 
+      href={href} 
+      className="text-gray-400 hover:text-blue-400 transition-colors duration-300 font-medium"
+      onClick={() => setIsMenuOpen(false)}
+    >
+      {children}
+    </a>
+  );
 
-        nav {
-            position: fixed;
-            top: 20px; left: 50%;
-            transform: translateX(-50%);
-            width: 90%; max-width: 1200px;
-            background: var(--glass);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
-        }
+  return (
+    <div className="min-h-screen bg-[#0a0a0c] text-white font-sans selection:bg-blue-500/30">
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="flex items-center space-x-2 group cursor-pointer">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center font-bold text-xl group-hover:rotate-6 transition-transform">
+              KP
+            </div>
+            <span className="font-bold text-xl tracking-tight">Kush Patel</span>
+          </div>
+          
+          <div className="hidden md:flex items-center space-x-10">
+            <NavLink href="#home">Home</NavLink>
+            <NavLink href="#skills">Skills</NavLink>
+            <NavLink href="#projects">Projects</NavLink>
+            <NavLink href="#experience">Experience</NavLink>
+            <a href={`mailto:${userData.email}`} className="bg-blue-600 hover:bg-blue-700 px-6 py-2.5 rounded-full font-semibold transition-all">
+              Contact
+            </a>
+          </div>
 
-        .nav-links { display: flex; list-style: none; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; }
-        .theme-toggle { cursor: pointer; font-size: 1.2rem; color: var(--primary); }
-
-        .hero {
-            min-height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 140px 10% 60px;
-        }
-
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem; }
-        .gradient-text { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        section { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
-        .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; font-weight: 800; }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover { transform: translateY(-8px); border-color: var(--primary); }
-
-        .tag { 
-            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; 
-            color: var(--primary); background: rgba(99, 102, 241, 0.1);
-            padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 1rem;
-        }
-
-        .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 800; }
-        .card p { font-size: 0.95rem; color: var(--secondary-text); margin-bottom: 1rem; }
-        
-        .card ul { list-style: none; }
-        .card li { font-size: 0.85rem; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 8px; }
-        .card li i { color: var(--primary); margin-top: 5px; font-size: 0.8rem; }
-
-        /* Bento Grid Specifics */
-        .projects-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; }
-        .col-3 { grid-column: span 3; }
-        .col-2 { grid-column: span 2; }
-
-        @media (max-width: 1024px) { .col-3, .col-2 { grid-column: span 6; } }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div style="font-weight: 800; font-size: 1.4rem;">KUSH<span class="gradient-text">.</span></div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Work</a></li>
-        </ul>
-        <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
-    </nav>
-
-    <header class="hero">
-        <div style="background: rgba(99, 102, 241, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 30px; font-weight: 700; font-size: 0.8rem; margin-bottom: 1.5rem;">🚀 SIH 2025 SHORTLISTED</div>
-        <h1>Kush <span class="gradient-text">Patel</span></h1>
-        <p style="color: var(--secondary-text); max-width: 700px; font-size: 1.1rem; margin-bottom: 2rem;">
-            Second-year engineering student specializing in Full Stack Web Development and AI-driven systems. 
-            Proven experience in building scalable end-to-end applications and delivering MVPs under strict constraints.
-        </p>
-        <div class="social-links" style="display: flex; gap: 2rem; font-size: 1.8rem;">
-            <a href="https://github.com/kushpatel2601" target="_blank" style="color: var(--text);"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/kush-patel-13417731a/" target="_blank" style="color: var(--text);"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:kushp8484@gmail.com" style="color: var(--text);"><i class="fas fa-envelope"></i></a>
+          <button className="md:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
-    </header>
 
-    <section id="skills">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-layer-group" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
-                <h3>Core Tech</h3>
-                <p>Languages: C, Java, Python, JavaScript, PHP</p>
-                <p>Frontend: HTML, CSS, React.js</p>
-                <p>Backend: Python (FastAPI), PHP</p>
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-20 left-0 w-full bg-[#0d0d10] border-b border-white/5 p-6 flex flex-col space-y-6">
+            <NavLink href="#home">Home</NavLink>
+            <NavLink href="#skills">Skills</NavLink>
+            <NavLink href="#projects">Projects</NavLink>
+            <NavLink href="#experience">Experience</NavLink>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="pt-40 pb-20 px-6">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="md:w-3/5">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-medium mb-6">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              <span>Available for Hackathons</span>
             </div>
-            <div class="card">
-                <i class="fas fa-database" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
-                <h3>Infrastructure</h3>
-                <p>Databases: MySQL, MongoDB Atlas</p>
-                <p>Tools: Git, GitHub, VS Code</p>
-                <p>Concepts: REST APIs, AI Integration, MVP Development</p>
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+              Building the next generation of <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">AI-driven</span> systems.
+            </h1>
+            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+              {userData.bio}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="#projects" className="bg-white text-black px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-blue-50 transition-all">
+                View My Work <ChevronRight size={20} />
+              </a>
+              <div className="flex items-center space-x-4 ml-4">
+                <a href={`https://${userData.github}`} className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all">
+                  <Github size={24} />
+                </a>
+                <a href={`https://${userData.linkedin}`} className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all">
+                  <Linkedin size={24} />
+                </a>
+              </div>
             </div>
+          </div>
+          <div className="md:w-2/5 flex justify-center">
+            <div className="relative w-72 h-72 md:w-96 md:h-96">
+              <div className="absolute inset-0 bg-blue-600 blur-[100px] opacity-20 animate-pulse"></div>
+              <div className="relative w-full h-full border-2 border-white/10 rounded-[40px] flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent overflow-hidden">
+                <Cpu size={140} className="text-blue-500/50" />
+                <div className="absolute bottom-8 left-8 right-8 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10">
+                  <div className="text-xs text-gray-400 mb-1">Current Focus</div>
+                  <div className="text-sm font-semibold">Scalable MVP Development</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-container">
-            
-            <div class="card col-3">
-                <span class="tag">Solo Full Stack</span>
-                <h3>Indigenous Cow Breed Recognition</h3>
-                <p>AI-powered web application to identify Indian cow breeds using image recognition.</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> Integrated ML-based image classification model.</li>
-                    <li><i class="fas fa-check"></i> Built responsive frontend using React.js.</li>
-                    <li><i class="fas fa-check"></i> Backend: Python (FastAPI) & MongoDB Atlas.</li>
-                    <li><i class="fas fa-check"></i> Supported both online and offline usage.</li>
-                </ul>
-            </div>
-
-            <div class="card col-3">
-                <span class="tag">SIH 2025 • Group</span>
-                <h3>AI-Powered DPR System</h3>
-                <p>Shortlisted system for quality assessment and risk prediction in Detailed Project Reports.</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> Developed AI-based risk prediction logic.</li>
-                    <li><i class="fas fa-check"></i> Contributed to full stack & system integration.</li>
-                    <li><i class="fas fa-check"></i> Collaborated with team to deliver scalable MVP.</li>
-                </ul>
-            </div>
-
-            <div class="card col-2">
-                <span class="tag">OdooXGCET Hackathon</span>
-                <h3>HR Management System</h3>
-                <p>Full stack HRMS platform developed during a hackathon event.</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> Implemented employee management & attendance.</li>
-                    <li><i class="fas fa-check"></i> Integrated Role-Based Access Control (RBAC).</li>
-                    <li><i class="fas fa-check"></i> Collaborative frontend/backend development.</li>
-                </ul>
-            </div>
-
-            <div class="card col-2">
-                <span class="tag">Frontend</span>
-                <h3>Student LMS Portal</h3>
-                <p>Responsive LMS featuring intuitive dashboards and course navigation.</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> Built using HTML, CSS, and JavaScript.</li>
-                    <li><i class="fas fa-check"></i> Dynamic dashboard design.</li>
-                </ul>
-            </div>
-
-            <div class="card col-2">
-                <span class="tag">Frontend</span>
-                <h3>Physiotherapy Website</h3>
-                <p>Professional clinic website with service catalogs and appointment booking.</p>
-                <ul>
-                    <li><i class="fas fa-check"></i> Clean UI built with HTML/CSS/JS.</li>
-                    <li><i class="fas fa-check"></i> Integrated appointment sections.</li>
-                </ul>
-            </div>
-
+      {/* Skills Grid */}
+      <section id="skills" className="py-24 bg-[#0d0d10]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col items-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">Technical Arsenal</h2>
+            <div className="h-1.5 w-20 bg-blue-600 rounded-full"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Languages", icon: <Code2 className="text-blue-400" />, items: userData.skills.languages },
+              { title: "Frontend", icon: <Layers className="text-purple-400" />, items: userData.skills.frontend },
+              { title: "Backend", icon: <Terminal className="text-green-400" />, items: userData.skills.backend },
+              { title: "Tools & AI", icon: <Cpu className="text-orange-400" />, items: userData.skills.tools }
+            ].map((skill, idx) => (
+              <div key={idx} className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-blue-500/30 transition-all group">
+                <div className="mb-6">{skill.icon}</div>
+                <h3 className="text-xl font-bold mb-6">{skill.title}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {skill.items.map((item, i) => (
+                    <span key={i} className="px-3 py-1 bg-white/5 rounded-lg text-sm text-gray-300 group-hover:bg-white/10 transition-colors">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-    </section>
+      </section>
 
-    <section id="achievements">
-        <h2 class="section-title">Achievements</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Hackathons</h3>
-                <ul>
-                    <li><i class="fas fa-medal"></i> Shortlisted for SIH 2025[cite: 41].</li>
-                    <li><i class="fas fa-medal"></i> Contributor at OdooXGCET Hackathon[cite: 42].</li>
-                    <li><i class="fas fa-medal"></i> Active participant in Hack The Tank 3.0.</li>
-                </ul>
+      {/* Projects Section */}
+      <section id="projects" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+            <div>
+              <h2 className="text-4xl font-bold mb-4">Featured Work</h2>
+              <p className="text-gray-400">Collaborative and solo projects built for hackathons and real-world impact.</p>
             </div>
-            <div class="card">
-                <h3>Why Me?</h3>
-                <ul>
-                    <li><i class="fas fa-bolt"></i> MVP delivery in 24-48 hours[cite: 46].</li>
-                    <li><i class="fas fa-brain"></i> Hands-on AI & Full Stack experience[cite: 47].</li>
-                    <li><i class="fas fa-clock"></i> Available for intensive sprints.</li>
-                </ul>
+            <div className="flex mt-8 md:mt-0 space-x-2 bg-white/5 p-1 rounded-2xl">
+              {['all', 'AI', 'Web'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all ${activeTab === tab ? 'bg-white text-black' : 'text-gray-400 hover:text-white'}`}
+                >
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {userData.projects
+              .filter(p => activeTab === 'all' || p.category === activeTab)
+              .map((project, idx) => (
+                <div key={idx} className="flex flex-col h-full bg-[#0d0d10] border border-white/10 rounded-3xl overflow-hidden hover:translate-y-[-8px] transition-all duration-300">
+                  <div className="h-48 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 flex items-center justify-center p-8 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20">
+                      {project.category === 'AI' ? <Cpu /> : <Layers />}
+                    </div>
+                  </div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <div className="text-blue-400 text-xs font-bold uppercase tracking-wider mb-2">{project.type}</div>
+                    <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
+                    <p className="text-gray-400 mb-6 flex-grow">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.tags.map((tag, i) => (
+                        <span key={i} className="text-xs font-medium px-2 py-1 bg-white/5 border border-white/10 rounded-md text-gray-400">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <button className="flex items-center gap-2 text-white font-semibold hover:text-blue-400 transition-colors">
+                      View Details <ExternalLink size={16} />
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
         </div>
-    </section>
+      </section>
 
-    <footer style="text-align: center; padding: 4rem; color: var(--secondary-text); border-top: 1px solid var(--border);">
-        <p>&copy; 2026 Kush Patel. Built for Innovation.</p>
-    </footer>
+      {/* Achievements / Hackathons */}
+      <section id="experience" className="py-24 bg-blue-600">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl font-bold mb-8 text-white">Why Me for Hackathons?</h2>
+              <div className="space-y-6">
+                {[
+                  "Deliver functional MVPs in 24-48 hours",
+                  "Deep integration of AI in web architectures",
+                  "Agile mindset & rapid problem-solving",
+                  "Strong team collaboration & version control"
+                ].map((text, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <div className="p-1 bg-white rounded-full">
+                      <ChevronRight className="text-blue-600" size={16} />
+                    </div>
+                    <p className="text-xl font-medium text-white/90">{text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {userData.achievements.map((item, idx) => (
+                <div key={idx} className="p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl">
+                  <Trophy className="text-yellow-400 mb-6" size={32} />
+                  <h3 className="text-xl font-bold mb-2 text-white">{item.title}</h3>
+                  <p className="text-white/70">{item.detail}</p>
+                </div>
+              ))}
+              <div className="p-8 bg-white rounded-3xl flex flex-col items-center justify-center text-center">
+                <span className="text-blue-600 font-black text-4xl mb-2">24/7</span>
+                <span className="text-gray-600 font-bold uppercase tracking-widest text-xs">Ready for Sprints</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.querySelector('.theme-toggle i');
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                icon.className = 'fas fa-moon';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                icon.className = 'fas fa-sun';
-            }
-        }
-    </script>
-</body>
-</html>
+      {/* Footer */}
+      <footer className="py-20 bg-[#0a0a0c] border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+            <div>
+              <h2 className="text-3xl font-bold mb-4">Let's build something <span className="text-blue-500">incredible</span>.</h2>
+              <p className="text-gray-400 max-w-sm">Reach out for collaborations, hackathons, or opportunities in AI and Web development.</p>
+            </div>
+            <div className="flex flex-col space-y-4">
+              <a href={`mailto:${userData.email}`} className="flex items-center gap-3 text-lg font-semibold hover:text-blue-400 transition-colors">
+                <Mail size={20} className="text-blue-400" /> {userData.email}
+              </a>
+              <a href={`tel:${userData.phone}`} className="flex items-center gap-3 text-lg font-semibold hover:text-blue-400 transition-colors">
+                <Phone size={20} className="text-blue-400" /> {userData.phone}
+              </a>
+            </div>
+          </div>
+          <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-500 text-sm">
+            <p>© 2024 Kush Patel. Built with React & Tailwind.</p>
+            <div className="flex items-center space-x-6">
+              <a href={`https://${userData.github}`} className="hover:text-white transition-colors">GitHub</a>
+              <a href={`https://${userData.linkedin}`} className="hover:text-white transition-colors">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
