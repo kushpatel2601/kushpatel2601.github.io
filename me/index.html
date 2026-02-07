@@ -9,27 +9,27 @@
     <style>
         :root {
             --primary: #6366f1;
+            --primary-light: #818cf8;
             --primary-dark: #4f46e5;
-            --bg: #ffffff;
-            --text: #1e293b;
-            --secondary-text: #64748b;    
-            --glass: rgba(255, 255, 255, 0.7);
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --secondary-text: #64748b; 
+            --glass: rgba(255, 255, 255, 0.8);
             --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --hero-gradient: linear-gradient(135deg, #f5f7ff 0%, #ffffff 100%);
+            --border: rgba(226, 232, 240, 0.8);
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
         }
 
         [data-theme="dark"] {
-            --bg: #0f172a;
-            --text: #f8fafc;
+            --bg: #020617;
+            --text: #f1f5f9;
             --secondary-text: #94a3b8;
-            --glass: rgba(15, 23, 42, 0.8);
+            --glass: rgba(15, 23, 42, 0.9);
             --card-bg: #1e293b;
-            --border: #334155;
-            --hero-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --border: rgba(51, 65, 85, 0.5);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -37,165 +37,251 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            transition: background 0.4s ease;
         }
 
         /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 20px; left: 50%;
+            top: 25px; left: 50%;
             transform: translateX(-50%);
-            width: 90%; max-width: 1200px;
+            width: 90%; max-width: 1000px;
             background: var(--glass);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            padding: 0.7rem 2rem;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .nav-links { display: flex; list-style: none; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--text); 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { opacity: 1; color: var(--primary); }
         
-        .theme-toggle { cursor: pointer; font-size: 1.2rem; color: var(--primary); }
+        .theme-toggle { 
+            cursor: pointer; 
+            width: 40px; height: 40px; 
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: var(--border);
+            transition: 0.3s;
+        }
 
         /* --- Hero Section --- */
         .hero {
             min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 0 10%;
-            background: var(--hero-gradient);
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem; }
-        .hero p { font-size: 1.2rem; color: var(--secondary-text); max-width: 600px; margin-bottom: 2rem; }
+        .badge {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 100px;
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 { 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            font-weight: 800; 
+            letter-spacing: -3px; 
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { 
+            font-size: 1.25rem; 
+            color: var(--secondary-text); 
+            max-width: 650px; 
+            margin-bottom: 2.5rem; 
+        }
 
         .btn-primary {
             background: var(--primary); color: white;
-            padding: 1rem 2.5rem; border-radius: 50px;
+            padding: 1.2rem 3rem; border-radius: 100px;
             text-decoration: none; font-weight: 700;
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-            display: inline-block; transition: 0.3s transform;
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+            display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .btn-primary:hover { transform: translateY(-5px); }
+        .btn-primary:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4); }
 
-        /* --- Grid & Cards --- */
-        section { padding: 100px 10%; }
-        .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; font-weight: 800; }
+        /* --- Sections --- */
+        section { padding: 120px 10%; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 2.8rem; margin-bottom: 4rem; text-align: center; font-weight: 800; letter-spacing: -1px; }
 
+        /* --- Modern Bento Grid --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
             background: var(--card-bg);
-            padding: 2rem; border-radius: 24px;
+            padding: 2.5rem; border-radius: 32px;
             border: 1px solid var(--border);
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        .card:hover {
+            border-color: var(--primary-light);
+            transform: translateY(-10px);
+        }
 
-        /* --- Custom Progress Bars for Skills --- */
-        .skill-item { margin-bottom: 1.5rem; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 600; }
-        .skill-bar { height: 8px; background: var(--border); border-radius: 10px; overflow: hidden; }
-        .skill-progress { height: 100%; background: var(--primary); border-radius: 10px; }
+        .card i { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
 
-        /* --- CTA Container --- */
+        /* --- Skills Styling --- */
+        .skill-item { margin-bottom: 1.8rem; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-weight: 700; font-size: 0.9rem; }
+        .skill-bar { height: 10px; background: var(--border); border-radius: 20px; }
+        .skill-progress { 
+            height: 100%; 
+            background: var(--accent-gradient); 
+            border-radius: 20px; 
+            width: 0; transition: width 1.5s cubic-bezier(0.1, 0, 0.2, 1);
+        }
+
+        /* --- CTA Box --- */
         .cta-box {
-            background: var(--primary); color: white;
-            padding: 4rem; border-radius: 40px; text-align: center;
-            position: relative; overflow: hidden;
+            background: var(--accent-gradient); 
+            color: white;
+            padding: 5rem 2rem; border-radius: 48px; text-align: center;
+            position: relative; z-index: 1;
+        }
+
+        .cta-box::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            opacity: 0.1; z-index: -1;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 768px) {
-            nav { width: 95%; padding: 0.8rem 1rem; }
+            nav { width: 95%; padding: 0.6rem 1.2rem; }
             .nav-links { display: none; }
+            section { padding: 80px 5%; }
+            .hero h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-weight: 800; font-size: 1.4rem;">KUSH<span style="color: var(--primary);">.</span></div>
+        <div style="font-weight: 800; font-size: 1.4rem; letter-spacing: -1px;">KUSH<span class="gradient-text">.</span></div>
         <ul class="nav-links">
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#why-me">Why Me</a></li>
+            <li><a href="#why-me">Process</a></li>
         </ul>
         <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
     </nav>
 
     <header class="hero">
-        <div style="background: #eef2ff; color: #4f46e5; padding: 6px 16px; border-radius: 30px; font-weight: 700; font-size: 0.8rem; margin-bottom: 1rem;">
-           🚀 SIH 2025 FINALIST [cite: 7, 23]
-        </div>
-        <h1>Kush Patel [cite: 2]</h1>
-        <p>Full Stack Developer & AI Specialist[cite: 6]. Building scalable, intelligent systems from Surat, Gujarat[cite: 7].</p>
-        <div class="social-links" style="display: flex; gap: 1.5rem; font-size: 1.5rem; margin-top: 1rem;">
+        <div class="badge">✨ SIH 2025 Finalist</div>
+        <h1>I build <span class="gradient-text">intelligent</span> systems.</h1>
+        <p>Full Stack Developer & AI Specialist crafting high-performance applications from Surat, Gujarat.</p>
+        
+        <div class="social-links" style="display: flex; gap: 2rem; font-size: 1.8rem;">
             <a href="https://github.com/kushpatel2601" target="_blank" style="color: var(--text);"><i class="fab fa-github"></i></a>
             <a href="https://linkedin.com/in/kush-patel-13417731a/" target="_blank" style="color: var(--text);"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:kushp8484@gmail.com" style="color: var(--text);"><i class="fas fa-envelope"></i></a>
         </div>
-        <a href="#projects" class="btn-primary" style="margin-top: 2.5rem;">View My Work</a>
+        
+        <a href="#projects" class="btn-primary" style="margin-top: 3rem;">Explore Projects</a>
     </header>
 
     <section id="skills">
-        <h2 class="section-title">Technical Expertise [cite: 8]</h2>
+        <h2 class="section-title">Technical Mastery</h2>
         <div class="grid">
             <div class="card">
-                <h3>Frontend [cite: 10]</h3>
+                <i class="fas fa-code" style="color: #6366f1;"></i>
+                <h3 style="margin-bottom: 1rem;">Frontend Architecture</h3>
                 <div class="skill-item">
-                    <div class="skill-info"><span>React.js</span><span>90%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                    <div class="skill-info"><span>React.js / Next.js</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
                 </div>
-                <p style="color: var(--secondary-text); font-size: 0.9rem;">HTML, CSS, Modern JavaScript[cite: 10].</p>
+                <p style="color: var(--secondary-text);">Creating fluid, responsive interfaces with Modern CSS and Type-safe code.</p>
             </div>
+            
             <div class="card">
-                <h3>Backend & AI [cite: 11, 14]</h3>
+                <i class="fas fa-brain" style="color: #a855f7;"></i>
+                <h3 style="margin-bottom: 1rem;">Backend & AI</h3>
                 <div class="skill-item">
                     <div class="skill-info"><span>FastAPI / Python</span><span>85%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+                    <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
                 </div>
-                <p style="color: var(--secondary-text); font-size: 0.9rem;">PHP, MySQL, MongoDB Atlas[cite: 11, 12, 14].</p>
+                <p style="color: var(--secondary-text);">Scalable microservices, ML model integration, and MongoDB Atlas optimization.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects" style="background: rgba(99, 102, 241, 0.03);">
-        <h2 class="section-title">Hackathon Wins [cite: 15]</h2>
+    <section id="projects" style="background: var(--border);">
+        <h2 class="section-title">Featured Work</h2>
         <div class="grid">
-            <div class="card">
-                <i class="fas fa-microchip" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                <h3>AI-Powered DPR System [cite: 22]</h3>
-                <p>Smart India Hackathon 2025 shortlisted project focused on risk prediction[cite: 23, 24].</p>
+            <div class="card" style="background: var(--card-bg);">
+                <div style="background: rgba(99, 102, 241, 0.1); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-microchip" style="font-size: 1.5rem; color: var(--primary); margin: 0;"></i>
+                </div>
+                <h3>AI-Powered DPR System</h3>
+                <p style="color: var(--secondary-text); margin-top: 1rem;">Advanced risk prediction engine developed for the Smart India Hackathon 2025.</p>
             </div>
-            <div class="card">
-                <i class="fas fa-cow" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                <h3>Indigenous Cow Recognition [cite: 16]</h3>
-                <p>Solo Full Stack project integrating ML for breed identification[cite: 16, 17, 18].</p>
+            
+            <div class="card" style="background: var(--card-bg);">
+                <div style="background: rgba(168, 85, 247, 0.1); width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-cow" style="font-size: 1.5rem; color: #a855f7; margin: 0;"></i>
+                </div>
+                <h3>Cattle Recognition AI</h3>
+                <p style="color: var(--secondary-text); margin-top: 1rem;">Full-stack ML application for indigenous breed identification and health monitoring.</p>
             </div>
         </div>
     </section>
 
     <section id="why-me">
         <div class="cta-box">
-            <h2 style="color: white; margin-bottom: 1rem;">Ready for Hack The Tank 3.0 [cite: 45]</h2>
-            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">Delivering functional MVPs in under 48 hours with a focus on real-world impact[cite: 46, 49].</p>
-            <div style="display: flex; justify-content: center; gap: 2rem; font-weight: 700;">
-                <span><i class="fas fa-clock"></i> 24/7 Availability [cite: 50, 51]</span>
-                <span><i class="fas fa-users"></i> Team Leader [cite: 48]</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Hack The Tank 3.0 Ready</h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto 3rem;">Rapid prototyping expert. I turn complex ideas into functional MVPs in record time.</p>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; font-weight: 700;">
+                <span><i class="fas fa-bolt"></i> Fast Delivery</span>
+                <span><i class="fas fa-shield-halved"></i> Robust Code</span>
+                <span><i class="fas fa-users"></i> Lead Mindset</span>
             </div>
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 3rem; color: var(--secondary-text); border-top: 1px solid var(--border);">
-        <p>&copy; 2026 Kush Patel. Built for Innovation.</p>
+    <footer style="text-align: center; padding: 4rem; color: var(--secondary-text);">
+        <p>&copy; 2026 Kush Patel. Designed for the future of tech.</p>
     </footer>
 
     <script>
+        // Theme Toggle
         function toggleTheme() {
             const body = document.body;
             const icon = document.querySelector('.theme-toggle i');
@@ -208,15 +294,31 @@
             }
         }
 
-        // Animated reveal on scroll
-        const observer = new IntersectionObserver((entries) => {
+        // Skill Bar Animation
+        const observerOptions = { threshold: 0.5 };
+        const skillObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.style.opacity = '1';
+                if (entry.isIntersecting) {
+                    const progress = entry.target.querySelectorAll('.skill-progress');
+                    progress.forEach(bar => {
+                        bar.style.width = bar.getAttribute('data-width');
+                    });
+                }
             });
-        });
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0.5';
-            observer.observe(card);
+        }, observerOptions);
+
+        skillObserver.observe(document.querySelector('#skills'));
+
+        // Scroll Reveal
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.top = '10px';
+                nav.style.width = '95%';
+            } else {
+                nav.style.top = '25px';
+                nav.style.width = '90%';
+            }
         });
     </script>
 </body>
