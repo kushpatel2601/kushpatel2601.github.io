@@ -57,74 +57,48 @@
         .theme-toggle { cursor: pointer; font-size: 1.2rem; color: var(--primary); }
 
         .hero {
-            min-height: 60vh;
+            min-height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 140px 10% 40px;
+            text-align: center; padding: 140px 10% 60px;
         }
 
         .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem; }
         .gradient-text { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        section { padding: 60px 10%; max-width: 1400px; margin: 0 auto; }
+        section { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
         .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; font-weight: 800; }
 
-        /* --- Bento Grid Layout --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1.5rem;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
 
-        .project-card {
+        .card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 28px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
+            padding: 2rem;
             transition: all 0.3s ease;
         }
 
-        .project-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-color: var(--primary);
-        }
-
-        /* Bento Sizing Logic */
-        .col-3 { grid-column: span 3; }
-        .col-2 { grid-column: span 2; }
-        .col-6 { grid-column: span 6; }
+        .card:hover { transform: translateY(-8px); border-color: var(--primary); }
 
         .tag { 
-            font-size: 0.7rem; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            color: var(--primary); 
-            background: rgba(99, 102, 241, 0.1);
-            padding: 4px 12px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 1.2rem;
+            font-size: 0.7rem; font-weight: 800; text-transform: uppercase; 
+            color: var(--primary); background: rgba(99, 102, 241, 0.1);
+            padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 1rem;
         }
 
-        .project-card h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 800; line-height: 1.3; }
-        .project-card p { font-size: 0.95rem; color: var(--secondary-text); margin-bottom: 1.5rem; }
+        .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; font-weight: 800; }
+        .card p { font-size: 0.95rem; color: var(--secondary-text); margin-bottom: 1rem; }
         
-        .project-card ul { list-style: none; }
-        .project-card li { 
-            font-size: 0.85rem; 
-            margin-bottom: 0.6rem; 
-            display: flex; 
-            align-items: flex-start; 
-            gap: 10px; 
-            color: var(--text);
-        }
-        .project-card li i { color: var(--primary); margin-top: 5px; font-size: 0.8rem; }
+        .card ul { list-style: none; }
+        .card li { font-size: 0.85rem; margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 8px; }
+        .card li i { color: var(--primary); margin-top: 5px; font-size: 0.8rem; }
 
-        @media (max-width: 1024px) {
-            .col-3, .col-2 { grid-column: span 6; }
-        }
+        /* Bento Grid Specifics */
+        .projects-container { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; }
+        .col-3 { grid-column: span 3; }
+        .col-2 { grid-column: span 2; }
+
+        @media (max-width: 1024px) { .col-3, .col-2 { grid-column: span 6; } }
     </style>
 </head>
 <body>
@@ -132,82 +106,132 @@
     <nav>
         <div style="font-weight: 800; font-size: 1.4rem;">KUSH<span class="gradient-text">.</span></div>
         <ul class="nav-links">
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="mailto:kushp8484@gmail.com">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Work</a></li>
         </ul>
         <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
     </nav>
 
     <header class="hero">
-        <h1>My <span class="gradient-text">Projects</span></h1>
-        <p style="color: var(--secondary-text); max-width: 650px; font-size: 1.1rem;">A comprehensive look at my work in Artificial Intelligence, Full Stack Development, and Hackathon innovations.</p>
+        <div style="background: rgba(99, 102, 241, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 30px; font-weight: 700; font-size: 0.8rem; margin-bottom: 1.5rem;">🚀 SIH 2025 SHORTLISTED</div>
+        <h1>Kush <span class="gradient-text">Patel</span></h1>
+        <p style="color: var(--secondary-text); max-width: 700px; font-size: 1.1rem; margin-bottom: 2rem;">
+            Second-year engineering student specializing in Full Stack Web Development and AI-driven systems. 
+            Proven experience in building scalable end-to-end applications and delivering MVPs under strict constraints.
+        </p>
+        <div class="social-links" style="display: flex; gap: 2rem; font-size: 1.8rem;">
+            <a href="https://github.com/kushpatel2601" target="_blank" style="color: var(--text);"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/kush-patel-13417731a/" target="_blank" style="color: var(--text);"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:kushp8484@gmail.com" style="color: var(--text);"><i class="fas fa-envelope"></i></a>
+        </div>
     </header>
 
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-layer-group" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <h3>Core Tech</h3>
+                <p>Languages: C, Java, Python, JavaScript, PHP</p>
+                <p>Frontend: HTML, CSS, React.js</p>
+                <p>Backend: Python (FastAPI), PHP</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-database" style="font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                <h3>Infrastructure</h3>
+                <p>Databases: MySQL, MongoDB Atlas</p>
+                <p>Tools: Git, GitHub, VS Code</p>
+                <p>Concepts: REST APIs, AI Integration, MVP Development</p>
+            </div>
+        </div>
+    </section>
+
     <section id="projects">
-        <div class="projects-grid">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-container">
             
-            <div class="project-card col-3">
-                <span class="tag">Solo Full Stack • AI</span>
-                <h3>Image-Based Breed Recognition for Indigenous Cows of India</h3>
-                <p>An AI-powered web application built to identify Indian cow breeds using advanced image recognition.</p>
+            <div class="card col-3">
+                <span class="tag">Solo Full Stack</span>
+                <h3>Indigenous Cow Breed Recognition</h3>
+                <p>AI-powered web application to identify Indian cow breeds using image recognition.</p>
                 <ul>
-                    <li><i class="fas fa-circle-check"></i> Integrated ML-based image classification model.</li>
-                    <li><i class="fas fa-circle-check"></i> Built responsive frontend using React.js.</li>
-                    <li><i class="fas fa-circle-check"></i> Backend: Python (FastAPI) & MongoDB Atlas.</li>
-                    <li><i class="fas fa-circle-check"></i> Supported both online and offline usage.</li>
+                    <li><i class="fas fa-check"></i> Integrated ML-based image classification model.</li>
+                    <li><i class="fas fa-check"></i> Built responsive frontend using React.js.</li>
+                    <li><i class="fas fa-check"></i> Backend: Python (FastAPI) & MongoDB Atlas.</li>
+                    <li><i class="fas fa-check"></i> Supported both online and offline usage.</li>
                 </ul>
             </div>
 
-            <div class="project-card col-3">
-                <span class="tag">SIH 2025 • Group Project</span>
-                <h3>AI-Powered DPR Quality Assessment & Risk Prediction</h3>
-                <p>A high-impact system shortlisted for the Smart India Hackathon (SIH) 2025 grand finale.</p>
+            <div class="card col-3">
+                <span class="tag">SIH 2025 • Group</span>
+                <h3>AI-Powered DPR System</h3>
+                <p>Shortlisted system for quality assessment and risk prediction in Detailed Project Reports.</p>
                 <ul>
-                    <li><i class="fas fa-trophy"></i> Developed AI-based risk prediction system.</li>
-                    <li><i class="fas fa-circle-check"></i> Contributed to full stack & system integration.</li>
-                    <li><i class="fas fa-circle-check"></i> Collaborated with cross-functional team.</li>
-                    <li><i class="fas fa-circle-check"></i> Delivered a scalable MVP for MDoNER.</li>
+                    <li><i class="fas fa-check"></i> Developed AI-based risk prediction logic.</li>
+                    <li><i class="fas fa-check"></i> Contributed to full stack & system integration.</li>
+                    <li><i class="fas fa-check"></i> Collaborated with team to deliver scalable MVP.</li>
                 </ul>
             </div>
 
-            <div class="project-card col-2">
+            <div class="card col-2">
                 <span class="tag">OdooXGCET Hackathon</span>
-                <h3>Human Resource Management System</h3>
-                <p>Full stack HRMS platform developed during a competitive 24-hour hackathon.</p>
+                <h3>HR Management System</h3>
+                <p>Full stack HRMS platform developed during a hackathon event.</p>
                 <ul>
-                    <li><i class="fas fa-circle-check"></i> Implemented Employee Management & Attendance.</li>
-                    <li><i class="fas fa-circle-check"></i> Built Role-Based Access Control (RBAC).</li>
-                    <li><i class="fas fa-circle-check"></i> Collaborative module development.</li>
+                    <li><i class="fas fa-check"></i> Implemented employee management & attendance.</li>
+                    <li><i class="fas fa-check"></i> Integrated Role-Based Access Control (RBAC).</li>
+                    <li><i class="fas fa-check"></i> Collaborative frontend/backend development.</li>
                 </ul>
             </div>
 
-            <div class="project-card col-2">
-                <span class="tag">Frontend Project</span>
+            <div class="card col-2">
+                <span class="tag">Frontend</span>
                 <h3>Student LMS Portal</h3>
-                <p>A highly responsive learning platform featuring dashboards and course navigation.</p>
+                <p>Responsive LMS featuring intuitive dashboards and course navigation.</p>
                 <ul>
-                    <li><i class="fas fa-circle-check"></i> Built using HTML, CSS, and JavaScript.</li>
-                    <li><i class="fas fa-circle-check"></i> Clean course-driven user experience.</li>
-                    <li><i class="fas fa-circle-check"></i> Fully responsive across all devices.</li>
+                    <li><i class="fas fa-check"></i> Built using HTML, CSS, and JavaScript.</li>
+                    <li><i class="fas fa-check"></i> Dynamic dashboard design.</li>
                 </ul>
             </div>
 
-            <div class="project-card col-2">
-                <span class="tag">Frontend Project</span>
-                <h3>Physiotherapy Clinic Website</h3>
-                <p>A professional service-based website for clinics with appointment booking sections.</p>
+            <div class="card col-2">
+                <span class="tag">Frontend</span>
+                <h3>Physiotherapy Website</h3>
+                <p>Professional clinic website with service catalogs and appointment booking.</p>
                 <ul>
-                    <li><i class="fas fa-circle-check"></i> Clean UI focused on patient accessibility.</li>
-                    <li><i class="fas fa-circle-check"></i> Integrated appointment & service sections.</li>
-                    <li><i class="fas fa-circle-check"></i> Built with HTML, CSS, and JavaScript.</li>
+                    <li><i class="fas fa-check"></i> Clean UI built with HTML/CSS/JS.</li>
+                    <li><i class="fas fa-check"></i> Integrated appointment sections.</li>
                 </ul>
             </div>
 
         </div>
     </section>
 
+    <section id="achievements">
+        <h2 class="section-title">Achievements</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Hackathons</h3>
+                <ul>
+                    <li><i class="fas fa-medal"></i> Shortlisted for SIH 2025[cite: 41].</li>
+                    <li><i class="fas fa-medal"></i> Contributor at OdooXGCET Hackathon[cite: 42].</li>
+                    <li><i class="fas fa-medal"></i> Active participant in Hack The Tank 3.0.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Why Me?</h3>
+                <ul>
+                    <li><i class="fas fa-bolt"></i> MVP delivery in 24-48 hours[cite: 46].</li>
+                    <li><i class="fas fa-brain"></i> Hands-on AI & Full Stack experience[cite: 47].</li>
+                    <li><i class="fas fa-clock"></i> Available for intensive sprints.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <footer style="text-align: center; padding: 4rem; color: var(--secondary-text); border-top: 1px solid var(--border);">
-        <p>&copy; 2026 Kush Patel. Built with code and creativity.</p>
+        <p>&copy; 2026 Kush Patel. Built for Innovation.</p>
     </footer>
 
     <script>
