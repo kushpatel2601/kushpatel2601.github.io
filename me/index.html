@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* --- Navigation --- */
         nav {
             position: fixed;
             top: 20px; left: 50%;
@@ -57,20 +56,19 @@
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; }
         .theme-toggle { cursor: pointer; font-size: 1.2rem; color: var(--primary); }
 
-        /* --- Hero --- */
         .hero {
-            min-height: 80vh;
+            min-height: 60vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 120px 10% 60px;
+            text-align: center; padding: 140px 10% 40px;
         }
 
         .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem; }
         .gradient-text { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* --- Project Bento Grid --- */
-        section { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
+        section { padding: 60px 10%; max-width: 1400px; margin: 0 auto; }
         .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; font-weight: 800; }
 
+        /* --- Bento Grid Layout --- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -80,31 +78,52 @@
         .project-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 2rem;
+            border-radius: 28px;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
 
-        .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .project-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
 
-        /* Bento Sizing */
-        .large { grid-column: span 3; border-top: 4px solid var(--primary); }
-        .medium { grid-column: span 3; }
-        .small { grid-column: span 2; }
+        /* Bento Sizing Logic */
+        .col-3 { grid-column: span 3; }
+        .col-2 { grid-column: span 2; }
+        .col-6 { grid-column: span 6; }
 
-        .project-card h3 { font-size: 1.25rem; margin: 1rem 0; font-weight: 700; }
+        .tag { 
+            font-size: 0.7rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            color: var(--primary); 
+            background: rgba(99, 102, 241, 0.1);
+            padding: 4px 12px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-card h3 { font-size: 1.4rem; margin-bottom: 1rem; font-weight: 800; line-height: 1.3; }
         .project-card p { font-size: 0.95rem; color: var(--secondary-text); margin-bottom: 1.5rem; }
         
-        .tag { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 1px; }
-        
         .project-card ul { list-style: none; }
-        .project-card li { font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text); display: flex; align-items: flex-start; gap: 8px; }
-        .project-card li i { color: var(--primary); margin-top: 4px; font-size: 0.8rem; }
+        .project-card li { 
+            font-size: 0.85rem; 
+            margin-bottom: 0.6rem; 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 10px; 
+            color: var(--text);
+        }
+        .project-card li i { color: var(--primary); margin-top: 5px; font-size: 0.8rem; }
 
         @media (max-width: 1024px) {
-            .large, .medium, .small { grid-column: span 6; }
+            .col-3, .col-2 { grid-column: span 6; }
         }
     </style>
 </head>
@@ -114,80 +133,81 @@
         <div style="font-weight: 800; font-size: 1.4rem;">KUSH<span class="gradient-text">.</span></div>
         <ul class="nav-links">
             <li><a href="#projects">Projects</a></li>
-            <li><a href="mailto:kushp8484@gmail.com">Hire Me</a></li>
+            <li><a href="mailto:kushp8484@gmail.com">Contact</a></li>
         </ul>
         <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
     </nav>
 
     <header class="hero">
-        <h1>Building <span class="gradient-text">Scalable AI</span> Solutions</h1>
-        <p style="color: var(--secondary-text); max-width: 600px;">Explore my portfolio of full-stack applications, machine learning integrations, and award-winning hackathon projects.</p>
+        <h1>My <span class="gradient-text">Projects</span></h1>
+        <p style="color: var(--secondary-text); max-width: 650px; font-size: 1.1rem;">A comprehensive look at my work in Artificial Intelligence, Full Stack Development, and Hackathon innovations.</p>
     </header>
 
     <section id="projects">
-        <h2 class="section-title">Projects Showcase</h2>
         <div class="projects-grid">
             
-            <div class="project-card large">
+            <div class="project-card col-3">
                 <span class="tag">Solo Full Stack • AI</span>
-                <h3>Indigenous Cow Breed Recognition</h3>
-                <p>An AI-powered web application designed to identify Indian cow breeds using advanced image classification models.</p>
+                <h3>Image-Based Breed Recognition for Indigenous Cows of India</h3>
+                <p>An AI-powered web application built to identify Indian cow breeds using advanced image recognition.</p>
                 <ul>
-                    <li><li><i class="fas fa-check"></i> Integrated ML classification model.</li>
-                    <li><i class="fas fa-check"></i> Python (FastAPI) & MongoDB Atlas backend.</li>
-                    <li><i class="fas fa-check"></i> Responsive React.js frontend.</li>
-                    <li><i class="fas fa-check"></i> Supported online/offline usage.</li>
+                    <li><i class="fas fa-circle-check"></i> Integrated ML-based image classification model.</li>
+                    <li><i class="fas fa-circle-check"></i> Built responsive frontend using React.js.</li>
+                    <li><i class="fas fa-circle-check"></i> Backend: Python (FastAPI) & MongoDB Atlas.</li>
+                    <li><i class="fas fa-circle-check"></i> Supported both online and offline usage.</li>
                 </ul>
             </div>
 
-            <div class="project-card large">
+            <div class="project-card col-3">
                 <span class="tag">SIH 2025 • Group Project</span>
-                <h3>AI-Powered DPR Quality Assessment</h3>
-                <p>Developed for the Smart India Hackathon to predict risks and assess quality in Detailed Project Reports (DPR).</p>
+                <h3>AI-Powered DPR Quality Assessment & Risk Prediction</h3>
+                <p>A high-impact system shortlisted for the Smart India Hackathon (SIH) 2025 grand finale.</p>
                 <ul>
-                    <li><li><i class="fas fa-check"></i> Risk prediction system logic.</li>
-                    <li><i class="fas fa-check"></i> Full stack & system integration.</li>
-                    <li><i class="fas fa-check"></i> Collaborated on a scalable MVP.</li>
-                    <li><i class="fas fa-check"></i> Shortlisted Finalist.</li>
+                    <li><i class="fas fa-trophy"></i> Developed AI-based risk prediction system.</li>
+                    <li><i class="fas fa-circle-check"></i> Contributed to full stack & system integration.</li>
+                    <li><i class="fas fa-circle-check"></i> Collaborated with cross-functional team.</li>
+                    <li><i class="fas fa-circle-check"></i> Delivered a scalable MVP for MDoNER.</li>
                 </ul>
             </div>
 
-            <div class="project-card medium">
+            <div class="project-card col-2">
                 <span class="tag">OdooXGCET Hackathon</span>
                 <h3>Human Resource Management System</h3>
-                <p>A complete HRMS platform streamlining organizational workflows and employee data management.</p>
+                <p>Full stack HRMS platform developed during a competitive 24-hour hackathon.</p>
                 <ul>
-                    <li><li><i class="fas fa-check"></i> Attendance & Employee Management.</li>
-                    <li><i class="fas fa-check"></i> RBAC (Role-Based Access Control).</li>
-                    <li><i class="fas fa-check"></i> Full stack module collaboration.</li>
+                    <li><i class="fas fa-circle-check"></i> Implemented Employee Management & Attendance.</li>
+                    <li><i class="fas fa-circle-check"></i> Built Role-Based Access Control (RBAC).</li>
+                    <li><i class="fas fa-circle-check"></i> Collaborative module development.</li>
                 </ul>
             </div>
 
-            <div class="project-card small">
+            <div class="project-card col-2">
                 <span class="tag">Frontend Project</span>
                 <h3>Student LMS Portal</h3>
-                <p>A responsive learning management system with intuitive course dashboards.</p>
+                <p>A highly responsive learning platform featuring dashboards and course navigation.</p>
                 <ul>
-                    <li><li><i class="fas fa-check"></i> Built with HTML, CSS, JS.</li>
-                    <li><i class="fas fa-check"></i> Dashboard & Course navigation.</li>
+                    <li><i class="fas fa-circle-check"></i> Built using HTML, CSS, and JavaScript.</li>
+                    <li><i class="fas fa-circle-check"></i> Clean course-driven user experience.</li>
+                    <li><i class="fas fa-circle-check"></i> Fully responsive across all devices.</li>
                 </ul>
             </div>
 
-            <div class="project-card small">
+            <div class="project-card col-2">
                 <span class="tag">Frontend Project</span>
                 <h3>Physiotherapy Clinic Website</h3>
-                <p>A professional service website focused on appointment booking and clinic services.</p>
+                <p>A professional service-based website for clinics with appointment booking sections.</p>
                 <ul>
-                    <li><li><i class="fas fa-check"></i> Clean, professional UI/UX.</li>
-                    <li><i class="fas fa-check"></i> Appointment management section.</li>
+                    <li><i class="fas fa-circle-check"></i> Clean UI focused on patient accessibility.</li>
+                    <li><i class="fas fa-circle-check"></i> Integrated appointment & service sections.</li>
+                    <li><i class="fas fa-circle-check"></i> Built with HTML, CSS, and JavaScript.</li>
                 </ul>
             </div>
 
         </div>
     </section>
 
-    <footer style="text-align: center; padding: 3rem; color: var(--secondary-text); border-top: 1px solid var(--border);">
-        <p>&copy; 2026 Kush Patel. Built for Innovation.</p>
+    <footer style="text-align: center; padding: 4rem; color: var(--secondary-text); border-top: 1px solid var(--border);">
+        <p>&copy; 2026 Kush Patel. Built with code and creativity.</p>
     </footer>
 
     <script>
