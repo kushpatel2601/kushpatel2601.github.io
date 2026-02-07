@@ -9,26 +9,26 @@
     <style>
         :root {
             --primary: #6366f1;
-            --primary-light: #818cf8;
-            --bg: #f8fafc;
-            --text: #0f172a;
+            --primary-dark: #4f46e5;
+            --bg: #ffffff;
+            --text: #1e293b;
             --secondary-text: #64748b; 
-            --glass: rgba(255, 255, 255, 0.8);
+            --glass: rgba(255, 255, 255, 0.7);
             --card-bg: #ffffff;
-            --border: rgba(226, 232, 240, 0.8);
+            --border: #e2e8f0;
             --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
         }
 
         [data-theme="dark"] {
-            --bg: #020617;
-            --text: #f1f5f9;
+            --bg: #0f172a;
+            --text: #f8fafc;
             --secondary-text: #94a3b8;
-            --glass: rgba(15, 23, 42, 0.9);
+            --glass: rgba(15, 23, 42, 0.8);
             --card-bg: #1e293b;
-            --border: rgba(51, 65, 85, 0.5);
+            --border: #334155;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -36,155 +36,75 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
-            transition: background 0.4s ease;
         }
 
         /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 25px; left: 50%;
+            top: 20px; left: 50%;
             transform: translateX(-50%);
-            width: 90%; max-width: 1000px;
+            width: 90%; max-width: 1200px;
             background: var(--glass);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(12px);
             border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
-        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--text); 
-            font-weight: 600; 
-            font-size: 0.85rem; 
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-        .nav-links a:hover { opacity: 1; color: var(--primary); }
-        
-        .theme-toggle { 
-            cursor: pointer; 
-            width: 40px; height: 40px; 
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; background: var(--border);
-            transition: 0.3s;
-        }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.9rem; }
+        .theme-toggle { cursor: pointer; font-size: 1.2rem; color: var(--primary); }
 
-        /* --- Hero Section --- */
+        /* --- Hero --- */
         .hero {
-            min-height: 100vh;
+            min-height: 80vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 10%;
-            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+            text-align: center; padding: 120px 10% 60px;
         }
 
-        .badge {
-            background: var(--accent-gradient);
-            color: white;
-            padding: 6px 18px;
-            border-radius: 100px;
-            font-weight: 800;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem; }
+        .gradient-text { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        .hero h1 { 
-            font-size: clamp(3rem, 10vw, 5.5rem); 
-            font-weight: 800; 
-            letter-spacing: -3px; 
-            margin-bottom: 1rem;
-            line-height: 1.1;
-        }
+        /* --- Project Bento Grid --- */
+        section { padding: 80px 10%; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; margin-bottom: 3rem; text-align: center; font-weight: 800; }
 
-        .gradient-text {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p { 
-            font-size: 1.25rem; 
-            color: var(--secondary-text); 
-            max-width: 650px; 
-            margin-bottom: 2.5rem; 
-        }
-
-        .btn-primary {
-            background: var(--primary); color: white;
-            padding: 1.2rem 3rem; border-radius: 100px;
-            text-decoration: none; font-weight: 700;
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
-            display: inline-block; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4); }
-
-        /* --- Sections --- */
-        section { padding: 120px 10%; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 2.8rem; margin-bottom: 4rem; text-align: center; font-weight: 800; letter-spacing: -1px; }
-
-        /* --- Grid & Skills --- */
-        .grid {
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 2.5rem; border-radius: 32px;
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-        }
-        
-        .card:hover { border-color: var(--primary-light); transform: translateY(-10px); }
-
-        .skill-item { margin-bottom: 1.8rem; }
-        .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-weight: 700; font-size: 0.9rem; }
-        .skill-bar { height: 10px; background: var(--border); border-radius: 20px; overflow: hidden; }
-        .skill-progress { 
-            height: 100%; 
-            background: var(--accent-gradient); 
-            border-radius: 20px; 
-            width: 0; transition: width 1.5s ease-in-out;
-        }
-
-        /* --- Projects --- */
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 32px;
-            border: 1px solid var(--border);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
+            grid-template-columns: repeat(6, 1fr);
             gap: 1.5rem;
         }
 
-        .icon-box {
-            width: 50px; height: 50px;
-            background: rgba(99, 102, 241, 0.1);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: var(--primary);
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* --- Footer/CTA --- */
-        .cta-box {
-            background: var(--accent-gradient); 
-            color: white;
-            padding: 5rem 2rem; border-radius: 48px; text-align: center;
-        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
-        @media (max-width: 768px) {
-            nav { width: 95%; padding: 0.6rem 1rem; }
-            .nav-links { display: none; }
-            .hero h1 { font-size: 3.2rem; }
+        /* Bento Sizing */
+        .large { grid-column: span 3; border-top: 4px solid var(--primary); }
+        .medium { grid-column: span 3; }
+        .small { grid-column: span 2; }
+
+        .project-card h3 { font-size: 1.25rem; margin: 1rem 0; font-weight: 700; }
+        .project-card p { font-size: 0.95rem; color: var(--secondary-text); margin-bottom: 1.5rem; }
+        
+        .tag { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 1px; }
+        
+        .project-card ul { list-style: none; }
+        .project-card li { font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text); display: flex; align-items: flex-start; gap: 8px; }
+        .project-card li i { color: var(--primary); margin-top: 4px; font-size: 0.8rem; }
+
+        @media (max-width: 1024px) {
+            .large, .medium, .small { grid-column: span 6; }
         }
     </style>
 </head>
@@ -193,77 +113,81 @@
     <nav>
         <div style="font-weight: 800; font-size: 1.4rem;">KUSH<span class="gradient-text">.</span></div>
         <ul class="nav-links">
-            <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
-            <li><a href="#why-me">About</a></li>
+            <li><a href="mailto:kushp8484@gmail.com">Hire Me</a></li>
         </ul>
         <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
     </nav>
 
     <header class="hero">
-        <div class="badge">🚀 SIH 2025 Finalist</div>
-        <h1>Kush <span class="gradient-text">Patel</span></h1>
-        <p>Full Stack Developer & AI Specialist. Building scalable, intelligent systems from Surat, Gujarat.</p>
-        <div class="social-links" style="display: flex; gap: 2rem; font-size: 1.8rem;">
-            <a href="https://github.com/kushpatel2601" target="_blank" style="color: var(--text);"><i class="fab fa-github"></i></a>
-            <a href="https://linkedin.com/in/kush-patel-13417731a/" target="_blank" style="color: var(--text);"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:kushp8484@gmail.com" style="color: var(--text);"><i class="fas fa-envelope"></i></a>
-        </div>
-        <a href="#projects" class="btn-primary" style="margin-top: 3rem;">View My Work</a>
+        <h1>Building <span class="gradient-text">Scalable AI</span> Solutions</h1>
+        <p style="color: var(--secondary-text); max-width: 600px;">Explore my portfolio of full-stack applications, machine learning integrations, and award-winning hackathon projects.</p>
     </header>
 
-    <section id="skills">
-        <h2 class="section-title">Technical Expertise</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Frontend</h3>
-                <div class="skill-item">
-                    <div class="skill-info"><span>React.js</span><span>90%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" data-width="90%"></div></div>
-                </div>
-                <p style="color: var(--secondary-text); font-size: 0.9rem;">Modern JavaScript, HTML5, CSS3, and Responsive Design.</p>
+    <section id="projects">
+        <h2 class="section-title">Projects Showcase</h2>
+        <div class="projects-grid">
+            
+            <div class="project-card large">
+                <span class="tag">Solo Full Stack • AI</span>
+                <h3>Indigenous Cow Breed Recognition</h3>
+                <p>An AI-powered web application designed to identify Indian cow breeds using advanced image classification models.</p>
+                <ul>
+                    <li><li><i class="fas fa-check"></i> Integrated ML classification model.</li>
+                    <li><i class="fas fa-check"></i> Python (FastAPI) & MongoDB Atlas backend.</li>
+                    <li><i class="fas fa-check"></i> Responsive React.js frontend.</li>
+                    <li><i class="fas fa-check"></i> Supported online/offline usage.</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Backend & AI</h3>
-                <div class="skill-item">
-                    <div class="skill-info"><span>Python / FastAPI</span><span>85%</span></div>
-                    <div class="skill-bar"><div class="skill-progress" data-width="85%"></div></div>
-                </div>
-                <p style="color: var(--secondary-text); font-size: 0.9rem;">PHP, MySQL, MongoDB Atlas, and Machine Learning integration.</p>
+
+            <div class="project-card large">
+                <span class="tag">SIH 2025 • Group Project</span>
+                <h3>AI-Powered DPR Quality Assessment</h3>
+                <p>Developed for the Smart India Hackathon to predict risks and assess quality in Detailed Project Reports (DPR).</p>
+                <ul>
+                    <li><li><i class="fas fa-check"></i> Risk prediction system logic.</li>
+                    <li><i class="fas fa-check"></i> Full stack & system integration.</li>
+                    <li><i class="fas fa-check"></i> Collaborated on a scalable MVP.</li>
+                    <li><i class="fas fa-check"></i> Shortlisted Finalist.</li>
+                </ul>
             </div>
+
+            <div class="project-card medium">
+                <span class="tag">OdooXGCET Hackathon</span>
+                <h3>Human Resource Management System</h3>
+                <p>A complete HRMS platform streamlining organizational workflows and employee data management.</p>
+                <ul>
+                    <li><li><i class="fas fa-check"></i> Attendance & Employee Management.</li>
+                    <li><i class="fas fa-check"></i> RBAC (Role-Based Access Control).</li>
+                    <li><i class="fas fa-check"></i> Full stack module collaboration.</li>
+                </ul>
+            </div>
+
+            <div class="project-card small">
+                <span class="tag">Frontend Project</span>
+                <h3>Student LMS Portal</h3>
+                <p>A responsive learning management system with intuitive course dashboards.</p>
+                <ul>
+                    <li><li><i class="fas fa-check"></i> Built with HTML, CSS, JS.</li>
+                    <li><i class="fas fa-check"></i> Dashboard & Course navigation.</li>
+                </ul>
+            </div>
+
+            <div class="project-card small">
+                <span class="tag">Frontend Project</span>
+                <h3>Physiotherapy Clinic Website</h3>
+                <p>A professional service website focused on appointment booking and clinic services.</p>
+                <ul>
+                    <li><li><i class="fas fa-check"></i> Clean, professional UI/UX.</li>
+                    <li><i class="fas fa-check"></i> Appointment management section.</li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
-    <section id="projects" style="background: rgba(99, 102, 241, 0.03); border-radius: 60px;">
-        <h2 class="section-title">Hackathon Projects</h2>
-        <div class="grid">
-            <div class="project-card">
-                <div class="icon-box"><i class="fas fa-microchip"></i></div>
-                <h3>AI-Powered DPR System</h3>
-                <p style="color: var(--secondary-text);">A Smart India Hackathon finalist project focused on automated risk prediction and quality assessment.</p>
-            </div>
-            <div class="project-card">
-                <div class="icon-box"><i class="fas fa-cow"></i></div>
-                <h3>Indigenous Cow Recognition</h3>
-                <p style="color: var(--secondary-text);">A full-stack application using ML models for breed identification and livestock management.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="why-me">
-        <div class="cta-box">
-            <h2 style="color: white; margin-bottom: 1rem; font-size: 2.5rem;">Ready for Hack The Tank 3.0</h2>
-            <p style="color: rgba(255,255,255,0.9); margin-bottom: 3rem; font-size: 1.2rem;">Building high-impact MVPs with speed and precision.</p>
-            <div style="display: flex; justify-content: center; gap: 3rem; font-weight: 700; flex-wrap: wrap;">
-                <span><i class="fas fa-bolt"></i> Fast Prototyping</span>
-                <span><i class="fas fa-users"></i> Team Leadership</span>
-                <span><i class="fas fa-check-circle"></i> Result Oriented</span>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 4rem; color: var(--secondary-text); font-weight: 600;">
-        <p>&copy; 2026 Kush Patel. Built with passion and code.</p>
+    <footer style="text-align: center; padding: 3rem; color: var(--secondary-text); border-top: 1px solid var(--border);">
+        <p>&copy; 2026 Kush Patel. Built for Innovation.</p>
     </footer>
 
     <script>
@@ -278,20 +202,6 @@
                 icon.className = 'fas fa-sun';
             }
         }
-
-        // Skill bar trigger on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const bars = entry.target.querySelectorAll('.skill-progress');
-                    bars.forEach(bar => {
-                        bar.style.width = bar.getAttribute('data-width');
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(document.querySelector('#skills'));
     </script>
 </body>
 </html>
