@@ -8,8 +8,8 @@
    ============================================================ */
 :root {
   /* Colors */
-  --bg-primary:      #05050f;
-  --bg-secondary:    #0c0c1e;
+  --bg-primary:      #04040c;
+  --bg-secondary:    #090918;
   --purple:          #7c3aed;
   --purple-mid:      #8b5cf6;
   --purple-light:    #a78bfa;
@@ -20,22 +20,25 @@
   --pink:            #ec4899;
   --pink-light:      #f472b6;
   --green:           #10b981;
+  --green-light:     #6ee7b7;
 
   /* Text */
-  --text-primary:   #f1f5f9;
+  --text-primary:   #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted:     #475569;
+  --text-muted:     #64748b;
 
-  /* Glass */
-  --glass-bg:       rgba(255, 255, 255, 0.04);
-  --glass-bg-hover: rgba(255, 255, 255, 0.07);
-  --glass-border:   rgba(255, 255, 255, 0.08);
-  --glass-border-h: rgba(255, 255, 255, 0.15);
+  /* Glass Tokens */
+  --glass-bg:           rgba(255, 255, 255, 0.045);
+  --glass-bg-hover:     rgba(255, 255, 255, 0.085);
+  --glass-border:       rgba(255, 255, 255, 0.12);
+  --glass-border-light: rgba(255, 255, 255, 0.25);
+  --glass-shadow:       0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 -1px 0 0 rgba(0, 0, 0, 0.25);
+  --glass-shadow-hover: 0 20px 50px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 30px rgba(124, 58, 237, 0.25);
 
   /* Glows */
-  --glow-purple: 0 0 40px rgba(124, 58, 237, 0.35);
-  --glow-cyan:   0 0 40px rgba(6, 182, 212, 0.35);
-  --glow-amber:  0 0 40px rgba(245, 158, 11, 0.35);
+  --glow-purple: 0 0 40px rgba(124, 58, 237, 0.4);
+  --glow-cyan:   0 0 40px rgba(6, 182, 212, 0.4);
+  --glow-amber:  0 0 40px rgba(245, 158, 11, 0.4);
 
   /* Typography */
   --font-heading: 'Space Grotesk', sans-serif;
@@ -95,8 +98,9 @@ button {
 }
 
 /* ============================================================
-   3. STARFIELD CANVAS
+   3. 3D WEBGL & STARFIELD CANVASES
    ============================================================ */
+#webgl-3d-scene,
 #starfield {
   position: fixed;
   inset: 0;
@@ -118,42 +122,42 @@ button {
 .orb-1 {
   --dur: 9s;
   --delay: 0s;
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
   top: -150px;
   right: -150px;
   background: radial-gradient(circle at 40% 40%,
-    rgba(124, 58, 237, 0.25) 0%,
-    rgba(124, 58, 237, 0.08) 40%,
+    rgba(124, 58, 237, 0.3) 0%,
+    rgba(139, 92, 246, 0.12) 40%,
     transparent 70%);
-  filter: blur(60px);
+  filter: blur(70px);
 }
 
 .orb-2 {
   --dur: 11s;
   --delay: -4s;
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 450px;
   bottom: 5%;
   left: -120px;
   background: radial-gradient(circle at 60% 60%,
-    rgba(6, 182, 212, 0.2) 0%,
-    rgba(6, 182, 212, 0.06) 40%,
+    rgba(6, 182, 212, 0.25) 0%,
+    rgba(103, 232, 249, 0.08) 40%,
     transparent 70%);
-  filter: blur(60px);
+  filter: blur(70px);
 }
 
 .orb-3 {
   --dur: 13s;
   --delay: -7s;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   top: 50%;
   right: 15%;
   background: radial-gradient(circle at 50% 50%,
-    rgba(236, 72, 153, 0.18) 0%,
+    rgba(236, 72, 153, 0.22) 0%,
     transparent 65%);
-  filter: blur(50px);
+  filter: blur(60px);
 }
 
 /* ============================================================
@@ -178,10 +182,48 @@ button {
 /* Glass morphism base */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
   border: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-border-light);
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: var(--glass-shadow);
   border-radius: var(--r-md);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--t-base) var(--ease),
+              box-shadow var(--t-base) var(--ease),
+              border-color var(--t-base) var(--ease),
+              background var(--t-base) var(--ease);
+}
+
+.glass::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 55%
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.8s ease-out;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.glass:hover::after {
+  transform: rotate(30deg) translateY(100%);
+}
+
+.glass:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-light);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 /* Layout */
@@ -256,11 +298,12 @@ button {
 }
 
 .navbar.scrolled {
-  background: rgba(5, 5, 15, 0.82);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(4, 4, 12, 0.75);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
   border-bottom: 1px solid var(--glass-border);
-  padding: 12px 0;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+  padding: 10px 0;
 }
 
 .nav-container {
@@ -356,20 +399,45 @@ button {
   padding: 120px 28px 80px;
 }
 
-/* SIH badge */
+/* Hero Status Badge */
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 22px;
-  margin-bottom: 36px;
+  padding: 8px 20px;
+  margin-bottom: 28px;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--amber-light);
-  border-color: rgba(245, 158, 11, 0.25);
-  background: rgba(245, 158, 11, 0.07);
-  animation: float 4s ease-in-out infinite;
+  color: var(--green-light);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-top: 1px solid rgba(110, 231, 183, 0.5);
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: var(--r-full);
   letter-spacing: 0.5px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-out) forwards 0.2s;
+}
+
+.status-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  position: relative;
+  display: inline-block;
+}
+
+.status-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1.5px solid var(--green);
+  animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
 }
 
 .badge-icon { font-size: 1.05rem; }
@@ -1362,8 +1430,11 @@ button {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-border-light);
   border-radius: var(--r-sm);
   padding: 14px 18px;
   color: var(--text-primary);
@@ -1379,9 +1450,9 @@ button {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--purple-mid);
-  background: rgba(255,255,255,0.05);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+  border-color: var(--purple-light);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 24px rgba(124, 58, 237, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .form-group input::placeholder,
@@ -1424,12 +1495,39 @@ button {
 }
 
 /* ============================================================
-   16. TILT CARD (3D perspective effect)
+   16. TILT CARD & 3D DEPTH LAYERING
    ============================================================ */
 .tilt-card {
   transform-style: preserve-3d;
-  transition: transform var(--t-fast) ease;
+  perspective: 1200px;
+  transition: transform 0.15s ease-out;
   will-change: transform;
+}
+
+.tilt-card .project-icon,
+.tilt-card .project-title,
+.tilt-card .project-number,
+.tilt-card .stat-number,
+.tilt-card .avatar-container,
+.tilt-card .skill-category-header,
+.tilt-card .timeline-badge {
+  transform: translateZ(35px);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tilt-card .project-desc,
+.tilt-card .project-tech,
+.tilt-card .project-footer,
+.tilt-card .about-bio,
+.tilt-card .skill-tags,
+.tilt-card .timeline-desc {
+  transform: translateZ(18px);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tilt-card:hover .project-icon,
+.tilt-card:hover .avatar-container {
+  transform: translateZ(48px) scale(1.05);
 }
 
 /* ============================================================

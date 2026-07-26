@@ -23,6 +23,9 @@
 
 <body>
 
+    <!-- ===================== 3D WEBGL CANVAS ===================== -->
+    <canvas id="webgl-3d-scene" aria-hidden="true"></canvas>
+
     <!-- ===================== STARFIELD CANVAS ===================== -->
     <canvas id="starfield" aria-hidden="true"></canvas>
 
@@ -58,6 +61,10 @@
     <section id="hero" class="hero-section" aria-label="Introduction">
 
         <div class="hero-content">
+            <div class="hero-badge glass" id="hero-status-badge">
+                <span class="status-pulse" aria-hidden="true"></span>
+                <span class="badge-text">Available for AI &amp; Full-Stack Projects</span>
+            </div>
             <p class="hero-greeting">Hello, I'm</p>
             <h1 class="hero-name gradient-text" id="hero-name">Kush Patel</h1>
 
@@ -516,7 +523,7 @@
                     </div>
                 </div>
 
-                <!-- OdooXGCET Hackathon 2026 -->
+                <!-- Odoo x GCET Hackathon 2026 -->
                 <div class="timeline-item reveal" role="listitem" id="hackathon-odoo-gcet">
                     <div class="timeline-node" aria-hidden="true">
                         <div class="node-ring"></div>
@@ -525,7 +532,7 @@
                     <div class="timeline-content glass tilt-card">
                         <div class="timeline-badge secondary">🚀 PARTICIPATED</div>
                         <div class="timeline-date">2026</div>
-                        <h3 class="timeline-title">OdooXGCET Hackathon 2026</h3>
+                        <h3 class="timeline-title">Odoo × GCET Hackathon 2026</h3>
                         <p class="timeline-org">Odoo × GCET — Industry-Academia Collaboration</p>
                         <p class="timeline-desc">
                             Collaborated in the OdooXGCET Hackathon, building a rapid solution in partnership
@@ -706,7 +713,8 @@
                 <span class="footer-logo gradient-text" aria-label="Kush Patel">KP</span>
                 <p class="footer-text">
                     Built with <span aria-label="love"></span> ❤️ <span aria-label="coffee"></span> by
-                    <span class="gradient-text">Kush Patel</span>
+                    <a href="https://kushpatel2601.github.io/me/" target="_blank" rel="noopener noreferrer"
+                        class="gradient-text hover:underline" style="text-decoration: none;">Kush Patel</a>
                 </p>
                 <p class="footer-copy">© 2025 All rights reserved.</p>
             </div>
@@ -714,7 +722,9 @@
     </footer>
 
     <!-- ===================== SCRIPTS ===================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 
-</html>
+</html> 
