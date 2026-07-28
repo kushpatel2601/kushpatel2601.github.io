@@ -1,730 +1,1108 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Portfolio of Kush Patel — AI-focused Full-Stack Developer specializing in React, FastAPI, and Python. Smart India Hackathon 2025 Shortlisted.">
-    <meta name="keywords" content="full-stack developer, AI, machine learning, React, FastAPI, Python, portfolio">
-    <meta name="author" content="Kush Patel">
-    <title>Kush Patel | Full-Stack Developer & AI Enthusiast</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ILS 2026 — Idea Submission | Problem 9</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles/main.css">
+  :root {
+    --purple: #6B21A8;
+    --purple-light: #9333EA;
+    --purple-pale: #F3E8FF;
+    --purple-mid: #E9D5FF;
+    --orange: #EA580C;
+    --orange-light: #FB923C;
+    --orange-pale: #FFF7ED;
+    --teal: #0F766E;
+    --teal-pale: #F0FDFA;
+    --blue: #1D4ED8;
+    --blue-pale: #EFF6FF;
+    --green: #166534;
+    --green-pale: #F0FDF4;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-300: #D1D5DB;
+    --gray-600: #4B5563;
+    --gray-700: #374151;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
+    --text: #1a1a2e;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFFFF;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ─── PAGE HEADER ─── */
+  .cover {
+    background: linear-gradient(135deg, #1a0533 0%, #3b0764 40%, #6B21A8 80%, #9333EA 100%);
+    color: white;
+    padding: 52px 48px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    background: rgba(147,51,234,0.25);
+    border-radius: 50%;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 220px; height: 220px;
+    background: rgba(234,88,12,0.18);
+    border-radius: 50%;
+  }
+  .cover-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cover-badge span { color: #FBD38D; }
+  .cover h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .cover h1 em {
+    font-style: normal;
+    color: #FBD38D;
+  }
+  .cover-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    max-width: 500px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .cover-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cover-meta-item label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .cover-meta-item strong {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+  }
+  .cover-track {
+    position: absolute;
+    top: 48px; right: 48px;
+    background: rgba(234,88,12,0.9);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .cover-track small { display: block; font-weight: 400; opacity: 0.85; margin-top: 2px; font-size: 10px; }
+
+  /* ─── MAIN CONTENT ─── */
+  .body-wrap { padding: 0 48px 60px; }
+
+  /* ─── SECTION HEADINGS ─── */
+  .section {
+    margin-top: 44px;
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .section-label .num {
+    width: 28px; height: 28px;
+    background: var(--purple);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-label h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--gray-900);
+    letter-spacing: -0.01em;
+  }
+  .divider-line {
+    height: 2px;
+    background: linear-gradient(to right, var(--purple), var(--purple-mid), transparent);
+    margin-bottom: 20px;
+    border-radius: 2px;
+  }
+
+  /* ─── PROBLEM CARD ─── */
+  .problem-card {
+    background: #FFF7ED;
+    border: 1.5px solid #FED7AA;
+    border-left: 5px solid var(--orange);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .problem-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9A3412;
+    margin-bottom: 8px;
+  }
+  .problem-card p {
+    font-size: 13.5px;
+    color: #7C2D12;
+    line-height: 1.65;
+  }
+
+  /* ─── KEY CHALLENGES ─── */
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .challenge-card {
+    border: 1px solid var(--gray-200);
+    border-top: 3px solid var(--purple);
+    border-radius: 10px;
+    padding: 16px 14px;
+    background: var(--gray-50);
+  }
+  .challenge-card .icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .challenge-card h4 {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--purple);
+    margin-bottom: 5px;
+  }
+  .challenge-card p {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+
+  /* ─── SOLUTION OVERVIEW BOXES ─── */
+  .solution-headline {
+    background: linear-gradient(135deg, var(--purple-pale), var(--blue-pale));
+    border: 1.5px solid var(--purple-mid);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+  }
+  .solution-headline h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--purple);
+    margin-bottom: 8px;
+  }
+  .solution-headline p {
+    font-size: 13.5px;
+    color: var(--gray-700);
+    line-height: 1.65;
+  }
+
+  /* ─── FLOWCHART ─── */
+  .flow-wrap {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 28px 24px;
+    margin: 20px 0;
+  }
+  .flow-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--purple);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .flow-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gray-200);
+  }
+
+  /* System Flow Chart */
+  .flow-nodes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .flow-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 90px;
+    text-align: center;
+  }
+  .flow-box {
+    width: 90px;
+    border-radius: 10px;
+    padding: 12px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    position: relative;
+  }
+  .flow-box.purple {
+    background: var(--purple);
+    color: white;
+  }
+  .flow-box.orange {
+    background: var(--orange);
+    color: white;
+  }
+  .flow-box.teal {
+    background: var(--teal);
+    color: white;
+  }
+  .flow-box.blue {
+    background: var(--blue);
+    color: white;
+  }
+  .flow-box.green {
+    background: var(--green);
+    color: white;
+  }
+  .flow-box .box-icon {
+    font-size: 18px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  .flow-box .box-label {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 700;
+  }
+  .flow-arrow {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2px;
+  }
+  .flow-arrow .arr-line {
+    width: 28px;
+    height: 2px;
+    background: var(--purple-light);
+    position: relative;
+  }
+  .flow-arrow .arr-line::after {
+    content: '▶';
+    position: absolute;
+    right: -8px;
+    top: -7px;
+    font-size: 10px;
+    color: var(--purple-light);
+  }
+  .flow-arrow .arr-label {
+    font-size: 9px;
+    color: var(--gray-600);
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  /* ─── ARCHITECTURE LAYERS ─── */
+  .arch-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .arch-layer {
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .arch-layer.l1 { background: var(--purple-pale); border: 1px solid #D8B4FE; }
+  .arch-layer.l2 { background: #EFF6FF; border: 1px solid #BFDBFE; }
+  .arch-layer.l3 { background: var(--teal-pale); border: 1px solid #99F6E4; }
+  .arch-layer.l4 { background: var(--green-pale); border: 1px solid #BBF7D0; }
+  .arch-layer .layer-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+  }
+  .arch-layer .layer-info { flex: 1; }
+  .arch-layer .layer-info h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .arch-layer.l1 .layer-info h4 { color: #7E22CE; }
+  .arch-layer.l2 .layer-info h4 { color: #1E40AF; }
+  .arch-layer.l3 .layer-info h4 { color: #0F766E; }
+  .arch-layer.l4 .layer-info h4 { color: #166534; }
+  .arch-layer .layer-info p { font-size: 12px; color: var(--gray-600); }
+  .arch-layer .layer-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-end;
+  }
+  .pill {
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding: 3px 9px;
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--gray-700);
+  }
+
+  /* ─── FEATURES GRID ─── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .feature-card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    border-radius: 10px 0 0 10px;
+  }
+  .feature-card.fc1::before { background: var(--purple); }
+  .feature-card.fc2::before { background: var(--orange); }
+  .feature-card.fc3::before { background: var(--teal); }
+  .feature-card.fc4::before { background: var(--blue); }
+  .feature-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .feature-card h4 span { font-size: 16px; }
+  .feature-card ul {
+    padding-left: 14px;
+    font-size: 12px;
+    color: var(--gray-600);
+  }
+  .feature-card ul li { margin-bottom: 3px; }
+
+  /* ─── DATA FLOW PROCESS ─── */
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 16px 0;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: var(--gray-200);
+    z-index: 0;
+  }
+  .process-step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+    padding: 10px 0;
+  }
+  .step-num {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
+    background: white;
+    border: 2px solid var(--purple);
+    color: var(--purple);
+  }
+  .step-content {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 12px 14px;
+    flex: 1;
+  }
+  .step-content h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+  .step-content .step-tags {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .step-tag {
+    background: var(--purple-pale);
+    color: var(--purple);
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-size: 10.5px;
+    font-weight: 600;
+  }
+  .step-tag.orange { background: #FFF7ED; color: #C2410C; }
+  .step-tag.teal { background: var(--teal-pale); color: var(--teal); }
+
+  /* ─── IMPACT TABLE ─── */
+  .impact-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+  }
+  .impact-table th {
+    background: var(--purple);
+    color: white;
+    padding: 11px 14px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-align: left;
+  }
+  .impact-table tr:nth-child(even) { background: var(--gray-50); }
+  .impact-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-700);
+    vertical-align: top;
+  }
+  .impact-table td:first-child {
+    font-weight: 600;
+    color: var(--gray-900);
+    white-space: nowrap;
+  }
+  .tag-green {
+    background: #DCFCE7;
+    color: #15803D;
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* ─── TECH STACK ─── */
+  .tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-800);
+  }
+  .tech-badge .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .tl-card {
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+    border: 1px solid;
+  }
+  .tl-card.r1 { background: var(--purple-pale); border-color: #C4B5FD; }
+  .tl-card.r2 { background: #FFF7ED; border-color: #FED7AA; }
+  .tl-card.r3 { background: var(--green-pale); border-color: #BBF7D0; }
+  .tl-round {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tl-card.r1 .tl-round { color: var(--purple); }
+  .tl-card.r2 .tl-round { color: var(--orange); }
+  .tl-card.r3 .tl-round { color: var(--green); }
+  .tl-date {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+  }
+  .tl-items {
+    font-size: 11.5px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  /* ─── USP BOXES ─── */
+  .usp-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .usp-box {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+  }
+  .usp-box .usp-icon { font-size: 24px; margin-bottom: 8px; }
+  .usp-box h4 { font-size: 12.5px; font-weight: 700; color: var(--purple); margin-bottom: 5px; }
+  .usp-box p { font-size: 11.5px; color: var(--gray-600); line-height: 1.5; }
+
+  /* ─── FOOTER ─── */
+  .doc-footer {
+    background: var(--gray-900);
+    color: white;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .doc-footer .footer-left p { font-size: 12px; color: #9CA3AF; }
+  .doc-footer .footer-left strong { color: white; font-size: 13px; }
+  .doc-footer .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+  .doc-footer .footer-right p { font-size: 11px; color: #6B7280; }
+  .doc-footer .footer-right strong { font-size: 12px; color: #D1D5DB; }
+
+  @media print {
+    body { max-width: 100%; }
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
 </head>
-
 <body>
 
-    <!-- ===================== 3D WEBGL CANVAS ===================== -->
-    <canvas id="webgl-3d-scene" aria-hidden="true"></canvas>
+<!-- ═══════════════════════════════════════════ COVER ═══ -->
+<div class="cover">
+  <div class="cover-track">TRACK 4<small>Open Industry Problems</small></div>
+  <div class="cover-badge">📋 Idea Submission &nbsp;·&nbsp; <span>ILS 2026 National Hackathon</span></div>
+  <h1>Inclusive Public Transport<br><em>Intelligence Platform</em></h1>
+  <p class="cover-sub">An AI-driven urban transit optimization system making public transport reliable and safe for female commuters using real-time data and automated anomaly detection.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><label>Problem No.</label><strong>#9</strong></div>
+    <div class="cover-meta-item"><label>Track</label><strong>Track 4 — Open Industry Problems</strong></div>
+    <div class="cover-meta-item"><label>Hackathon</label><strong>IEEE WIE ILS 2026</strong></div>
+    <div class="cover-meta-item"><label>Submission Round</label><strong>Round 1 — 1st August 2026</strong></div>
+    <div class="cover-meta-item"><label>Venue (Final)</label><strong>SVNIT, Surat, Gujarat</strong></div>
+  </div>
+</div>
 
-    <!-- ===================== STARFIELD CANVAS ===================== -->
-    <canvas id="starfield" aria-hidden="true"></canvas>
+<!-- ═══════════════════════════════════════════ BODY ═══ -->
+<div class="body-wrap">
 
-    <!-- ===================== AMBIENT ORBS ===================== -->
-    <div class="orb orb-1" aria-hidden="true"></div>
-    <div class="orb orb-2" aria-hidden="true"></div>
-    <div class="orb orb-3" aria-hidden="true"></div>
+  <!-- ── SECTION 1: Problem Statement ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">1</div><h2>Problem Statement</h2></div>
+    <div class="divider-line"></div>
+    <div class="problem-card">
+      <h3>📌 Official Problem Statement — Problem 9</h3>
+      <p>Build an <strong>AI-driven urban transit optimization platform</strong> that makes public transport reliable and safe for female commuters using real-time data and automated anomaly detection. The platform should address overcrowding, safety risks, poor scheduling, and the lack of trustworthy information available to women who depend on public transit daily.</p>
+    </div>
+    <div class="challenges-grid">
+      <div class="challenge-card">
+        <div class="icon">⚠️</div>
+        <h4>Safety & Harassment</h4>
+        <p>Women face daily safety risks in crowded buses and at poorly lit stops, with no automated alert or reporting mechanism.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="icon">📊</div>
+        <h4>No Real-Time Data</h4>
+        <p>Transit authorities lack live crowd density and anomaly data to make proactive decisions and prevent incidents.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="icon">🕐</div>
+        <h4>Unreliable Scheduling</h4>
+        <p>Poor schedule adherence and unpredictable routes force women to wait in unsafe conditions for extended periods.</p>
+      </div>
+    </div>
+  </div>
 
-    <!-- ===================== NAVBAR ===================== -->
-    <nav class="navbar" id="navbar" aria-label="Main navigation">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text gradient-text">KP</span>
-            </div>
-            <ul class="nav-links" id="nav-links" role="menubar">
-                <li role="none"><a href="#hero" class="nav-link active" id="nav-home" role="menuitem">Home</a></li>
-                <li role="none"><a href="#about" class="nav-link" id="nav-about" role="menuitem">About</a></li>
-                <li role="none"><a href="#skills" class="nav-link" id="nav-skills" role="menuitem">Skills</a></li>
-                <li role="none"><a href="#projects" class="nav-link" id="nav-projects" role="menuitem">Projects</a></li>
-                <li role="none"><a href="#hackathons" class="nav-link" id="nav-hackathons"
-                        role="menuitem">Hackathons</a></li>
-                <li role="none"><a href="#contact" class="nav-link" id="nav-contact" role="menuitem">Contact</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+  <!-- ── SECTION 2: Our Proposed Solution ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">2</div><h2>Proposed Solution — SafeTransit AI</h2></div>
+    <div class="divider-line"></div>
+    <div class="solution-headline">
+      <h3>🚌 SafeTransit AI — Overview</h3>
+      <p>SafeTransit AI is a unified, three-layer platform combining a <strong>commuter-facing mobile app</strong>, an <strong>operator-facing dashboard</strong>, and an <strong>AI anomaly engine</strong> working together in real time. Female commuters get safe route suggestions, crowd alerts, and one-touch SOS — while transit operators get predictive insights to improve fleet scheduling and incident response.</p>
+    </div>
+
+    <!-- High-Level System Flow -->
+    <div class="flow-wrap">
+      <div class="flow-title">🔁 High-Level System Flow</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-box purple">
+            <span class="box-icon">📱</span>
+            <span class="box-label">Commuter App</span>
+          </div>
         </div>
-    </nav>
-
-    <!-- ===================== HERO ===================== -->
-    <section id="hero" class="hero-section" aria-label="Introduction">
-
-        <div class="hero-content">
-            <div class="hero-badge glass" id="hero-status-badge">
-                <span class="status-pulse" aria-hidden="true"></span>
-                <span class="badge-text">Available for AI &amp; Full-Stack Projects</span>
-            </div>
-            <p class="hero-greeting">Hello, I'm</p>
-            <h1 class="hero-name gradient-text" id="hero-name">Kush Patel</h1>
-
-            <div class="typewriter-container" aria-live="polite">
-                <span class="typewriter-prefix">I build&nbsp;</span>
-                <span class="typewriter-text" id="typewriter" aria-label="Changing role text"></span>
-                <span class="typewriter-cursor" aria-hidden="true">|</span>
-            </div>
-
-            <p class="hero-bio">
-                Second-year engineering student crafting AI-powered full-stack systems
-                and rapid MVPs. Turning complex problems into elegant, deployable solutions —
-                one commit at a time.
-            </p>
-
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary" id="cta-work">
-                    <span>View My Work</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        aria-hidden="true">
-                        <path d="m9 18 6-6-6-6" />
-                    </svg>
-                </a>
-            </div>
+        <div class="flow-arrow"><div class="arr-line"></div><span class="arr-label">GPS + Report</span></div>
+        <div class="flow-node">
+          <div class="flow-box orange">
+            <span class="box-icon">📡</span>
+            <span class="box-label">Data Ingestion Layer</span>
+          </div>
         </div>
-
-        <!-- Floating 3D orb decoration in hero -->
-        <div class="hero-orb-ring" aria-hidden="true">
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-            <div class="ring ring-3"></div>
+        <div class="flow-arrow"><div class="arr-line"></div><span class="arr-label">Streams</span></div>
+        <div class="flow-node">
+          <div class="flow-box teal">
+            <span class="box-icon">🤖</span>
+            <span class="box-label">AI / ML Engine</span>
+          </div>
         </div>
-
-        <div class="hero-scroll-indicator" aria-hidden="true">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span>Scroll to explore</span>
+        <div class="flow-arrow"><div class="arr-line"></div><span class="arr-label">Alerts + Scores</span></div>
+        <div class="flow-node">
+          <div class="flow-box blue">
+            <span class="box-icon">🖥️</span>
+            <span class="box-label">Operator Dashboard</span>
+          </div>
         </div>
-    </section>
-
-    <!-- ===================== ABOUT ===================== -->
-    <section id="about" class="about-section section" aria-label="About me">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Who I Am</span>
-                <h2 class="section-title gradient-text">About Me</h2>
-            </div>
-
-            <div class="about-grid">
-                <!-- Profile Card -->
-                <div class="about-card glass tilt-card reveal" id="about-profile-card">
-                    <div class="about-avatar">
-                        <div class="avatar-container">
-                            <div class="avatar-ring" aria-hidden="true"></div>
-                            <img src="images/profile.png" alt="Kush Patel Profile Photo" class="avatar-img">
-                        </div>
-                    </div>
-                    <h3 class="about-name">Kush Patel</h3>
-                    <p class="about-role">Founder of Certify Bharat &
-                        AI / Full-Stack Developer
-                    </p>
-
-                    <div class="about-divider"></div>
-                    <p class="about-bio">
-                        A passionate third-year engineering student with a relentless focus on
-                        building AI-powered, full-stack applications. I thrive in high-pressure
-                        environments like hackathons — turning raw ideas into fully deployable
-                        products at remarkable speed.
-                    </p>
-                    <div class="about-social" aria-label="Social links">
-                        <a href="https://github.com/kushpatel2601" target="_blank" rel="noopener" class="social-btn"
-                            id="social-github" aria-label="GitHub Profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/kush-patel-13417731a/" target="_blank" rel="noopener"
-                            class="social-btn" id="social-linkedin" aria-label="LinkedIn Profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                        </a>
-                        <a href="mailto:your.kushp8484@gmail.com" class="social-btn" id="social-email"
-                            aria-label="Send Email">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" aria-hidden="true">
-                                <rect width="20" height="16" x="2" y="4" rx="2" />
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Stats & Highlights -->
-                <div class="about-right reveal">
-                    <div class="stats-grid" id="stats-grid" aria-label="Statistics">
-                        <div class="stat-card glass" id="stat-projects">
-                            <span class="stat-number gradient-text" data-target="10">0</span>
-                            <span class="stat-suffix">+</span>
-                            <span class="stat-label">Projects Built</span>
-                        </div>
-                        <div class="stat-card glass" id="stat-hackathons">
-                            <span class="stat-number gradient-text" data-target="6">0</span>
-                            <span class="stat-suffix">+</span>
-                            <span class="stat-label">Hackathons</span>
-                        </div>
-                        <div class="stat-card glass" id="stat-tech">
-                            <span class="stat-number gradient-text" data-target="10">0</span>
-                            <span class="stat-suffix">+</span>
-                            <span class="stat-label">Technologies</span>
-                        </div>
-                        <div class="stat-card glass" id="stat-years">
-                            <span class="stat-number gradient-text" data-target="2">0</span>
-                            <span class="stat-suffix">+</span>
-                            <span class="stat-label">Years Coding</span>
-                        </div>
-                    </div>
-
-                    <div class="about-highlights" aria-label="Key strengths">
-                        <div class="highlight-item glass" id="highlight-mvp">
-                            <span class="highlight-icon" aria-hidden="true">🚀</span>
-                            <div>
-                                <h4>Rapid MVP Builder</h4>
-                                <p>From idea to deployed product in hours, not weeks</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item glass" id="highlight-ai">
-                            <span class="highlight-icon" aria-hidden="true">🤖</span>
-                            <div>
-                                <h4>AI/ML Integration</h4>
-                                <p>Bridging the gap between ML models and real user-facing apps</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item glass" id="highlight-hackathon">
-                            <span class="highlight-icon" aria-hidden="true">🏆</span>
-                            <div>
-                                <h4>Hackathon Mindset</h4>
-                                <p>Participated in Smart India Hackathon 2025, Odoo Hackathon 2026, TechSprint — GDG
-                                    CHARUSAT 2026, etc.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="flow-arrow"><div class="arr-line"></div><span class="arr-label">Actions</span></div>
+        <div class="flow-node">
+          <div class="flow-box green">
+            <span class="box-icon">✅</span>
+            <span class="box-label">Better Transit Outcomes</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
 
-    <!-- ===================== SKILLS ===================== -->
-    <section id="skills" class="skills-section section" aria-label="Skills and technologies">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">What I Know</span>
-                <h2 class="section-title gradient-text">Skills & Technologies</h2>
-            </div>
+  <!-- ── SECTION 3: Architecture ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">3</div><h2>System Architecture</h2></div>
+    <div class="divider-line"></div>
 
-            <div class="skills-grid">
-                <div class="skill-category glass reveal" id="skill-languages">
-                    <div class="skill-category-header">
-                        <span class="skill-icon" aria-hidden="true">💻</span>
-                        <h3>Languages</h3>
-                    </div>
-                    <div class="skill-tags" role="list" aria-label="Programming languages">
-                        <span class="skill-tag" role="listitem">Python</span>
-                        <span class="skill-tag" role="listitem">JavaScript</span>
-                        <span class="skill-tag" role="listitem">HTML5</span>
-                        <span class="skill-tag" role="listitem">CSS3</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass reveal" id="skill-frontend">
-                    <div class="skill-category-header">
-                        <span class="skill-icon" aria-hidden="true">⚛️</span>
-                        <h3>Frontend</h3>
-                    </div>
-                    <div class="skill-tags" role="list" aria-label="Frontend technologies">
-                        <span class="skill-tag" role="listitem">React.js</span>
-                        <span class="skill-tag" role="listitem">Tailwind CSS</span>
-                        <span class="skill-tag" role="listitem">Responsive Design</span>
-                        <span class="skill-tag" role="listitem">Vite</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass reveal" id="skill-backend">
-                    <div class="skill-category-header">
-                        <span class="skill-icon" aria-hidden="true">⚡</span>
-                        <h3>Backend</h3>
-                    </div>
-                    <div class="skill-tags" role="list" aria-label="Backend technologies">
-                        <span class="skill-tag" role="listitem">FastAPI</span>
-                        <span class="skill-tag" role="listitem">Node.js</span>
-                        <span class="skill-tag" role="listitem">REST APIs</span>
-                        <span class="skill-tag" role="listitem">Express.js</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass reveal" id="skill-ai">
-                    <div class="skill-category-header">
-                        <span class="skill-icon" aria-hidden="true">🤖</span>
-                        <h3>AI / ML</h3>
-                    </div>
-                    <div class="skill-tags" role="list" aria-label="AI and machine learning">
-                        <span class="skill-tag" role="listitem">TensorFlow</span>
-                        <span class="skill-tag" role="listitem">OpenCV</span>
-                        <span class="skill-tag" role="listitem">scikit-learn</span>
-                        <span class="skill-tag" role="listitem">Computer Vision</span>
-                        <span class="skill-tag" role="listitem">NLP</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass reveal" id="skill-database">
-                    <div class="skill-category-header">
-                        <span class="skill-icon" aria-hidden="true">🗄️</span>
-                        <h3>Database</h3>
-                    </div>
-                    <div class="skill-tags" role="list" aria-label="Database technologies">
-                        <span class="skill-tag" role="listitem">MongoDB</span>
-                        <span class="skill-tag" role="listitem">MySQL</span>
-                        <span class="skill-tag" role="listitem">Firebase</span>
-                    </div>
-                </div>
-
-                <div class="skill-category glass reveal" id="skill-tools">
-                    <div class="skill-category-header">
-                        <span class="skill-icon" aria-hidden="true">🛠️</span>
-                        <h3>Tools</h3>
-                    </div>
-                    <div class="skill-tags" role="list" aria-label="Development tools">
-                        <span class="skill-tag" role="listitem">Git & GitHub</span>
-                        <span class="skill-tag" role="listitem">VS Code</span>
-                        <span class="skill-tag" role="listitem">Postman</span>
-                        <span class="skill-tag" role="listitem">Docker</span>
-                        <span class="skill-tag" role="listitem">Linux</span>
-                    </div>
-                </div>
-            </div>
+    <div class="arch-layers">
+      <div class="arch-layer l1">
+        <div class="layer-icon">📱</div>
+        <div class="layer-info">
+          <h4>Layer 1 — User Interface (Frontend)</h4>
+          <p>Commuter Mobile App · Operator Web Dashboard · Authority Admin Panel</p>
         </div>
-    </section>
-
-    <!-- ===================== PROJECTS ===================== -->
-    <section id="projects" class="projects-section section" aria-label="Featured projects">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">What I've Built</span>
-                <h2 class="section-title gradient-text">Featured Projects</h2>
-            </div>
-
-            <div class="projects-grid">
-
-                <!-- Project 1: Gau_rakshak_AI -->
-                <article class="project-card glass tilt-card reveal" id="project-gau-rakshak">
-                    <div class="project-glow project-glow-purple" aria-hidden="true"></div>
-                    <div class="project-number" aria-hidden="true">01</div>
-                    <div class="project-header">
-                        <div class="project-icon" aria-hidden="true">🐄</div>
-                        <div class="project-links">
-                            <a href="https://github.com/kushpatel2601/Gau_rakshak_AI" target="_blank" rel="noopener"
-                                class="project-link" id="link-gau-github" aria-label="View Gau_rakshak_AI on GitHub"
-                                title="View Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <h3 class="project-title">GauRakshak AI</h3>
-                    <p class="project-desc">
-                        State-of-the-art computer vision system to digitally identify and preserve
-                        indigenous Indian cattle breeds. Custom fine-tuned <strong>EfficientNetB4</strong>
-                        classifies <strong>50 distinct breeds</strong> at 380×380 HD resolution, backed
-                        by an async FastAPI inference server and MongoDB Atlas for prediction logging.
-                    </p>
-                    <div class="project-tech" aria-label="Technologies used">
-                        <span class="tech-badge">EfficientNetB4</span>
-                        <span class="tech-badge">FastAPI</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">MongoDB Atlas</span>
-                        <span class="tech-badge">OpenCV</span>
-                    </div>
-                    <div class="project-footer">
-                        <span class="project-metric">🎯 85%+ Accuracy</span>
-                        <span class="project-metric">🐄 50 Breeds</span>
-                    </div>
-                </article>
-
-                <!-- Project 2: OmniVision-AI -->
-                <article class="project-card glass tilt-card reveal" id="project-omnivision">
-                    <div class="project-glow project-glow-cyan" aria-hidden="true"></div>
-                    <div class="project-number" aria-hidden="true">02</div>
-                    <div class="project-header">
-                        <div class="project-icon" aria-hidden="true">🛒</div>
-                        <div class="project-links">
-                            <a href="https://github.com/kushpatel2601/OmniVision-AI" target="_blank" rel="noopener"
-                                class="project-link" id="link-omnivision-github"
-                                aria-label="View OmniVision-AI on GitHub" title="View Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <h3 class="project-title">OmniVision AI</h3>
-                    <p class="project-desc">
-                        Next-generation retail shelf intelligence platform tackling the $1 Trillion
-                        out-of-stock problem. Uses sub-second <strong>YOLOv8</strong> computer vision for
-                        real-time shelf monitoring, automated planogram compliance checking, and
-                        <strong>Holt-Winters</strong> demand forecasting with Redis-powered SSE alerts.
-                    </p>
-                    <div class="project-tech" aria-label="Technologies used">
-                        <span class="tech-badge">YOLOv8</span>
-                        <span class="tech-badge">FastAPI</span>
-                        <span class="tech-badge">React.js</span>
-                        <span class="tech-badge">MongoDB</span>
-                        <span class="tech-badge">Redis</span>
-                    </div>
-                    <div class="project-footer">
-                        <span class="project-metric">👁️ Real-time CV</span>
-                        <span class="project-metric">📈 Demand Forecasting</span>
-                    </div>
-                </article>
-
-                <!-- Project 3: TransitOps -->
-                <article class="project-card glass tilt-card reveal" id="project-transitops">
-                    <div class="project-glow project-glow-pink" aria-hidden="true"></div>
-                    <div class="project-number" aria-hidden="true">03</div>
-                    <div class="project-header">
-                        <div class="project-icon" aria-hidden="true">🚌</div>
-                        <div class="project-links">
-                            <a href="https://github.com/kushpatel2601/TransitOps" target="_blank" rel="noopener"
-                                class="project-link" id="link-transitops-github" aria-label="View TransitOps on GitHub"
-                                title="View Repository">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                    fill="currentColor" aria-hidden="true">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <h3 class="project-title">TransitOps</h3>
-                    <p class="project-desc">
-                        Full-stack fleet &amp; transit operations platform built for <strong>Odoo Hackathon
-                            2026</strong>.
-                        Manages fleet, drivers, trips, maintenance, fuel &amp; expenses under a
-                        database-driven <strong>4-role RBAC</strong> system. Enforces real domain rules:
-                        cargo capacity checks, double-dispatch guards, and license validity blocks.
-                    </p>
-                    <div class="project-tech" aria-label="Technologies used">
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">Express</span>
-                        <span class="tech-badge">PostgreSQL</span>
-                        <span class="tech-badge">JWT Auth</span>
-                        <span class="tech-badge">Vanilla JS</span>
-                    </div>
-                    <div class="project-footer">
-                        <span class="project-metric">🏆 Odoo Hackathon</span>
-                        <span class="project-metric">🔐 4-Role RBAC</span>
-                    </div>
-                </article>
-
-            </div>
-
-            <!-- See More Projects Button -->
-            <div class="projects-more reveal">
-                <a href="https://github.com/kushpatel2601?tab=repositories" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-see-more" id="btn-see-more-projects" aria-label="View all projects on GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                        fill="currentColor" aria-hidden="true">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                    <span>See More Projects</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        aria-hidden="true">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" x2="21" y1="14" y2="3" />
-                    </svg>
-                </a>
-            </div>
-
+        <div class="layer-pills">
+          <span class="pill">Flutter</span>
+          <span class="pill">React.js</span>
+          <span class="pill">PWA</span>
         </div>
-    </section>
-
-    <!-- ===================== HACKATHONS ===================== -->
-    <section id="hackathons" class="hackathons-section section" aria-label="Hackathon journey">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Competitions</span>
-                <h2 class="section-title gradient-text">Hackathon Journey</h2>
-            </div>
-
-            <div class="timeline" role="list" aria-label="Hackathon timeline">
-
-                <!-- SIH 2025 -->
-                <div class="timeline-item featured reveal" role="listitem" id="hackathon-sih">
-                    <div class="timeline-node" aria-hidden="true">
-                        <div class="node-ring"></div>
-                        <div class="node-dot"></div>
-                    </div>
-                    <div class="timeline-content glass tilt-card">
-                        <div class="timeline-badge">🏆 SHORTLISTED</div>
-                        <div class="timeline-date">2025</div>
-                        <h3 class="timeline-title">Smart India Hackathon 2025</h3>
-                        <p class="timeline-org">Government of India — National Level</p>
-                        <p class="timeline-desc">
-                            Shortlisted at the national level for India's most prestigious hackathon.
-                            Built a DPR Quality Assessment Tool that automates infrastructure risk analysis
-                            using AI and NLP — from ideation to a working prototype delivered under pressure.
-                        </p>
-                        <div class="timeline-tech" aria-label="Technologies used">
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">React.js</span>
-                            <span class="tech-badge">NLP</span>
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Odoo Hackathon 2026 -->
-                <div class="timeline-item reveal" role="listitem" id="hackathon-odoo-2026">
-                    <div class="timeline-node" aria-hidden="true">
-                        <div class="node-ring"></div>
-                        <div class="node-dot"></div>
-                    </div>
-                    <div class="timeline-content glass tilt-card">
-                        <div class="timeline-badge secondary">🚀 PARTICIPATED</div>
-                        <div class="timeline-date">2026</div>
-                        <h3 class="timeline-title">Odoo Hackathon 2026</h3>
-                        <p class="timeline-org">Odoo — Open Source ERP Platform</p>
-                        <p class="timeline-desc">
-                            Built <strong>TransitOps</strong> — a full-stack fleet &amp; transit operations
-                            platform entirely from scratch. Enforced real domain logic: cargo capacity checks,
-                            driver license validation, double-dispatch guards, and a 4-role RBAC system
-                            driven by a PostgreSQL-backed JWT auth layer.
-                        </p>
-                        <div class="timeline-tech" aria-label="Technologies used">
-                            <span class="tech-badge">Node.js</span>
-                            <span class="tech-badge">Express</span>
-                            <span class="tech-badge">PostgreSQL</span>
-                            <span class="tech-badge">JWT</span>
-                            <span class="tech-badge">Vanilla JS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Odoo x GCET Hackathon 2026 -->
-                <div class="timeline-item reveal" role="listitem" id="hackathon-odoo-gcet">
-                    <div class="timeline-node" aria-hidden="true">
-                        <div class="node-ring"></div>
-                        <div class="node-dot"></div>
-                    </div>
-                    <div class="timeline-content glass tilt-card">
-                        <div class="timeline-badge secondary">🚀 PARTICIPATED</div>
-                        <div class="timeline-date">2026</div>
-                        <h3 class="timeline-title">Odoo × GCET Hackathon 2026</h3>
-                        <p class="timeline-org">Odoo × GCET — Industry-Academia Collaboration</p>
-                        <p class="timeline-desc">
-                            Collaborated in the OdooXGCET Hackathon, building a rapid solution in partnership
-                            with industry mentors. Demonstrated product-focused development, technical depth,
-                            and the ability to ship under competitive hackathon conditions.
-                        </p>
-                        <div class="timeline-tech" aria-label="Technologies used">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">React.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Odoo X Parul Hackathon 2026 -->
-                <div class="timeline-item reveal" role="listitem" id="hackathon-odoo-parul">
-                    <div class="timeline-node" aria-hidden="true">
-                        <div class="node-ring"></div>
-                        <div class="node-dot"></div>
-                    </div>
-                    <div class="timeline-content glass tilt-card">
-                        <div class="timeline-badge secondary">🚀 PARTICIPATED</div>
-                        <div class="timeline-date">2026</div>
-                        <h3 class="timeline-title">Odoo × Parul Hackathon 2026</h3>
-                        <p class="timeline-org">Odoo × Parul University</p>
-                        <p class="timeline-desc">
-                            Participated in the Odoo × Parul University Hackathon, applying full-stack
-                            engineering skills to design and deliver a working product under strict time
-                            constraints in a collaborative team environment.
-                        </p>
-                        <div class="timeline-tech" aria-label="Technologies used">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">React.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- DevHeat — IIIT Surat 2026 -->
-                <div class="timeline-item reveal" role="listitem" id="hackathon-devheat">
-                    <div class="timeline-node" aria-hidden="true">
-                        <div class="node-ring"></div>
-                        <div class="node-dot"></div>
-                    </div>
-                    <div class="timeline-content glass tilt-card">
-                        <div class="timeline-badge secondary">🔥 PARTICIPATED</div>
-                        <div class="timeline-date">2026</div>
-                        <h3 class="timeline-title">DevHeat Hackathon 2026</h3>
-                        <p class="timeline-org">IIIT Surat — Institute Level</p>
-                        <p class="timeline-desc">
-                            Competed at DevHeat by IIIT Surat, channelling rapid prototyping skills to
-                            deliver a functional product. Pushed through intensive ideation, design, and
-                            build phases in a fast-paced, high-energy hackathon environment.
-                        </p>
-                        <div class="timeline-tech" aria-label="Technologies used">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">React.js</span>
-                            <span class="tech-badge">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TechSprint — GDG CHARUSAT 2026 -->
-                <div class="timeline-item reveal" role="listitem" id="hackathon-techsprint">
-                    <div class="timeline-node" aria-hidden="true">
-                        <div class="node-ring"></div>
-                        <div class="node-dot"></div>
-                    </div>
-                    <div class="timeline-content glass tilt-card">
-                        <div class="timeline-badge secondary">🌐 PARTICIPATED</div>
-                        <div class="timeline-date">2026</div>
-                        <h3 class="timeline-title">TechSprint — GDG CHARUSAT 2026</h3>
-                        <p class="timeline-org">Google Developer Group × CHARUSAT — Open Source</p>
-                        <p class="timeline-desc">
-                            Participated in TechSprint, the GDG CHARUSAT Open Source Hackathon, building
-                            with open-source tools and contributing to the developer community. Focused on
-                            clean architecture, collaboration, and real-world impact.
-                        </p>
-                        <div class="timeline-tech" aria-label="Technologies used">
-                            <span class="tech-badge">Open Source</span>
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">React.js</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+      </div>
+      <div class="arch-layer l2">
+        <div class="layer-icon">⚡</div>
+        <div class="layer-info">
+          <h4>Layer 2 — API Gateway & Real-Time Messaging</h4>
+          <p>WebSocket connections, REST API, event-driven messaging bus for live updates</p>
         </div>
-    </section>
-
-    <!-- ===================== CONTACT ===================== -->
-    <section id="contact" class="contact-section section" aria-label="Contact me">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Get In Touch</span>
-                <h2 class="section-title gradient-text">Contact Me</h2>
-            </div>
-
-            <div class="contact-grid">
-                <!-- Contact Info -->
-                <div class="contact-info reveal">
-                    <div class="contact-card glass">
-                        <h3>Let's Build Something Amazing</h3>
-                        <p>
-                            Whether you have a project idea, a hackathon to conquer, or just want to
-                            connect — my inbox is always open. I'll get back to you within 24 hours.
-                        </p>
-                        <div class="contact-links" aria-label="Contact methods">
-                            <a href="mailto:kushp8484@gmail.com" class="contact-link glass" id="contact-email-link"
-                                aria-label="Send email">
-                                <span class="contact-link-icon" aria-hidden="true">📧</span>
-                                <div>
-                                    <span class="contact-link-label">Email</span>
-                                    <span class="contact-link-value">kushp8484@gmail.com</span>
-                                </div>
-                            </a>
-                            <a href="https://github.com/kushpatel2601" target="_blank" rel="noopener"
-                                class="contact-link glass" id="contact-github-link" aria-label="Visit GitHub">
-                                <span class="contact-link-icon" aria-hidden="true">💻</span>
-                                <div>
-                                    <span class="contact-link-label">GitHub</span>
-                                    <span class="contact-link-value">github.com/kushpatel2601</span>
-                                </div>
-                            </a>
-                            <a href="https://www.linkedin.com/in/kush-patel-13417731a/" target="_blank" rel="noopener"
-                                class="contact-link glass" id="contact-linkedin-link" aria-label="Visit LinkedIn">
-                                <span class="contact-link-icon" aria-hidden="true">💼</span>
-                                <div>
-                                    <span class="contact-link-label">LinkedIn</span>
-                                    <span class="contact-link-value">linkedin.com/in/kushpatel2601</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="contact-form-wrapper reveal">
-                    <form action="https://formsubmit.co/kushp8484@gmail.com" method="POST" class="contact-form glass"
-                        id="contact-form" novalidate aria-label="Contact form">
-                        <input type="hidden" name="_subject" value="New Portfolio Message!">
-                        <input type="hidden" name="_captcha" value="false">
-                        <div class="form-group">
-                            <label for="form-name">Your Name</label>
-                            <input type="text" id="form-name" name="name" placeholder="John Doe" required
-                                autocomplete="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="form-email">Your Email</label>
-                            <input type="email" id="form-email" name="email" placeholder="john@example.com" required
-                                autocomplete="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="form-message">Message</label>
-                            <textarea id="form-message" name="message" rows="5"
-                                placeholder="I'd love to collaborate on..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-full" id="form-submit">
-                            <span id="btn-text">Send Message</span>
-                            <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="m22 2-7 20-4-9-9-4Z" />
-                                <path d="M22 2 11 13" />
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
+        <div class="layer-pills">
+          <span class="pill">Node.js</span>
+          <span class="pill">Socket.io</span>
+          <span class="pill">Kafka</span>
         </div>
-    </section>
-
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <span class="footer-logo gradient-text" aria-label="Kush Patel">KP</span>
-                <p class="footer-text">
-                    Built with <span aria-label="love"></span> ❤️ <span aria-label="coffee"></span> by
-                    <a href="https://kushpatel2601.github.io/me/" target="_blank" rel="noopener noreferrer"
-                        class="gradient-text hover:underline" style="text-decoration: none;">Kush Patel</a>
-                </p>
-                <p class="footer-copy">© 2025 All rights reserved.</p>
-            </div>
+      </div>
+      <div class="arch-layer l3">
+        <div class="layer-icon">🤖</div>
+        <div class="layer-info">
+          <h4>Layer 3 — AI / ML Processing Engine</h4>
+          <p>Anomaly detection models, crowd density prediction, safe route scoring, NLP for incident reports</p>
         </div>
-    </footer>
+        <div class="layer-pills">
+          <span class="pill">Python</span>
+          <span class="pill">TensorFlow</span>
+          <span class="pill">LSTM</span>
+          <span class="pill">FastAPI</span>
+        </div>
+      </div>
+      <div class="arch-layer l4">
+        <div class="layer-icon">🗄️</div>
+        <div class="layer-info">
+          <h4>Layer 4 — Data Storage & External Integrations</h4>
+          <p>Historical transit data, crime/lighting datasets, GTFS feeds, government transit APIs</p>
+        </div>
+        <div class="layer-pills">
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">MongoDB</span>
+          <span class="pill">Redis</span>
+          <span class="pill">AWS S3</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- ===================== SCRIPTS ===================== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="scripts/main.js"></script>
+  <!-- ── SECTION 4: Data Flow ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">4</div><h2>Data Flow — Step by Step</h2></div>
+    <div class="divider-line"></div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Multi-Source Data Collection</h4>
+          <p>GPS traces from buses, IoT crowd sensors at stops, user-submitted safety reports via the app, CCTV feed metadata, historical crime datasets, and civic lighting maps are continuously ingested.</p>
+          <div class="step-tags">
+            <span class="step-tag">GPS Tracking</span>
+            <span class="step-tag">IoT Sensors</span>
+            <span class="step-tag">Crowd Reports</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Real-Time Preprocessing & Feature Engineering</h4>
+          <p>Incoming streams are cleaned, normalized, and enriched with time-of-day, day-of-week, and weather context. Geospatial clustering identifies high-density hotspots on the fly.</p>
+          <div class="step-tags">
+            <span class="step-tag">Apache Kafka</span>
+            <span class="step-tag orange">Stream Processing</span>
+            <span class="step-tag orange">Geofencing</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>AI Anomaly Detection & Safety Scoring</h4>
+          <p>An LSTM-based model flags unusual crowd spikes and route deviations. A separate safety scoring model assigns a Safety Index (0–100) to each bus stop and route segment using crime, lighting, and incident history.</p>
+          <div class="step-tags">
+            <span class="step-tag">LSTM Model</span>
+            <span class="step-tag">Safety Scoring</span>
+            <span class="step-tag teal">Anomaly Flags</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Intelligent Route & Alert Dispatch</h4>
+          <p>Safe route recommendations are pushed to commuter apps in real time. Operators receive priority alerts for anomalies. High-severity incidents trigger automatic SOS routing to emergency contacts and transit control.</p>
+          <div class="step-tags">
+            <span class="step-tag">Push Alerts</span>
+            <span class="step-tag orange">SOS Routing</span>
+            <span class="step-tag">Operator Broadcast</span>
+          </div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Operator Action & Feedback Loop</h4>
+          <p>Transit operators reroute buses, deploy extra vehicles, or coordinate with local police via the dashboard. All actions are logged and feed back into the model for continuous improvement.</p>
+          <div class="step-tags">
+            <span class="step-tag teal">Rerouting</span>
+            <span class="step-tag teal">Model Retraining</span>
+            <span class="step-tag">Audit Logs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: Core Features ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">5</div><h2>Core Feature Modules</h2></div>
+    <div class="divider-line"></div>
+    <div class="features-grid">
+      <div class="feature-card fc1">
+        <h4><span>🗺️</span> SafeRoute Navigator</h4>
+        <ul>
+          <li>Recommends routes with highest safety scores</li>
+          <li>Avoids high-crime or poorly lit stops</li>
+          <li>Live crowd density indicators per bus</li>
+          <li>Integrates real-time bus ETA</li>
+        </ul>
+      </div>
+      <div class="feature-card fc2">
+        <h4><span>🚨</span> Anomaly Alert Engine</h4>
+        <ul>
+          <li>LSTM detects sudden crowd spikes</li>
+          <li>Flags buses deviating from scheduled routes</li>
+          <li>Sends alerts to both commuter &amp; operator</li>
+          <li>Severity classification (Low / High / Critical)</li>
+        </ul>
+      </div>
+      <div class="feature-card fc3">
+        <h4><span>📊</span> Operator Intelligence Dashboard</h4>
+        <ul>
+          <li>Live fleet map with color-coded safety zones</li>
+          <li>Predictive demand heatmaps (next 30 mins)</li>
+          <li>Incident log with one-click response tools</li>
+          <li>Exportable analytics for route planning</li>
+        </ul>
+      </div>
+      <div class="feature-card fc4">
+        <h4><span>🆘</span> Emergency Response Module</h4>
+        <ul>
+          <li>One-tap SOS from the commuter app</li>
+          <li>Auto-share live GPS to emergency contacts</li>
+          <li>Silent alert mode (no sound, no screen wake)</li>
+          <li>Direct integration with transit control room</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 6: USPs ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">6</div><h2>Why Our Solution Stands Out</h2></div>
+    <div class="divider-line"></div>
+    <div class="usp-row">
+      <div class="usp-box">
+        <div class="usp-icon">🎯</div>
+        <h4>Women-First Design</h4>
+        <p>Every feature is designed around the actual safety journey of a female commuter, not a generic user.</p>
+      </div>
+      <div class="usp-box">
+        <div class="usp-icon">🔄</div>
+        <h4>Closed Feedback Loop</h4>
+        <p>Every operator action retrains the AI model, making the system smarter with every incident.</p>
+      </div>
+      <div class="usp-box">
+        <div class="usp-icon">🌐</div>
+        <h4>Works Offline</h4>
+        <p>Core safety features like SOS and cached route data work even in low/no connectivity zones.</p>
+      </div>
+      <div class="usp-box">
+        <div class="usp-icon">📈</div>
+        <h4>Scalable Architecture</h4>
+        <p>Microservices-based design can scale from a single city pilot to pan-India deployment.</p>
+      </div>
+      <div class="usp-box">
+        <div class="usp-icon">🔒</div>
+        <h4>Privacy-First</h4>
+        <p>No personally identifiable data stored. Location data is anonymized after route computation.</p>
+      </div>
+      <div class="usp-box">
+        <div class="usp-icon">🤝</div>
+        <h4>Open API for Govt.</h4>
+        <p>REST APIs ready for integration with existing state transport systems and municipal portals.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 7: Expected Impact ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">7</div><h2>Expected Impact</h2></div>
+    <div class="divider-line"></div>
+    <table class="impact-table">
+      <thead>
+        <tr>
+          <th>Impact Area</th>
+          <th>Current Problem</th>
+          <th>With SafeTransit AI</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Safety Incidents</td>
+          <td>No real-time detection; incidents go unreported</td>
+          <td>Automated anomaly detection within 30–60 seconds</td>
+          <td><span class="tag-green">High Impact</span></td>
+        </tr>
+        <tr>
+          <td>Schedule Adherence</td>
+          <td>Buses run 15–40 mins late with no alerts</td>
+          <td>Predictive ETA + proactive delay notifications</td>
+          <td><span class="tag-green">High Impact</span></td>
+        </tr>
+        <tr>
+          <td>SOS Response Time</td>
+          <td>Manual calls, no automatic location share</td>
+          <td>One-tap SOS with GPS to contacts + control room</td>
+          <td><span class="tag-green">Critical</span></td>
+        </tr>
+        <tr>
+          <td>Operator Visibility</td>
+          <td>No live crowd or safety data for fleet managers</td>
+          <td>Real-time dashboard with anomaly flags &amp; heatmaps</td>
+          <td><span class="tag-green">High Impact</span></td>
+        </tr>
+        <tr>
+          <td>Data for Policy</td>
+          <td>No structured data for transport improvement</td>
+          <td>Monthly reports &amp; incident logs exportable to govt.</td>
+          <td><span class="tag-green">Medium Impact</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── SECTION 8: Technology Stack ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">8</div><h2>Technology Stack</h2></div>
+    <div class="divider-line"></div>
+    <p style="font-size:12.5px;color:var(--gray-600);margin-bottom:10px;">All open-source and production-ready technologies — chosen for rapid prototyping in the hackathon timeline.</p>
+    <div class="tech-row">
+      <div class="tech-badge"><div class="dot" style="background:#61DAFB;"></div>React.js</div>
+      <div class="tech-badge"><div class="dot" style="background:#02569B;"></div>Flutter</div>
+      <div class="tech-badge"><div class="dot" style="background:#339933;"></div>Node.js</div>
+      <div class="tech-badge"><div class="dot" style="background:#009688;"></div>FastAPI (Python)</div>
+      <div class="tech-badge"><div class="dot" style="background:#FF6F00;"></div>TensorFlow / Keras</div>
+      <div class="tech-badge"><div class="dot" style="background:#336791;"></div>PostgreSQL</div>
+      <div class="tech-badge"><div class="dot" style="background:#47A248;"></div>MongoDB</div>
+      <div class="tech-badge"><div class="dot" style="background:#DC382D;"></div>Redis</div>
+      <div class="tech-badge"><div class="dot" style="background:#231F20;"></div>Apache Kafka</div>
+      <div class="tech-badge"><div class="dot" style="background:#FF9900;"></div>AWS / Firebase</div>
+      <div class="tech-badge"><div class="dot" style="background:#4EAA25;"></div>Socket.io</div>
+      <div class="tech-badge"><div class="dot" style="background:#3776AB;"></div>scikit-learn</div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 9: Hackathon Round Plan ── -->
+  <div class="section">
+    <div class="section-label"><div class="num">9</div><h2>Round-wise Development Plan</h2></div>
+    <div class="divider-line"></div>
+    <div class="timeline">
+      <div class="tl-card r1">
+        <div class="tl-round">Round 1 · Idea</div>
+        <div class="tl-date">1 August 2026</div>
+        <div class="tl-items">
+          ✅ Problem understanding<br>
+          ✅ Solution concept &amp; architecture<br>
+          ✅ Impact analysis<br>
+          ✅ Tech stack finalization
+        </div>
+      </div>
+      <div class="tl-card r2">
+        <div class="tl-round">Round 2 · Prototype</div>
+        <div class="tl-date">27 August 2026</div>
+        <div class="tl-items">
+          🔲 Working mobile app UI<br>
+          🔲 Basic AI safety scoring model<br>
+          🔲 Operator dashboard MVP<br>
+          🔲 Live demo on sample GTFS data
+        </div>
+      </div>
+      <div class="tl-card r3">
+        <div class="tl-round">Grand Finale</div>
+        <div class="tl-date">25 October 2026</div>
+        <div class="tl-items">
+          🔲 Full-stack integrated platform<br>
+          🔲 Trained LSTM anomaly model<br>
+          🔲 SOS + real-time alert demo<br>
+          🔲 Live product presentation
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /body-wrap -->
+
+<!-- ═══════════════════════════════════════════ FOOTER ═══ -->
+<div class="doc-footer">
+  <div class="footer-left">
+    <strong>SafeTransit AI — ILS 2026 National Hackathon</strong>
+    <p>Track 4: Open Industry Problems &nbsp;·&nbsp; Problem #9</p>
+  </div>
+  <div class="footer-right">
+    <strong>IEEE WIE International Leadership Summit 2026</strong>
+    <p>SVNIT, Surat, Gujarat, India &nbsp;·&nbsp; 24–25 October 2026</p>
+    <p>wieils2026@gmail.com &nbsp;·&nbsp; wieils.ieee.org/2026-suratindia</p>
+  </div>
+</div>
+
 </body>
-
-</html> 
+</html>
